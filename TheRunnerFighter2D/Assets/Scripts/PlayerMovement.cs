@@ -22,6 +22,5 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidBody.velocity = new Vector2(_moveVector.x * _speed, _rigidBody.velocity.y);
-        //this.transform.Translate(_moveVector * _speed * 0.005f);
     }
 }
