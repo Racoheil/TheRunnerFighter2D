@@ -6,14 +6,6 @@ public class PlayerJump : MonoBehaviour
 {
     [SerializeField] private float _jumpForce = 1f;
 
-    [SerializeField] private bool _isGrounded;
-
-    [SerializeField] private Transform _groundCheckObject;
-
-    [SerializeField] private float _checkRadius;
-
-    [SerializeField] private LayerMask _groundLayer;
-
     [SerializeField] private int _maxJumps = 2;
 
     private bool _isButtonPressed;
@@ -22,36 +14,35 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D _rigidBody;
 
+    private float doubleJumpDelay = 0.2f;
+
+    private bool hasDoubleJumped;
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
     }
-    void Update()
+    private void FixedUpdate()
     {
 
-        if (_isGrounded == true)
+        if (GroundCheck.instance.GetIsGrounded())
         {
             _jumps = _maxJumps - 1;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump(_jumpForce);
-        } 
-
-    }
-    private void FixedUpdate()
-    {
-        _isGrounded = Physics2D.OverlapCircle(_groundCheckObject.position,_checkRadius,_groundLayer);
-
+        }
     }
 
     private void Jump(float jumpForce)
     {
-        if(_jumps > 0)
+        if(_jumps > 0 && !hasDoubleJumped)
         {
             _rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            _isGrounded = false;
+            //_isGrounded = false;
             _jumps -= 1;
+            hasDoubleJumped = true;
+            StartCoroutine(ResetDoubleJump());
             Debug.Log("Jump!");
             
         }
@@ -60,5 +51,10 @@ public class PlayerJump : MonoBehaviour
             return;
         }
       
+    }
+    IEnumerator ResetDoubleJump()
+    {
+        yield return new WaitForSeconds(doubleJumpDelay);
+        hasDoubleJumped = false;
     }
 }
