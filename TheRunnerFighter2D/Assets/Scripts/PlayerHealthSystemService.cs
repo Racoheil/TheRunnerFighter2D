@@ -12,24 +12,46 @@ public class PlayerHealthSystemService : MonoBehaviour
 
     private static int _maxHealth = 6;
 
-    [SerializeField] private HeartsPanel _heartsPanel;
+    private List<GameObject> _heartsList;
+
+    [SerializeField] private GameObject _heartsPanel;
+
+    [SerializeField] private GameObject _heartPrefab;
+
+    private bool _isImmortal;
+
+    private float _immortalityTime = 3f;
 
     private void Awake()
     {
+        _isImmortal = false;
+        _heartsList = new List<GameObject>();
         _health = _defaultHealth;
         ResetHealth();
     }
 
     private void OnEnable()
     {
-     //   EventService.OnTakeDamage += TakeDamage;
-        ResetHealth() ;
+        EventService.OnTakeDamage += TakeDamage;
+        EventService.OnTakeDamage += ImmortalizeThePlayer;
     }
 
     private void OnDisable()
     {
-    //    EventService.OnTakeDamage -= TakeDamage;
-        ResetHealth();
+       EventService.OnTakeDamage -= TakeDamage;
+       EventService.OnTakeDamage -= ImmortalizeThePlayer;
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.LeftAlt))
+        {
+            ReduceHealth();
+        }
+        if (Input.GetKeyUp(KeyCode.RightAlt))
+        {
+            IncreaseHealth();
+        }
     }
     public int GetHealth()
     {
@@ -42,19 +64,57 @@ public class PlayerHealthSystemService : MonoBehaviour
     }
     public void ReduceHealth()
     {
-        _health -= 1;
-       // _heartsPanel.ResetHearts();
+        if(!_isImmortal)
+        {
+            _health--;
+            _heartsList[_health].gameObject.SetActive(false);
+        }
     }
     
     public void IncreaseHealth()
     {
-        _health += 1;
-        _heartsPanel.IncreaseHearts();
+        _health++;
+        _heartsList[_health-1].gameObject.SetActive(true);
     }
 
     public void ResetHealth()
     {
         _health = _defaultHealth;
-       // _heartsPanel.ResetHearts();
+        FillHeartsPanel();
+    }
+
+    public void FillHeartsPanel()
+    {
+        CreateAllHeartsObjects();
+        for (int i = _maxHealth-1; i > _defaultHealth-1; i--)
+        {
+            _heartsList[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void CreateAllHeartsObjects()
+    {
+        Debug.Log(_maxHealth);      
+        for (int i = 0; i < _maxHealth; i++)
+        {
+            GameObject heart = Instantiate(_heartPrefab);
+            heart.transform.SetParent(_heartsPanel.transform);
+            heart.transform.localScale = Vector3.one;
+            _heartsList.Add(heart);
+        }
+    }
+
+    public void ImmortalizeThePlayer()
+    {
+        _isImmortal = true;
+        Debug.Log("Immortal is activated!!" + _isImmortal);
+        StartCoroutine(ImmortalizeCoroutine());
+    }
+
+    IEnumerator ImmortalizeCoroutine()
+    {
+        yield return new WaitForSeconds(_immortalityTime);
+        _isImmortal = false;
+        Debug.Log("Immortalize is deactivated!!");
     }
 }
