@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidBody;
 
-    private float _speed = 10f;
+    [SerializeField]private float _speed = 10f;
 
     private Vector2 _moveVector;
 
@@ -39,13 +39,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FreezePlayer()
     {
-        _moveVector.x = 0f;
+       // _moveVector.x = 0f;
+        _speed = 0f;
         StartCoroutine(FreezePlayerCoroutine());
     }
 
      IEnumerator FreezePlayerCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        _moveVector.x = 1f;
+       // _moveVector.x = 1f;
+        _speed = 10f;
     }
 }
