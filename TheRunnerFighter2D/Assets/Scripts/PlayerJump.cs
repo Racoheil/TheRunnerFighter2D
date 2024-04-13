@@ -14,9 +14,11 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D _rigidBody;
 
-    private float doubleJumpDelay = 0.2f;
+    private float _doubleJumpDelay = 0.2f;
 
-    private bool hasDoubleJumped;
+    private bool _hasDoubleJumped;
+
+    private bool _isJump = true;
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -33,15 +35,23 @@ public class PlayerJump : MonoBehaviour
             Jump(_jumpForce);
         }
     }
+    private void OnEnable()
+    {
+        EventService.OnTakeDamage += FreezePlayer;
+    }
 
+    private void OnDisable()
+    {
+        EventService.OnTakeDamage -= FreezePlayer;
+    }
     private void Jump(float jumpForce)
     {
-        if(_jumps > 0 && !hasDoubleJumped)
+        if(_jumps > 0 && !_hasDoubleJumped && _isJump)
         {
             _rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             //_isGrounded = false;
             _jumps -= 1;
-            hasDoubleJumped = true;
+            _hasDoubleJumped = true;
             StartCoroutine(ResetDoubleJump());
             Debug.Log("Jump!");
             
@@ -54,7 +64,21 @@ public class PlayerJump : MonoBehaviour
     }
     IEnumerator ResetDoubleJump()
     {
-        yield return new WaitForSeconds(doubleJumpDelay);
-        hasDoubleJumped = false;
+        yield return new WaitForSeconds(_doubleJumpDelay);
+        _hasDoubleJumped = false;
+    }
+
+    private void FreezePlayer()
+    {
+        // _moveVector.x = 0f;
+        _isJump = false;
+        StartCoroutine(FreezePlayerCoroutine());
+    }
+
+    IEnumerator FreezePlayerCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        // _moveVector.x = 1f;
+        _isJump = true;
     }
 }

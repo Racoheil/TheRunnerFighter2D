@@ -22,8 +22,11 @@ public class PlayerHealthSystemService : MonoBehaviour
 
     private float _immortalityTime = 3f;
 
+    public static PlayerHealthSystemService instance;
+
     private void Awake()
     {
+        instance = this;
         _isImmortal = false;
         _heartsList = new List<GameObject>();
         _health = _defaultHealth;
@@ -52,6 +55,11 @@ public class PlayerHealthSystemService : MonoBehaviour
         {
             IncreaseHealth();
         }
+    }
+
+    public bool GetImmortality()
+    {
+        return _isImmortal;
     }
     public int GetHealth()
     {
