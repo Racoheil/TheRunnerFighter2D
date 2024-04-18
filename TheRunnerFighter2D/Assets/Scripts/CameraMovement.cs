@@ -15,7 +15,7 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 _defaultPos;
 
-    private float speed = 3f;
+    private float speed = 3.5f;
 
     private void Start()
     {

@@ -9,7 +9,7 @@ public class PauseMenuService : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
-            SceneManager.GetActiveScene();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
