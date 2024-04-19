@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MapGenerate : MonoBehaviour
 {
-    //[SerializeField] private GameObject[] _platformsGroupsPrefabs;
 
     [SerializeField] private PlatformsGroup[] _platformsTilesObjects;
 
@@ -14,21 +13,25 @@ public class MapGenerate : MonoBehaviour
 
     private int _activeTilesCount = 3;
 
-    private int _activeTileNumber;
+    private bool _isFirstActivePlatform = false;
+
+    private float _additingValueY;
+
+    private float _additingValueX;
 
     private void Awake()
     {
         _platformsTiles = new List<PlatformsGroup>();
         _activePlatformsTiles = new List<PlatformsGroup>();
+
+        _additingValueX = 330;
+        _additingValueY = 0;
     }
     private void Start()
     {
-        _activeTileNumber = 0;
+        _isFirstActivePlatform = true;
         CreateAllPlatformsGroups();
         GenerateStartPosition();
-       
-      //  GenerateStartPosition();
-        //GenerateMap();  
     }
     private void Update()
     {
@@ -37,34 +40,27 @@ public class MapGenerate : MonoBehaviour
             GenerateMap();
         }
     }
-    //private void Start()
-    //{
-    //    _platformsGroupsObjects = new PlatformsGroup[_platformsGroupsPrefabs.Length];
-    //    Debug.Log("_platformsGroupsPrefabs.Length=" + _platformsGroupsPrefabs.Length);
-    //    Debug.Log("_platformsGroupsObjects.Length=" + _platformsGroupsObjects.Length);
-    //    _fillPlatfromsGroupsObjects();
-    //}
-    //private void _fillPlatfromsGroupsObjects()
-    //{
-    //    for(int i = 0;i < _platformsGroupsPrefabs.Length; i++)
-    //    {
-    //        _platformsGroupsObjects[i] = new PlatformsGroup(_platformsGroupsPrefabs[i],true);
-    //       // _platformsGroupsObjects[i].prefab = _platformsGroupsPrefabs[i].gameObject;
-    //    }
-    //}
 
+    private void OnEnable()
+    {
+        EventService.OnPlayerFinishingPlatform += GenerateMap;
+    }
+    private void OnDisable()
+    {
+        EventService.OnPlayerFinishingPlatform -= GenerateMap;
+    }
     private void GenerateStartPosition()
     {
         _platformsTiles[0].gameObject.SetActive(true);
         _platformsTiles[0].transform.position = Vector3.zero;
         _activePlatformsTiles.Add(_platformsTiles[0]);
-        _activeTileNumber = 0;
+        _isFirstActivePlatform = true;
         _platformsTiles[0].isActive = true;
         for (int i = 1; i < _activeTilesCount; i++)
         {
             _platformsTiles[i].isActive = true;
             _platformsTiles[i].gameObject.SetActive(true);
-            _platformsTiles[i].transform.position = _platformsTiles[i - 1].transform.position + new Vector3(330, 0, 0);
+            _platformsTiles[i].transform.position = _platformsTiles[i - 1].transform.position + new Vector3(_additingValueX, _additingValueY, 0);
             _activePlatformsTiles.Add(_platformsTiles[i]);
         }
     }
@@ -85,49 +81,41 @@ public class MapGenerate : MonoBehaviour
     private void GenerateMap()
     {
 
-        Debug.Log("ActiveTilesNumber = " + _activeTileNumber);
-        if (_activeTileNumber == 0)
+        if (_isFirstActivePlatform == true)
         {
-            _activeTileNumber++;
+            _isFirstActivePlatform = false;
         }
-        else if (_activeTileNumber == 1)
+        else if (_isFirstActivePlatform == false)
         {
-            _activePlatformsTiles[0].isActive = false;
-            _activePlatformsTiles[0].gameObject.SetActive(false);
-            _activePlatformsTiles.RemoveAt(0);
+            _activePlatformsTiles[0].isActive = false;              ///
+            _activePlatformsTiles[0].gameObject.SetActive(false);   ///
+            _activePlatformsTiles.RemoveAt(0);                      ///
 
-            //int randomNumber = Random.Range(0, _platformsTiles.Count-1);
             int randomNumber = GetRandomNumber();
-            Debug.Log("Random = " + randomNumber);
+            _platformsTiles[randomNumber].isActive = true;
             _activePlatformsTiles.Add(_platformsTiles[randomNumber]);
 
-            _platformsTiles[randomNumber].isActive = true;
+
             _platformsTiles[randomNumber].gameObject.SetActive(true);
-           
             _platformsTiles[randomNumber].transform.position = _activePlatformsTiles[1].transform.position + new Vector3(330, 0, 0);
-            
 
-
-
-             _activeTileNumber--;
-            
-            //_activePlatformsTiles.RemoveAt(_activePlatformsTiles.Count - 1);
-        }
-        else if( _activeTileNumber == 2)
-        {
-            _activeTileNumber = 0;
-
+            _isFirstActivePlatform = true;
         }
 
     }
     private int GetRandomNumber()
     {
+
         int randomNumber = Random.Range(0, _platformsTiles.Count - 1);
+        Debug.Log("Random = " + randomNumber);
         if (_platformsTiles[randomNumber].isActive)
         {
-            GetRandomNumber();
+            return GetRandomNumber();
         }
-        return randomNumber;
-        
+        else 
+        {
+            Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _platformsTiles[randomNumber].isActive);
+            return randomNumber;
+        }
     }
 }

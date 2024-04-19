@@ -7,7 +7,7 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private Transform _targetObject;
 
-   // private float _minY;
+    private float _minY;
 
     private float _maxY;
 
@@ -23,34 +23,40 @@ public class CameraMovement : MonoBehaviour
         _defaultPos = transform.position;
         //Debug.Log("Default position = " + _defaultPos);
         _maxY = _targetObject.transform.position.y + 6;
+
+        _minY = _targetObject.transform.position.y - 6;
     }
     private void Update()
     {
         if(_targetObject.position.y < _maxY)
         {
             float interpolation = speed * Time.deltaTime;
-          //  Debug.Log("Interpolation = " + interpolation);
+          
             Vector3 position = this.transform.position;
-            position.y = Mathf.Lerp(this.transform.position.y, _defaultPos.y, interpolation);
-            //Debug.Log("Interpolation value of position.y = " + position.y);
+            position.y = Mathf.Lerp(this.transform.position.y, _defaultPos.y, interpolation); 
             position.x = Mathf.Lerp(this.transform.position.x, _targetObject.transform.position.x, interpolation);
-            //Debug.Log("Interpolation value of position.x = " + position.x);
-
-
             this.transform.position = position;
-            //this.transform.position = new Vector3(_targetObject.transform.position.x, _defaultPos.y, this.transform.position.z);
         }
-        else
+        else 
         {
             float interpolation = speed * Time.deltaTime;
+
             Vector3 position = this.transform.position;
             position.y = Mathf.Lerp(this.transform.position.y, _targetObject.transform.position.y-8, interpolation);
             position.x = Mathf.Lerp(this.transform.position.x, _targetObject.transform.position.x, interpolation);
             this.transform.position = position;
-            //this.transform.position = new Vector3(_targetObject.transform.position.x, _targetObject.transform.position.y - 5, this.transform.position.z);
-            //_posEnd = new Vector3(this.transform.position.x, _targetObject.transform.position.y-5, this.transform.position.z);
-
-
         }
+        //if(_targetObject.position.y < _minY)
+        //{
+        //    float interpolation = speed * Time.deltaTime;
+        //    Vector3 position = this.transform.position;
+        //    position.y = Mathf.Lerp(this.transform.position.y, _targetObject.transform.position.y, interpolation);
+        //    position.x = Mathf.Lerp(this.transform.position.x, _targetObject.transform.position.x, interpolation);
+        //    this.transform.position = position;
+        //}
+    }
+    private void ChangeDefaultY(int value)
+    {
+        _defaultPos.y += value;
     }
 }

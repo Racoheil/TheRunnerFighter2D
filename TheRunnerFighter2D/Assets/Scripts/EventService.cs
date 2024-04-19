@@ -8,4 +8,14 @@ public static class EventService
     public static event Action OnTakeDamage;
     public static void CallOnTakeDamage()
         =>OnTakeDamage?.Invoke();
+
+    public static event Action OnPlayerFinishingPlatform;
+    
+    public static void CallOnPlayerFinishingPlatform()
+        =>OnPlayerFinishingPlatform?.Invoke();
+
+    public static event Action OnPlayerChangeLocation;
+
+    public static void CallOnPlayerChangeLocation()
+        => OnPlayerChangeLocation?.Invoke();
 }
