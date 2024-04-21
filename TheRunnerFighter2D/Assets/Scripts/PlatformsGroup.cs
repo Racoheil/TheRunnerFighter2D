@@ -17,6 +17,7 @@ public class PlatformsGroup : MonoBehaviour
     {
         PlatformsGroup platformsGroup = new PlatformsGroup(prefab, false);
         prefab = GetComponent<GameObject>();
+        isActive = false;
     }
     public PlatformsGroup(GameObject _prefab, bool _isActive)
     {

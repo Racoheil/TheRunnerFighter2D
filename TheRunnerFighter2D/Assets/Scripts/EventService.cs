@@ -14,8 +14,8 @@ public static class EventService
     public static void CallOnPlayerFinishingPlatform()
         =>OnPlayerFinishingPlatform?.Invoke();
 
-    public static event Action OnPlayerChangeLocation;
+    public static event Action OnPlayerChangeLevel;
 
-    public static void CallOnPlayerChangeLocation()
-        => OnPlayerChangeLocation?.Invoke();
+    public static void CallOnPlayerChangeLevel()
+        => OnPlayerChangeLevel?.Invoke();
 }

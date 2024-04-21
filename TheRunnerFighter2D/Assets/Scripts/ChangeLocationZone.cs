@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeLocationZone : MonoBehaviour
+public class ChangeLevelZone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("ChangeLocation!!");
-            EventService.CallOnPlayerChangeLocation();
+            Debug.Log("ChangeLevel!!");
+            EventService.CallOnPlayerChangeLevel();
         }
     }
     
