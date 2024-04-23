@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FreezePlayer()
     {
-       // _moveVector.x = 0f;
         _speed = 0f;
         StartCoroutine(FreezePlayerCoroutine());
     }

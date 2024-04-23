@@ -15,8 +15,16 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 _defaultPos;
 
-    private float speed = 3.5f;
+    private float speed = 3.8f;
 
+    private void OnEnable()
+    {
+        EventService.OnPlayerChangeLevel += ChangeCameraPosSmoothly;
+    }
+    private void OnDisable()
+    {
+        EventService.OnPlayerChangeLevel -= ChangeCameraPosSmoothly;
+    }
     private void Start()
     {
        // _minY = _targetObject.transform.position.y - 3;
@@ -55,8 +63,24 @@ public class CameraMovement : MonoBehaviour
         //    this.transform.position = position;
         //}
     }
-    private void ChangeDefaultY(int value)
+    private void ChangeCameraPosSmoothly()
     {
-        _defaultPos.y += value;
+       // float newMaxY = _maxY -= 70f;
+        float newDefaultY = _defaultPos.y - 70f;
+        float changeYSpeed = 75f;
+        
+        StartCoroutine(SmoothlyChangeDefaultY(newDefaultY, changeYSpeed));
+       //StartCoroutine(SmoothlyChangeMaxY(newMaxY, changeYSpeed));
+        
     }
+    IEnumerator SmoothlyChangeDefaultY(float newDefaultY, float changeSpeed)
+    {
+        while (_defaultPos.y != newDefaultY)
+        {
+            _defaultPos.y--;
+            yield return new WaitForSecondsRealtime(1f / changeSpeed);
+        }
+        _maxY -= 70f;
+    }
+    
 }

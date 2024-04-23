@@ -9,8 +9,9 @@ public class MapGenerate : MonoBehaviour
 
     [SerializeField] private PlatformsGroup[] _2LevelTilesObjects;
 
+    [SerializeField] private PlatformsGroup[] _3LevelTilesObjects;
+
     private int _currentLevel;
-   // [SerializeField] private List<PlatformsGroup> _platformsTiles;
 
     [SerializeField] private List<PlatformsGroup> _activePlatformsTiles;
 
@@ -54,10 +55,12 @@ public class MapGenerate : MonoBehaviour
     private void OnEnable()
     {
         EventService.OnPlayerFinishingPlatform += GenerateMap;
+        EventService.OnPlayerChangeLevel += ChangeLevel;    
     }
     private void OnDisable()
     {
         EventService.OnPlayerFinishingPlatform -= GenerateMap;
+        EventService.OnPlayerChangeLevel -= ChangeLevel;
     }
     private void GenerateStartPosition()
     {
@@ -81,8 +84,10 @@ public class MapGenerate : MonoBehaviour
                 }
             case 2:
                 {
+                    _activePlatformsTiles.Clear();
+
                     _2LevelTilesObjects[0].gameObject.SetActive(true);
-                    _2LevelTilesObjects[0].transform.position = new Vector3(0, _defaultPositionY);
+                    _2LevelTilesObjects[0].transform.position = new Vector3(PlayerState.instance.GetPlayerPosition().x + 70, _defaultPositionY);
                     _activePlatformsTiles.Add(_2LevelTilesObjects[0]);
                     _isFirstActivePlatform = true;
                     _2LevelTilesObjects[0].isActive = true;
@@ -91,7 +96,25 @@ public class MapGenerate : MonoBehaviour
                         _2LevelTilesObjects[i].isActive = true;
                         _2LevelTilesObjects[i].gameObject.SetActive(true);
                         _2LevelTilesObjects[i].transform.position = new Vector3(_2LevelTilesObjects[i - 1].transform.position.x + _additingValueX, _defaultPositionY);
-                        _activePlatformsTiles.Add(_1LevelTilesObjects[i]);
+                        _activePlatformsTiles.Add(_2LevelTilesObjects[i]);
+                    }
+                    break;
+                }
+            case 3:
+                {
+                    _activePlatformsTiles.Clear();
+
+                    _3LevelTilesObjects[0].gameObject.SetActive(true);
+                    _3LevelTilesObjects[0].transform.position = new Vector3(PlayerState.instance.GetPlayerPosition().x + 70, _defaultPositionY);
+                    _activePlatformsTiles.Add(_3LevelTilesObjects[0]);
+                    _isFirstActivePlatform = true;
+                    _3LevelTilesObjects[0].isActive = true;
+                    for (int i = 1; i < _activeTilesCount; i++)
+                    {
+                        _3LevelTilesObjects[i].isActive = true;
+                        _3LevelTilesObjects[i].gameObject.SetActive(true);
+                        _3LevelTilesObjects[i].transform.position = new Vector3(_3LevelTilesObjects[i - 1].transform.position.x + _additingValueX, _defaultPositionY);
+                        _activePlatformsTiles.Add(_3LevelTilesObjects[i]);
                     }
                     break;
                 }
@@ -109,6 +132,11 @@ public class MapGenerate : MonoBehaviour
         {
             _2LevelTilesObjects[i] = Instantiate(_2LevelTilesObjects[i]);
             _2LevelTilesObjects[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < _3LevelTilesObjects.Length; i++)
+        {
+            _3LevelTilesObjects[i] = Instantiate(_3LevelTilesObjects[i]);
+            _3LevelTilesObjects[i].gameObject.SetActive(false);
         }
     }
 
@@ -157,6 +185,23 @@ public class MapGenerate : MonoBehaviour
                         _isFirstActivePlatform = true;
                         break;
                     }
+                case 3:
+                    {
+                        _activePlatformsTiles[0].isActive = false;              ///
+                        _activePlatformsTiles[0].gameObject.SetActive(false);   ///
+                        _activePlatformsTiles.RemoveAt(0);                      ///
+
+                        int randomNumber = GetRandomNumber();
+                        _3LevelTilesObjects[randomNumber].isActive = true;
+                        _activePlatformsTiles.Add(_3LevelTilesObjects[randomNumber]);
+
+
+                        _3LevelTilesObjects[randomNumber].gameObject.SetActive(true);
+                        _3LevelTilesObjects[randomNumber].transform.position = new Vector3(_activePlatformsTiles[1].transform.position.x + 330, _defaultPositionY);
+
+                        _isFirstActivePlatform = true;
+                        break;
+                    }
             }
             
         }
@@ -196,6 +241,21 @@ public class MapGenerate : MonoBehaviour
                     }
                   
                 }
+            case 3:
+                {
+                    int randomNumber = Random.Range(0, _3LevelTilesObjects.Length - 1);
+                    Debug.Log("Random = " + randomNumber);
+                    if (_3LevelTilesObjects[randomNumber].isActive)
+                    {
+                        return GetRandomNumber();
+                    }
+                    else
+                    {
+                        Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _3LevelTilesObjects[randomNumber].isActive);
+                        return randomNumber;
+                    }
+
+                }
             default: return 0;
         }
         
@@ -205,7 +265,7 @@ public class MapGenerate : MonoBehaviour
     {
         _currentLevel++;
         _isFirstActivePlatform = true;
-        _defaultPositionY = -70;
+        _defaultPositionY += -70;
         GenerateStartPosition();
     }
 }
