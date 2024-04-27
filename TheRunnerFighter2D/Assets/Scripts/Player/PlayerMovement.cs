@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D _rigidBody;
+    [SerializeField] private float _speed = 10f;
 
-    [SerializeField]private float _speed = 10f;
+    private Rigidbody2D _rigidBody;
 
     private Vector2 _moveVector;
 
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _isMoving = true;
         _moveVector = new Vector2(1f, 0f);
+        PlayerAnimation.instance.ChangeAnimation("Run");
     }
     void Awake()
     {
@@ -34,11 +35,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-            _rigidBody.velocity = new Vector2(_moveVector.x * _speed, _rigidBody.velocity.y);
+        _rigidBody.velocity = new Vector2(_moveVector.x * _speed, _rigidBody.velocity.y);
     }
 
     private void FreezePlayer()
     {
+        PlayerAnimation.instance.ChangeAnimation("Hurt");
         _speed = 0f;
         StartCoroutine(FreezePlayerCoroutine());
     }

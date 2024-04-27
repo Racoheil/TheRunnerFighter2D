@@ -17,6 +17,8 @@ public class CameraMovement : MonoBehaviour
 
     private float speed = 3.8f;
 
+    private bool isFollowPlayer = false;
+
     private void OnEnable()
     {
         EventService.OnPlayerChangeLevel += ChangeCameraPosSmoothly;
@@ -36,7 +38,7 @@ public class CameraMovement : MonoBehaviour
     }
     private void Update()
     {
-        if(_targetObject.position.y < _maxY)
+        if(_targetObject.position.y < _maxY )
         {
             float interpolation = speed * Time.deltaTime;
           
@@ -54,6 +56,16 @@ public class CameraMovement : MonoBehaviour
             position.x = Mathf.Lerp(this.transform.position.x, _targetObject.transform.position.x, interpolation);
             this.transform.position = position;
         }
+        if (isFollowPlayer)
+        {
+            //float interpolation = 2 * speed * Time.deltaTime;
+
+            //Vector3 position = this.transform.position;
+            //position.y = Mathf.Lerp(this.transform.position.y, _targetObject.transform.position.y + 8, interpolation);
+            //position.x = Mathf.Lerp(this.transform.position.x, _targetObject.transform.position.x, interpolation);
+            //this.transform.position = position;
+            transform.position = new Vector3(transform.position.x, _targetObject.transform.position.y+4, transform.position.z);
+        }
         //if(_targetObject.position.y < _minY)
         //{
         //    float interpolation = speed * Time.deltaTime;
@@ -66,10 +78,11 @@ public class CameraMovement : MonoBehaviour
     private void ChangeCameraPosSmoothly()
     {
        // float newMaxY = _maxY -= 70f;
-        float newDefaultY = _defaultPos.y - 70f;
-        float changeYSpeed = 75f;
+        //float newDefaultY = _defaultPos.y - 70f;
+       // float changeYSpeed = 75f;
         
-        StartCoroutine(SmoothlyChangeDefaultY(newDefaultY, changeYSpeed));
+        //StartCoroutine(SmoothlyChangeDefaultY(newDefaultY, changeYSpeed));
+        StartCoroutine(FollowPlayerCoroutine());
        //StartCoroutine(SmoothlyChangeMaxY(newMaxY, changeYSpeed));
         
     }
@@ -77,10 +90,19 @@ public class CameraMovement : MonoBehaviour
     {
         while (_defaultPos.y != newDefaultY)
         {
-            _defaultPos.y--;
+            _maxY -= 70f;
             yield return new WaitForSecondsRealtime(1f / changeSpeed);
         }
         _maxY -= 70f;
     }
-    
+    IEnumerator FollowPlayerCoroutine()
+    {
+        isFollowPlayer = true;
+        print("Follow Player!!");
+        yield return new WaitForSecondsRealtime(1.2f);
+        print("Don't follow player!!");
+        _maxY -= 70f;
+        _defaultPos.y -= 70f;
+        isFollowPlayer = false;
+    }
 }
