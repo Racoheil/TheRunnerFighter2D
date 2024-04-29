@@ -2593,6 +2593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChangeLocationZone
       objectReference: {fileID: 0}
+    - target: {fileID: 5431422950393127139, guid: 6ece4a7c6a2c62d42929116d49cccfc6, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

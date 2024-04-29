@@ -3018,27 +3018,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1228821404814910764, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
   m_PrefabInstance: {fileID: 183953652597234472}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &702374661
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702374647}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3d74cd48e07f6904aaa254399dfddb53, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &717095521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4524,7 +4503,7 @@ GameObject:
   - component: {fileID: 1140144488}
   - component: {fileID: 1140144490}
   - component: {fileID: 1140144491}
-  - component: {fileID: 1140144489}
+  - component: {fileID: 1140144492}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -4547,27 +4526,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 702374655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1140144489
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140144487}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 312496b25d842af4a938e96c7d5aaee0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &1140144490
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4620,7 +4578,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1140144491
+--- !u!95 &1140144491
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140144487}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 312496b25d842af4a938e96c7d5aaee0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1140144492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4632,7 +4611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db006e0ff5873d46ac7eb610c8a7601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1140144489}
+  animator: {fileID: 1140144491}
 --- !u!1 &1248080296
 GameObject:
   m_ObjectHideFlags: 0
@@ -7731,7 +7710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1228821404814910764, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -118.320786
+      value: -118.16
       objectReference: {fileID: 0}
     - target: {fileID: 1228821404814910764, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7791,9 +7770,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 846462529037254209, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 702374654}
-    - targetCorrespondingSourceObject: {fileID: 846462529037254209, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 702374661}
   m_SourcePrefab: {fileID: 100100000, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
 --- !u!1001 &2009726391536588180
 PrefabInstance:

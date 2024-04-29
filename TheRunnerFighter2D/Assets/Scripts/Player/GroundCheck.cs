@@ -28,7 +28,6 @@ public class GroundCheck : MonoBehaviour
     private void FixedUpdate()
     {
         _isGrounded = Physics2D.Raycast(this.transform.position, Vector2.down, _distance,_groundLayer);
-
-       // Debug.Log("isGrounded = " + Physics2D.Raycast(this.transform.position, Vector2.down, _distance, _groundLayer));
+        PlayerAnimation.instance.animator.SetBool("isGrounded", GetIsGrounded());
     }
 }

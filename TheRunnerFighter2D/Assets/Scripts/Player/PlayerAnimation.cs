@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
+    [SerializeField] public Animator animator;
 
     private string _currentAnimation;
 
@@ -12,11 +12,13 @@ public class PlayerAnimation : MonoBehaviour
     void Awake()
     {
         instance = this;
+        
     }
 
     public void ChangeAnimation(string animation)
     {
         if (_currentAnimation == animation) return;
-        else _animator.Play(animation);
+        animator.Play(animation);
+        _currentAnimation = animation;
     }
 }

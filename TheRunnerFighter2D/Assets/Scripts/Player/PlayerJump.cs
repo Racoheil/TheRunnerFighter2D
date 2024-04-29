@@ -29,11 +29,11 @@ public class PlayerJump : MonoBehaviour
         if (GroundCheck.instance.GetIsGrounded())
         {
             _jumps = _maxJumps - 1;
-            //PlayerAnimation.instance.ChangeAnimation("Run");
+           // PlayerAnimation.instance.ChangeAnimation("Run");
         }
-        else
+        else if (GroundCheck.instance.GetIsGrounded()==false)
         {
-            //PlayerAnimation.instance.ChangeAnimation("jump");
+         //   PlayerAnimation.instance.ChangeAnimation("jump");
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -51,10 +51,10 @@ public class PlayerJump : MonoBehaviour
     }
     private void Jump(float jumpForce)
     {
-        if(_jumps > 0 && !_hasDoubleJumped && _isJump)
+       // PlayerAnimation.instance.ChangeAnimation("jump");
+        if (_jumps > 0 && !_hasDoubleJumped && _isJump)
         {
             _rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            //_isGrounded = false;
             _jumps -= 1;
             _hasDoubleJumped = true;
             StartCoroutine(ResetDoubleJump());
