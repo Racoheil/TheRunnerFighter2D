@@ -15,20 +15,28 @@ public class MapGenerate : MonoBehaviour
 
     [SerializeField] private List<PlatformsGroup> _activePlatformsTiles;
 
+    [SerializeField] private List<PlatformsGroup> _inactivePlatformsTiles;
+
     private int _activeTilesCount = 3;
 
     private bool _isFirstActivePlatform = false;
 
-    private float _defaultPositionY;
+    private float _defaultPositionY;    // Defautl position of camera
 
-    private float _additingValueX;
+    private float _addingValueX;        // Additing value for next tile position 
+
+    private float addingValueY = -30;   // Additing value for next level tile position
+
+    public static MapGenerate instance; // SingleTon pattern
 
     private void Awake()
     {
-       // _platformsTiles = new List<PlatformsGroup>();
-        _activePlatformsTiles = new List<PlatformsGroup>();
+        instance = this;
 
-        _additingValueX = 330;
+        _activePlatformsTiles = new List<PlatformsGroup>();
+        _inactivePlatformsTiles = new List<PlatformsGroup>();
+
+        _addingValueX = 330;
         _defaultPositionY = 0;
         _currentLevel = 1;
     }
@@ -39,17 +47,6 @@ public class MapGenerate : MonoBehaviour
         CreateAllPlatformsGroups();
         
         GenerateStartPosition();
-    }
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.H))
-        {
-            GenerateMap();
-        }
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            ChangeLevel();
-        }
     }
 
     private void OnEnable()
@@ -77,13 +74,14 @@ public class MapGenerate : MonoBehaviour
                     {
                         _1LevelTilesObjects[i].isActive = true;
                         _1LevelTilesObjects[i].gameObject.SetActive(true);
-                        _1LevelTilesObjects[i].transform.position = new Vector3(_1LevelTilesObjects[i - 1].transform.position.x + _additingValueX, _defaultPositionY);
+                        _1LevelTilesObjects[i].transform.position = new Vector3(_1LevelTilesObjects[i - 1].transform.position.x + _addingValueX, _defaultPositionY);
                         _activePlatformsTiles.Add(_1LevelTilesObjects[i]);
                     }
                     break;
                 }
             case 2:
                 {
+                    FillInactiveTilesList();
                     _activePlatformsTiles.Clear();
 
                     _2LevelTilesObjects[0].gameObject.SetActive(true);
@@ -95,13 +93,14 @@ public class MapGenerate : MonoBehaviour
                     {
                         _2LevelTilesObjects[i].isActive = true;
                         _2LevelTilesObjects[i].gameObject.SetActive(true);
-                        _2LevelTilesObjects[i].transform.position = new Vector3(_2LevelTilesObjects[i - 1].transform.position.x + _additingValueX, _defaultPositionY);
+                        _2LevelTilesObjects[i].transform.position = new Vector3(_2LevelTilesObjects[i - 1].transform.position.x + _addingValueX, _defaultPositionY);
                         _activePlatformsTiles.Add(_2LevelTilesObjects[i]);
                     }
                     break;
                 }
             case 3:
                 {
+                    FillInactiveTilesList();
                     _activePlatformsTiles.Clear();
 
                     _3LevelTilesObjects[0].gameObject.SetActive(true);
@@ -113,7 +112,7 @@ public class MapGenerate : MonoBehaviour
                     {
                         _3LevelTilesObjects[i].isActive = true;
                         _3LevelTilesObjects[i].gameObject.SetActive(true);
-                        _3LevelTilesObjects[i].transform.position = new Vector3(_3LevelTilesObjects[i - 1].transform.position.x + _additingValueX, _defaultPositionY);
+                        _3LevelTilesObjects[i].transform.position = new Vector3(_3LevelTilesObjects[i - 1].transform.position.x + _addingValueX, _defaultPositionY);
                         _activePlatformsTiles.Add(_3LevelTilesObjects[i]);
                     }
                     break;
@@ -260,12 +259,38 @@ public class MapGenerate : MonoBehaviour
         }
         
     }
+    private IEnumerator DeactivateInactiveTilesCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(2f);
 
+        foreach (PlatformsGroup item in _inactivePlatformsTiles)
+        {
+            item.gameObject.SetActive(false);
+        }
+    }
+    private void DeactivateInactiveTiles()
+    {
+        StartCoroutine(DeactivateInactiveTilesCoroutine());
+    }
+    private void FillInactiveTilesList()
+    {
+        for (int i = 0; i < _activePlatformsTiles.Count; i++)
+        {
+            _inactivePlatformsTiles.Add(_activePlatformsTiles[i]);
+        }
+    }
     private void ChangeLevel()
     {
         _currentLevel++;
         _isFirstActivePlatform = true;
-        _defaultPositionY += -70;
+        _defaultPositionY += addingValueY;
         GenerateStartPosition();
+        DeactivateInactiveTiles();
+        
     }
+    public float GetAddingValue()
+    {
+        return addingValueY;
+    }
+   
 }

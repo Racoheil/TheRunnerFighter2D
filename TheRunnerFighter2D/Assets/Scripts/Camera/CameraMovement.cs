@@ -29,9 +29,8 @@ public class CameraMovement : MonoBehaviour
     }
     private void Start()
     {
-       // _minY = _targetObject.transform.position.y - 3;
         _defaultPos = transform.position;
-        //Debug.Log("Default position = " + _defaultPos);
+
         _maxY = _targetObject.transform.position.y + 6;
 
         _minY = _targetObject.transform.position.y - 6;
@@ -47,7 +46,7 @@ public class CameraMovement : MonoBehaviour
             position.x = Mathf.Lerp(this.transform.position.x, _targetObject.transform.position.x, interpolation);
             this.transform.position = position;
         }
-        else 
+        else if(_targetObject.position.y > _maxY )
         {
             float interpolation = speed * Time.deltaTime;
 
@@ -58,51 +57,27 @@ public class CameraMovement : MonoBehaviour
         }
         if (isFollowPlayer)
         {
-            //float interpolation = 2 * speed * Time.deltaTime;
-
-            //Vector3 position = this.transform.position;
-            //position.y = Mathf.Lerp(this.transform.position.y, _targetObject.transform.position.y + 8, interpolation);
-            //position.x = Mathf.Lerp(this.transform.position.x, _targetObject.transform.position.x, interpolation);
-            //this.transform.position = position;
-            transform.position = new Vector3(transform.position.x, _targetObject.transform.position.y+4, transform.position.z);
+            print("Follow to player!");
+            transform.position = new Vector3(_targetObject.position.x, _targetObject.transform.position.y, transform.position.z);
         }
-        //if(_targetObject.position.y < _minY)
-        //{
-        //    float interpolation = speed * Time.deltaTime;
-        //    Vector3 position = this.transform.position;
-        //    position.y = Mathf.Lerp(this.transform.position.y, _targetObject.transform.position.y, interpolation);
-        //    position.x = Mathf.Lerp(this.transform.position.x, _targetObject.transform.position.x, interpolation);
-        //    this.transform.position = position;
-        //}
     }
     private void ChangeCameraPosSmoothly()
     {
-       // float newMaxY = _maxY -= 70f;
-        //float newDefaultY = _defaultPos.y - 70f;
-       // float changeYSpeed = 75f;
-        
-        //StartCoroutine(SmoothlyChangeDefaultY(newDefaultY, changeYSpeed));
         StartCoroutine(FollowPlayerCoroutine());
-       //StartCoroutine(SmoothlyChangeMaxY(newMaxY, changeYSpeed));
         
-    }
-    IEnumerator SmoothlyChangeDefaultY(float newDefaultY, float changeSpeed)
-    {
-        while (_defaultPos.y != newDefaultY)
-        {
-            _maxY -= 70f;
-            yield return new WaitForSecondsRealtime(1f / changeSpeed);
-        }
-        _maxY -= 70f;
     }
     IEnumerator FollowPlayerCoroutine()
     {
+        float addingValueY = MapGenerate.instance.GetAddingValue();
+        float followPlayerTime = Mathf.Abs(0.017f * addingValueY);
+        print(0.02f + " * " + addingValueY);
+        print("Follow player time = " + followPlayerTime);
         isFollowPlayer = true;
-        print("Follow Player!!");
-        yield return new WaitForSecondsRealtime(1.2f);
-        print("Don't follow player!!");
-        _maxY -= 70f;
-        _defaultPos.y -= 70f;
+        yield return new WaitForSecondsRealtime(followPlayerTime);
+
+        
+        _maxY += addingValueY;
+        _defaultPos.y += addingValueY;
         isFollowPlayer = false;
     }
 }
