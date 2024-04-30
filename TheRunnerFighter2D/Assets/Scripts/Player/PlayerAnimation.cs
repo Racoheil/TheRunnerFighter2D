@@ -14,7 +14,6 @@ public class PlayerAnimation : MonoBehaviour
         instance = this;
         
     }
-
     public void ChangeAnimation(string animation)
     {
         if (_currentAnimation == animation) return;

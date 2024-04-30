@@ -11,16 +11,6 @@ public class ShootingEnemy : MonoBehaviour
     private float _shootingInterval = 5f;
 
     private int _bulletsCount = 5;
-
-    private void Start()
-    {
-        //StartCoroutine(ShootingCoroutine());
-    }
-
-    private void Update()
-    {
-        
-    }
     private IEnumerator ShootingCoroutine()
     {
         for (int i = 0; i < _bulletsCount;i++)
@@ -28,8 +18,6 @@ public class ShootingEnemy : MonoBehaviour
             Shoot();
             yield return new WaitForSeconds(_shootingInterval);
         }
-        
-        
     }
     private void Shoot()
     {
