@@ -45,18 +45,6 @@ public class PlayerHealthSystemService : MonoBehaviour
        EventService.OnTakeDamage -= ImmortalizeThePlayer;
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.LeftAlt))
-        {
-            ReduceHealth();
-        }
-        if (Input.GetKeyUp(KeyCode.RightAlt))
-        {
-            IncreaseHealth();
-        }
-    }
-
     public bool GetImmortality()
     {
         return _isImmortal;
@@ -74,6 +62,11 @@ public class PlayerHealthSystemService : MonoBehaviour
     {
         if(!_isImmortal)
         {
+            if (_health == _minHealth)
+            {
+                StartCoroutine(DeathRoutine());
+                return;
+            }
             _health--;
             _heartsList[_health].gameObject.SetActive(false);
         }
@@ -112,6 +105,11 @@ public class PlayerHealthSystemService : MonoBehaviour
         }
     }
 
+    private IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        EventService.CallOnPlayerLose();
+    }
     public void ImmortalizeThePlayer()
     {
         _isImmortal = true;

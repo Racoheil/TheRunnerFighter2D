@@ -18,4 +18,8 @@ public static class EventService
 
     public static void CallOnPlayerChangeLevel()
         => OnPlayerChangeLevel?.Invoke();
+
+    public static event Action OnPlayerLose;
+    public static void CallOnPlayerLose()
+        => OnPlayerLose?.Invoke();
 }
