@@ -25,7 +25,7 @@ public class MapGenerate : MonoBehaviour
 
     private float _addingValueX;        // Additing value for next tile position 
 
-    private float addingValueY = -30;   // Additing value for next level tile position
+    private float _addingValueY = -30;   // Additing value for next level tile position
 
     public static MapGenerate instance; // SingleTon pattern
 
@@ -85,7 +85,7 @@ public class MapGenerate : MonoBehaviour
                     _activePlatformsTiles.Clear();
 
                     _2LevelTilesObjects[0].gameObject.SetActive(true);
-                    _2LevelTilesObjects[0].transform.position = new Vector3(PlayerState.instance.GetPlayerPosition().x + 70, _defaultPositionY);
+                    _2LevelTilesObjects[0].transform.position = new Vector3(PlayerPosition.instance.GetPlayerPosition().x + 70, _defaultPositionY);
                     _activePlatformsTiles.Add(_2LevelTilesObjects[0]);
                     _isFirstActivePlatform = true;
                     _2LevelTilesObjects[0].isActive = true;
@@ -104,7 +104,7 @@ public class MapGenerate : MonoBehaviour
                     _activePlatformsTiles.Clear();
 
                     _3LevelTilesObjects[0].gameObject.SetActive(true);
-                    _3LevelTilesObjects[0].transform.position = new Vector3(PlayerState.instance.GetPlayerPosition().x + 70, _defaultPositionY);
+                    _3LevelTilesObjects[0].transform.position = new Vector3(PlayerPosition.instance.GetPlayerPosition().x + 70, _defaultPositionY);
                     _activePlatformsTiles.Add(_3LevelTilesObjects[0]);
                     _isFirstActivePlatform = true;
                     _3LevelTilesObjects[0].isActive = true;
@@ -283,14 +283,14 @@ public class MapGenerate : MonoBehaviour
     {
         _currentLevel++;
         _isFirstActivePlatform = true;
-        _defaultPositionY += addingValueY;
+        _defaultPositionY += _addingValueY;
         GenerateStartPosition();
         DeactivateInactiveTiles();
         
     }
     public float GetAddingValue()
     {
-        return addingValueY;
+        return _addingValueY;
     }
    
 }

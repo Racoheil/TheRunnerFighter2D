@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
     private void FreezePlayer()
     {
         _moveVector.x = 0;
-        _isHurting = true;
         StartCoroutine(FreezePlayerCoroutine());
     }
     private void IncreaseSpeed()
@@ -62,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     }
      IEnumerator FreezePlayerCoroutine()
     {
+        _isHurting = true;
         yield return new WaitForSeconds(0.6f);
         _moveVector.x = 1f;
         _isHurting = false;

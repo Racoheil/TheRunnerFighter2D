@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : MonoBehaviour
+public class PlayerPosition : MonoBehaviour
 {
-    public static PlayerState instance;
+    public static PlayerPosition instance;
 
     private void Awake()
     {
