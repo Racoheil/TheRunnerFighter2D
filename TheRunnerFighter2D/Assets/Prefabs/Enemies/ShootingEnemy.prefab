@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2444373382903737755}
   - component: {fileID: 1780352384916216764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7188805144986705687}
   - component: {fileID: 2144471155937097178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4427840768758634729}
   - component: {fileID: 5436592027162303517}
   - component: {fileID: 995398132989803329}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
