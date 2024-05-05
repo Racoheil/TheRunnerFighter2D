@@ -37,6 +37,7 @@ public class PlayerAttack : MonoBehaviour
         {
             // Debug.Log("We hit " + collider.name);
             enemy.GetComponent<EnemyHealthSystem>().TakeDamage(_damageValue);
+            
         }
     }
     private void OnDrawGizmosSelected()
