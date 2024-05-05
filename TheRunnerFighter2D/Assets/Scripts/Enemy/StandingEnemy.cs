@@ -11,7 +11,7 @@ public class StandingEnemy : MonoBehaviour
         {
             if (!PlayerHealthSystemService.instance.GetImmortality())
             {
-                EventService.CallOnTakeDamage();
+                //EventService.CallOnTakeDamage();
             }
         }
     }
