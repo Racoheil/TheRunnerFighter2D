@@ -107,7 +107,9 @@ public class PlayerHealthSystemService : MonoBehaviour
 
     private IEnumerator DeathRoutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        PlayerAnimation.instance.animator.SetBool("isDead", true);
+
+        yield return new WaitForSeconds(2f);
         EventService.CallOnPlayerLose();
     }
     public void ImmortalizeThePlayer()

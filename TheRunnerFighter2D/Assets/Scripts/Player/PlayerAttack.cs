@@ -13,21 +13,30 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayer;
 
     private int _damageValue = 1;
+
+    private float _timeBtwAttack;
+
+    private float _startTimeBtwAttack = 0.5f;
     private void Awake()
     {
         _isAttack = true;
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && _isAttack)
+        if (Input.GetKeyDown(KeyCode.Z) && _isAttack && _timeBtwAttack <= 0)
         {
-            Attack();
+                Attack();
+        }
+        else
+        {
+            _timeBtwAttack -= Time.deltaTime;
         }
     }
 
     private void Attack()
     {
         PlayerAnimation.instance.animator.SetTrigger("AttackTrigger");
+        _timeBtwAttack = _startTimeBtwAttack;
     }
     public void OnAttackEvent()
     {

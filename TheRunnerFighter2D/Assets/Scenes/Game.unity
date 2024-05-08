@@ -8317,6 +8317,10 @@ PrefabInstance:
       propertyPath: _currentHealth
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 900057911400966053, guid: 396b6f2f031fb354ab970bf0c6ba3677, type: 3}
+      propertyPath: _startTimeBtwAttack
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1009721565344965086, guid: 396b6f2f031fb354ab970bf0c6ba3677, type: 3}
       propertyPath: m_Name
       value: StandingEnemy (1)
