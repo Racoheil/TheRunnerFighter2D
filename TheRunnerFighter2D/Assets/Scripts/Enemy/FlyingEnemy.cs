@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class FlyingEnemy : MonoBehaviour
 {
+    [SerializeField] Animator _animator;
+
+    [SerializeField] private int _maxHealth = 3;
+
+    private int _currentHelth;
+
+    [SerializeField] private float _startTimeBtwAttack = 1;
+
+    private float _timeBtwAttack;
+
     private Rigidbody2D _rigidBody;
 
     private float _speed = 3f;
