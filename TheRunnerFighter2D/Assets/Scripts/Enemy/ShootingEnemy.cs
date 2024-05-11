@@ -64,18 +64,6 @@ public class ShootingEnemy : MonoBehaviour, IEnemy
     }
     public void TakeDamage(int damageValue)
     {
-        //if (_isDead) return;
-
-        //print("Player hit the shooting enemy");
-
-        //_animator.SetTrigger("TakeDamage");
-
-        //_currentHealth -= damageValue;
-
-        //if(_currentHealth <= 0)
-        //{
-        //    Die();
-        //}
         Die();
     }
     private void ActivateEnemy()

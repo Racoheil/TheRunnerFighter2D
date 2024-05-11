@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
 
     private float _timeBtwAttack;
 
-    private float _startTimeBtwAttack = 0.5f;
+    private float _startTimeBtwAttack = 0.3f;
     private void Awake()
     {
         _isAttack = true;

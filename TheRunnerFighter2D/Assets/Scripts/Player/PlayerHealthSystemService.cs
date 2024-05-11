@@ -62,13 +62,14 @@ public class PlayerHealthSystemService : MonoBehaviour
     {
         if(!_isImmortal)
         {
-            if (_health == _minHealth)
+            _health--;
+            _heartsList[_health].gameObject.SetActive(false);
+
+            if (_health == _minHealth-1)
             {
                 StartCoroutine(DeathRoutine());
                 return;
             }
-            _health--;
-            _heartsList[_health].gameObject.SetActive(false);
         }
     }
     

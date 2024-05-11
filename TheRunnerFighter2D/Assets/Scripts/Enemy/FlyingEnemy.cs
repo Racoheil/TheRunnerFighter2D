@@ -38,7 +38,6 @@ public class FlyingEnemy : MonoBehaviour, IEnemy
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //Debug.Log("Flying enemy!!!!");
         if (collision.gameObject.tag == "Player" && !PlayerHealthSystemService.instance.GetImmortality())
         {
             if (_timeBtwAttack <= 0)

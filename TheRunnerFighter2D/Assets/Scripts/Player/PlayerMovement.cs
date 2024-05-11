@@ -21,12 +21,15 @@ public class PlayerMovement : MonoBehaviour
     {
         EventService.OnTakeDamage += FreezePlayer;
         EventService.OnPlayerChangeLevel += IncreaseSpeed;
+        EventService.OnPlayerLose += StopPlayer;
     }
 
     private void OnDisable()
     {
         EventService.OnTakeDamage -= FreezePlayer;
         EventService.OnPlayerChangeLevel -= IncreaseSpeed;
+        EventService.OnPlayerLose -= StopPlayer;
+
     }
     private void Start()
     {
@@ -65,5 +68,9 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         _moveVector.x = 1f;
         _isHurting = false;
+    }
+    private void StopPlayer()
+    {
+        _moveVector.x = 0f;
     }
 }
