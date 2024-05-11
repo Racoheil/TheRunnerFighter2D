@@ -18,7 +18,6 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Flying enemy!!!!");
         if (collision.gameObject.tag == "Player")
         {
             if (!PlayerHealthSystemService.instance.GetImmortality())

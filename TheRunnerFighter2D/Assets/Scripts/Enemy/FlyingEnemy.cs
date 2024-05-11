@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemy : MonoBehaviour
+public class FlyingEnemy : MonoBehaviour, IEnemy
 {
     [SerializeField] Animator _animator;
 
-    [SerializeField] private int _maxHealth = 3;
+    [SerializeField] private int _maxHealth = 1;
 
-    private int _currentHelth;
+    private int _currentHealth;
 
     [SerializeField] private float _startTimeBtwAttack = 1;
 
@@ -21,6 +21,8 @@ public class FlyingEnemy : MonoBehaviour
     private Vector2 _moveVector;
 
     private bool _isAttack = false;
+
+    private bool isDead = false;
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -30,28 +32,65 @@ public class FlyingEnemy : MonoBehaviour
     {
         if (_isAttack)
         {
-            Debug.Log("MOVE!!");
+           // Debug.Log("MOVE!!");
             _rigidBody.velocity = new Vector2(_moveVector.x * _speed, _rigidBody.velocity.y);
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Flying enemy!!!!");
-        if (collision.gameObject.tag == "Player")
+        //Debug.Log("Flying enemy!!!!");
+        if (collision.gameObject.tag == "Player" && !PlayerHealthSystemService.instance.GetImmortality())
         {
-            if (!PlayerHealthSystemService.instance.GetImmortality())
+            if (_timeBtwAttack <= 0)
             {
-                EventService.CallOnTakeDamage();
+                Attack();
+            }
+            else
+            {
+                _timeBtwAttack -= Time.deltaTime;
             }
         }
-        else if(collision.gameObject.tag == "TriggerZone")
+        if(collision.gameObject.tag == "TriggerZone")
         {
             ActivateEnemy();
         }
     }
+    public void Attack()
+    {
+        _animator.SetTrigger("AttackTrigger");
+        _timeBtwAttack = _startTimeBtwAttack;
+    }
+    public void OnAttackEvent()
+    {
+        EventService.CallOnTakeDamage();
+    }
+    public void Die()
+    {
+        print("Flying enemy died");
+        _animator.SetBool("IsDead", true);
+    }
+    public void OnDieEvent()
+    {
+        this.gameObject.SetActive(false);
+    }
     private void ActivateEnemy()
     {
-        Debug.Log("Fly!!");
+        //Debug.Log("Fly!!");
         _isAttack = true;
+    }
+    public void TakeDamage(int damageValue)
+    {
+        if (isDead) return;
+
+        print("Player hit the flyin enemy");
+
+        _animator.SetTrigger("TakeDamage");
+
+        _currentHealth -= damageValue;
+
+        if(_currentHealth <= 0)
+        {
+            Die();
+        }
     }
 }

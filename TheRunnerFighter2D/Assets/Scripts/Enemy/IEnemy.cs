@@ -5,7 +5,5 @@ using UnityEngine;
 public interface IEnemy
 {
     public void TakeDamage(int damageValue);
-    public void Attack();
-
     public void Die();
 }
