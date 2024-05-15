@@ -6,9 +6,14 @@ public class LoseWinService : MonoBehaviour
 {
     [SerializeField] private GameObject _losePanel;
 
+    private float _loseDelay = 2f;
     private void OnEnable()
     {
         EventService.OnPlayerLose += DoOnLose;
+    }
+    private void OnDisable()
+    {
+        EventService.OnPlayerLose -= DoOnLose;
     }
     private void Awake()
     {
@@ -17,6 +22,12 @@ public class LoseWinService : MonoBehaviour
 
     private void DoOnLose()
     {
-        _losePanel.SetActive(true); 
+        StartCoroutine(LoseRoutine());
+    }
+    
+    private IEnumerator LoseRoutine()
+    {
+        yield return new WaitForSecondsRealtime(_loseDelay);
+        _losePanel.SetActive(true);
     }
 }

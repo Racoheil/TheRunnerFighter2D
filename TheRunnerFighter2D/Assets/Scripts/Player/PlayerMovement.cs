@@ -17,6 +17,13 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isMoving;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            StopPlayer();
+        }
+    }
     private void OnEnable()
     {
         EventService.OnTakeDamage += FreezePlayer;
@@ -71,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void StopPlayer()
     {
-        _moveVector.x = 0f;
+        //_moveVector.x = 0f;
+        _speed = 0;
     }
 }

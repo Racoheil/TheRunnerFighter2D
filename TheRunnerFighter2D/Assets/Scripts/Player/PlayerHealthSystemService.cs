@@ -22,6 +22,8 @@ public class PlayerHealthSystemService : MonoBehaviour
 
     private float _immortalityTime = 3f;
 
+    private float _deathDelay = 2f;
+
     public static PlayerHealthSystemService instance;
 
     private void Awake()
@@ -67,7 +69,7 @@ public class PlayerHealthSystemService : MonoBehaviour
 
             if (_health == _minHealth-1)
             {
-                StartCoroutine(DeathRoutine());
+                OnPlayerDeath();
                 return;
             }
         }
@@ -106,11 +108,10 @@ public class PlayerHealthSystemService : MonoBehaviour
         }
     }
 
-    private IEnumerator DeathRoutine()
+    private void OnPlayerDeath()
     {
         PlayerAnimation.instance.animator.SetBool("isDead", true);
 
-        yield return new WaitForSeconds(2f);
         EventService.CallOnPlayerLose();
     }
     public void ImmortalizeThePlayer()

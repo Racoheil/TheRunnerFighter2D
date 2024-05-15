@@ -11,7 +11,7 @@ public class MapGenerate : MonoBehaviour
 
     [SerializeField] private PlatformsGroup[] _3LevelTilesObjects;
 
-    private int _currentLevel;
+    //private int _currentLevel;
 
     [SerializeField] private List<PlatformsGroup> _activePlatformsTiles;
 
@@ -38,7 +38,7 @@ public class MapGenerate : MonoBehaviour
 
         _addingValueX = 330;
         _defaultPositionY = 0;
-        _currentLevel = 1;
+        
     }
     private void Start()
     {
@@ -52,16 +52,16 @@ public class MapGenerate : MonoBehaviour
     private void OnEnable()
     {
         EventService.OnPlayerFinishingPlatform += GenerateMap;
-        EventService.OnPlayerChangeLevel += ChangeLevel;    
+        EventService.OnPlayerChangeLevel += OnChangeLevel;    
     }
     private void OnDisable()
     {
         EventService.OnPlayerFinishingPlatform -= GenerateMap;
-        EventService.OnPlayerChangeLevel -= ChangeLevel;
+        EventService.OnPlayerChangeLevel -= OnChangeLevel;
     }
     private void GenerateStartPosition()
     {
-        switch (_currentLevel)
+        switch (LevelData.instance.GetCurrentLevel())
         {
             case 1:
                 {
@@ -148,7 +148,7 @@ public class MapGenerate : MonoBehaviour
         }
         else if (_isFirstActivePlatform == false)
         {
-            switch(_currentLevel)
+            switch(LevelData.instance.GetCurrentLevel())
             {
                 case 1:
                     {
@@ -208,7 +208,7 @@ public class MapGenerate : MonoBehaviour
     }
     private int GetRandomNumber()
     {
-        switch (_currentLevel)
+        switch (LevelData.instance.GetCurrentLevel())
         {
             case 1:
                 {
@@ -279,9 +279,8 @@ public class MapGenerate : MonoBehaviour
             _inactivePlatformsTiles.Add(_activePlatformsTiles[i]);
         }
     }
-    private void ChangeLevel()
+    private void OnChangeLevel()
     {
-        _currentLevel++;
         _isFirstActivePlatform = true;
         _defaultPositionY += _addingValueY;
         GenerateStartPosition();
