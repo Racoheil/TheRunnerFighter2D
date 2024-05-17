@@ -10,7 +10,11 @@ public class ChangeLevelZone : MonoBehaviour
         {
             Debug.Log("ChangeLevel!!");
             EventService.CallOnPlayerChangeLevel();
+            DeactivateChangeZone();
         }
     }
-    
+    private void DeactivateChangeZone()
+    {
+        this.gameObject.SetActive(false);
+    }
 }

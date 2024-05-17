@@ -38,13 +38,11 @@ public class PlayerHealthSystemService : MonoBehaviour
     private void OnEnable()
     {
         EventService.OnTakeDamage += TakeDamage;
-        EventService.OnTakeDamage += ImmortalizeThePlayer;
     }
 
     private void OnDisable()
     {
        EventService.OnTakeDamage -= TakeDamage;
-       EventService.OnTakeDamage -= ImmortalizeThePlayer;
     }
 
     public bool GetImmortality()
@@ -59,6 +57,7 @@ public class PlayerHealthSystemService : MonoBehaviour
     {
         ReduceHealth();
         Debug.Log("Health : " + _health);
+        ImmortalizeThePlayer(_immortalityTime);
     }
     public void ReduceHealth()
     {
@@ -114,16 +113,17 @@ public class PlayerHealthSystemService : MonoBehaviour
 
         EventService.CallOnPlayerLose();
     }
-    public void ImmortalizeThePlayer()
+
+    public void ImmortalizeThePlayer(float time)
     {
         _isImmortal = true;
         Debug.Log("Immortal is activated!!" + _isImmortal);
-        StartCoroutine(ImmortalizeCoroutine());
+        StartCoroutine(ImmortalizeCoroutine(time));
     }
 
-    IEnumerator ImmortalizeCoroutine()
+    IEnumerator ImmortalizeCoroutine(float time)
     {
-        yield return new WaitForSeconds(_immortalityTime);
+        yield return new WaitForSeconds(time);
         _isImmortal = false;
         Debug.Log("Immortalize is deactivated!!");
     }

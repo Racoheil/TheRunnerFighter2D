@@ -9,17 +9,24 @@ public static class EventService
     public static void CallOnTakeDamage()
         =>OnTakeDamage?.Invoke();
 
+
     public static event Action OnPlayerFinishingPlatform;
-    
     public static void CallOnPlayerFinishingPlatform()
         =>OnPlayerFinishingPlatform?.Invoke();
 
-    public static event Action OnPlayerChangeLevel;
 
+    public static event Action OnPlayerChangeLevel;
     public static void CallOnPlayerChangeLevel()
         => OnPlayerChangeLevel?.Invoke();
+
 
     public static event Action OnPlayerLose;
     public static void CallOnPlayerLose()
         => OnPlayerLose?.Invoke();
+
+
+    public static event Action OnArmorBonusActivate;
+    public static void CallOnArmorBonusActivate()
+        => OnArmorBonusActivate?.Invoke();
+       
 }

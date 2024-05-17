@@ -15,7 +15,7 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 _defaultPos;
 
-    private float speed = 3.8f;
+    [SerializeField] private float speed = 3.8f;
 
     private bool isFollowPlayer = false;
 
