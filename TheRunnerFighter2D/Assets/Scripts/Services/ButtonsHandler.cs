@@ -15,5 +15,9 @@ public class ButtonsHandler : MonoBehaviour
         {
             EventService.CallOnArmorBonusActivate();
         }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            EventService.CallOnFlightBonusActivate();
+        }
     }
 }

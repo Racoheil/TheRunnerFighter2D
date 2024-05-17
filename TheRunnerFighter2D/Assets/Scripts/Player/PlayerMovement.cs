@@ -17,13 +17,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isMoving;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            StopPlayer();
-        }
-    }
+    private float _defaultGravityScale;
+
+    private float _defaultMass;
+
+    public static PlayerMovement instance;
     private void OnEnable()
     {
         EventService.OnTakeDamage += FreezePlayer;
@@ -36,17 +34,28 @@ public class PlayerMovement : MonoBehaviour
         EventService.OnTakeDamage -= FreezePlayer;
         EventService.OnPlayerChangeLevel -= IncreaseSpeed;
         EventService.OnPlayerLose -= StopPlayer;
+    }
+    void Awake()
+    {
+        instance = this;
+        _rigidBody = GetComponent<Rigidbody2D>();
+        _defaultGravityScale = _rigidBody.gravityScale;
+        _defaultMass = _rigidBody.mass;
+    }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            StopPlayer();
+        }
     }
     private void Start()
     {
         _isMoving = true;
         _moveVector = new Vector2(1f, 0f);
     }
-    void Awake()
-    {
-        _rigidBody = GetComponent<Rigidbody2D>();
-    }
+
 
     private void FixedUpdate()
     {
@@ -80,5 +89,20 @@ public class PlayerMovement : MonoBehaviour
     {
         //_moveVector.x = 0f;
         _speed = 0;
+    }
+    public void SetGravityScale(float value)
+    {
+        _rigidBody.gravityScale = value;
+    }
+
+    public void SetMass(float value)
+    {
+        _rigidBody.mass = value;
+    }
+    
+    public void SetDefaultRigidBodyPropeties()
+    {
+        _rigidBody.gravityScale = _defaultGravityScale;
+        _rigidBody.mass = _defaultMass;
     }
 }

@@ -28,5 +28,9 @@ public static class EventService
     public static event Action OnArmorBonusActivate;
     public static void CallOnArmorBonusActivate()
         => OnArmorBonusActivate?.Invoke();
+
+    public static event Action OnFlightBonusActivate;
+    public static void CallOnFlightBonusActivate()
+        => OnFlightBonusActivate?.Invoke();
        
 }

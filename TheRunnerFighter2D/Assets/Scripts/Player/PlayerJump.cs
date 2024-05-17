@@ -7,6 +7,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float _jumpForce = 1f;
 
     [SerializeField] private int _maxJumps = 2;
+    private int _defaultJumpsCount;
 
     private bool _isButtonPressed;
 
@@ -19,9 +20,13 @@ public class PlayerJump : MonoBehaviour
     private bool _hasDoubleJumped;
 
     private bool _isJump = true;
+
+    public static PlayerJump instance;
     private void Awake()
     {
+        instance = this;
         _rigidBody = GetComponent<Rigidbody2D>();
+        _defaultJumpsCount = _maxJumps;
     }
     private void FixedUpdate()
     {
@@ -85,5 +90,14 @@ public class PlayerJump : MonoBehaviour
         yield return new WaitForSeconds(1f);
         // _moveVector.x = 1f;
         _isJump = true;
+    }
+
+    public void SetJumpsCount(int value)
+    {
+        _maxJumps = value;
+    }
+    public void SetDefaultJumpsCount()
+    {
+        _maxJumps = _defaultJumpsCount;
     }
 }
