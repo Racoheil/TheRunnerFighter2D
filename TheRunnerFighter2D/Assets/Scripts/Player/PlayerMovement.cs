@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _speed = 10f;
+    [SerializeField] private float _speed = 7f;
+
+    private float _defaultSpeed;
 
     private float _addingSpeedValue = 2f;
 
     private Rigidbody2D _rigidBody;
 
-    private Vector2 _moveVector;
+    [SerializeField] private Vector2 _moveVector;
 
     private bool _isHurting = false;
 
@@ -35,9 +37,11 @@ public class PlayerMovement : MonoBehaviour
         EventService.OnPlayerChangeLevel -= IncreaseSpeed;
         EventService.OnPlayerLose -= StopPlayer;
     }
-    void Awake()
+    private void Awake()
     {
         instance = this;
+
+        _defaultSpeed = _speed;
         _rigidBody = GetComponent<Rigidbody2D>();
         _defaultGravityScale = _rigidBody.gravityScale;
         _defaultMass = _rigidBody.mass;
@@ -45,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        //print("Time.time = " + Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.J))
         {
             StopPlayer();
@@ -104,5 +109,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _rigidBody.gravityScale = _defaultGravityScale;
         _rigidBody.mass = _defaultMass;
+    }
+    public float GetRigidBodyVectorX()
+    {
+        print("defSpeed = " + _defaultSpeed);
+        print("value = "+_rigidBody.velocity.x / _defaultSpeed);
+        return _rigidBody.velocity.x/_defaultSpeed;
     }
 }

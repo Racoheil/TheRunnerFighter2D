@@ -15,6 +15,6 @@ public class ResumeButton : MonoBehaviour
 
     public void ResumeGame()
     {
-        EventService.CallOnResumeGame();
+        EventService.CallOnClosePausePanel();
     }
 }

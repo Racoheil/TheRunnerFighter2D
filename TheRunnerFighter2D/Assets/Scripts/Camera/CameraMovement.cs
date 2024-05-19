@@ -61,7 +61,7 @@ public class CameraMovement : MonoBehaviour
         }
         if (isFollowPlayer)
         {
-            print("Follow to player!");
+           // print("Follow to player!");
             transform.position = new Vector3(_targetObject.position.x, _targetObject.transform.position.y, transform.position.z);
         }
     }
@@ -73,8 +73,8 @@ public class CameraMovement : MonoBehaviour
     {
         float addingValueY = MapGenerate.instance.GetAddingValue();
         float followPlayerTime = Mathf.Abs(0.017f * addingValueY);
-        print(0.02f + " * " + addingValueY);
-        print("Follow player time = " + followPlayerTime);
+        //print(0.02f + " * " + addingValueY);
+        //print("Follow player time = " + followPlayerTime);
         isFollowPlayer = true;
         yield return new WaitForSecondsRealtime(followPlayerTime);
 

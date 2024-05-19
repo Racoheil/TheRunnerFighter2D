@@ -73,7 +73,7 @@ public class StandingEnemy : MonoBehaviour, IEnemy
         Vector2 bounceForce = new Vector2(9, 3);
         _rigidBody.velocity = Vector2.zero;
         _rigidBody.AddForce(bounceForce * 10000, ForceMode2D.Impulse);
-        Debug.Log("Enemy is died");
+        //Debug.Log("Enemy is died");
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

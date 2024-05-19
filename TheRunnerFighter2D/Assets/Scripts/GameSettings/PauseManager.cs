@@ -22,6 +22,7 @@ public class PauseManager : MonoBehaviour
     private void Awake()
     {
         _isPaused = false;
+        _isResumed = false;
         _pausePanel.SetActive(false);
     }
     public void Pause()

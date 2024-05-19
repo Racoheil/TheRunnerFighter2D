@@ -213,14 +213,14 @@ public class MapGenerate : MonoBehaviour
             case 1:
                 {
                     int randomNumber = Random.Range(0, _1LevelTilesObjects.Length - 1);
-                    Debug.Log("Random = " + randomNumber);
+                    //Debug.Log("Random = " + randomNumber);
                     if (_1LevelTilesObjects[randomNumber].isActive)
                     {
                         return GetRandomNumber();
                     }
                     else
                     {
-                        Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _1LevelTilesObjects[randomNumber].isActive);
+                        //Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _1LevelTilesObjects[randomNumber].isActive);
                         return randomNumber;
                     }
                     
@@ -228,14 +228,14 @@ public class MapGenerate : MonoBehaviour
             case 2:
                 {
                     int randomNumber = Random.Range(0, _2LevelTilesObjects.Length - 1);
-                    Debug.Log("Random = " + randomNumber);
+                    //Debug.Log("Random = " + randomNumber);
                     if (_2LevelTilesObjects[randomNumber].isActive)
                     {
                         return GetRandomNumber();
                     }
                     else
                     {
-                        Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _2LevelTilesObjects[randomNumber].isActive);
+                        //Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _2LevelTilesObjects[randomNumber].isActive);
                         return randomNumber;
                     }
                   
@@ -243,14 +243,14 @@ public class MapGenerate : MonoBehaviour
             case 3:
                 {
                     int randomNumber = Random.Range(0, _3LevelTilesObjects.Length - 1);
-                    Debug.Log("Random = " + randomNumber);
+                    //Debug.Log("Random = " + randomNumber);
                     if (_3LevelTilesObjects[randomNumber].isActive)
                     {
                         return GetRandomNumber();
                     }
                     else
                     {
-                        Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _3LevelTilesObjects[randomNumber].isActive);
+                        //Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _3LevelTilesObjects[randomNumber].isActive);
                         return randomNumber;
                     }
 

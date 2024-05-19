@@ -56,7 +56,7 @@ public class PlayerHealthSystemService : MonoBehaviour
     public void TakeDamage()
     {
         ReduceHealth();
-        Debug.Log("Health : " + _health);
+        //Debug.Log("Health : " + _health);
         ImmortalizeThePlayer(_immortalityTime);
     }
     public void ReduceHealth()
@@ -97,7 +97,7 @@ public class PlayerHealthSystemService : MonoBehaviour
 
     public void CreateAllHeartsObjects()
     {
-        Debug.Log(_maxHealth);      
+        //Debug.Log(_maxHealth);      
         for (int i = 0; i < _maxHealth; i++)
         {
             GameObject heart = Instantiate(_heartPrefab);
@@ -117,7 +117,7 @@ public class PlayerHealthSystemService : MonoBehaviour
     public void ImmortalizeThePlayer(float time)
     {
         _isImmortal = true;
-        Debug.Log("Immortal is activated!!" + _isImmortal);
+        //Debug.Log("Immortal is activated!!" + _isImmortal);
         StartCoroutine(ImmortalizeCoroutine(time));
     }
 
@@ -125,6 +125,6 @@ public class PlayerHealthSystemService : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         _isImmortal = false;
-        Debug.Log("Immortalize is deactivated!!");
+        //Debug.Log("Immortalize is deactivated!!");
     }
 }

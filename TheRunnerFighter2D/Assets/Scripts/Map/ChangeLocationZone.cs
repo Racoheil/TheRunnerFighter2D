@@ -8,7 +8,7 @@ public class ChangeLevelZone : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("ChangeLevel!!");
+          //  Debug.Log("ChangeLevel!!");
             EventService.CallOnPlayerChangeLevel();
             DeactivateChangeZone();
         }

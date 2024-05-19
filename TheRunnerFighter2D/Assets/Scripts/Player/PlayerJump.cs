@@ -63,7 +63,7 @@ public class PlayerJump : MonoBehaviour
             _jumps -= 1;
             _hasDoubleJumped = true;
             StartCoroutine(ResetDoubleJump());
-            Debug.Log("Jump!");
+           // Debug.Log("Jump!");
             
         }
         if(_jumps == 0)

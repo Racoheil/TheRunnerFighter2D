@@ -69,7 +69,7 @@ public class FlyingEnemy : MonoBehaviour, IEnemy
     public void Die()
     {
         _boxCollider2D.enabled = false;
-        print("Flying enemy died");
+        //print("Flying enemy died");
         _animator.SetBool("IsDead", true);
     }
     public void OnDieEvent()
@@ -85,7 +85,7 @@ public class FlyingEnemy : MonoBehaviour, IEnemy
     {
         if (isDead) return;
 
-        print("Player hit the flyin enemy");
+        //print("Player hit the flyin enemy");
 
         _animator.SetTrigger("TakeDamage");
 

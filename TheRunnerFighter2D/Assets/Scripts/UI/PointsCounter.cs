@@ -19,6 +19,8 @@ public class PointsCounter : MonoBehaviour
     private Color _colorLevel3 = Color.red;
 
     private Color[] _colors;
+
+    private bool _isPaused;
     private void OnEnable()
     {
         EventService.OnPlayerChangeLevel += OnChangeLevel;
@@ -36,6 +38,7 @@ public class PointsCounter : MonoBehaviour
     }
     private void Awake()
     {
+        _isPaused = false;
         _isCount = true;
         _pointsCount = 0;
         _pointsCounterText.text = _pointsCount.ToString();
@@ -66,12 +69,14 @@ public class PointsCounter : MonoBehaviour
     private void StopCount()
     {
         //StopCoroutine(PointsCountCoroutine());
-        _isCount = false;
+       // _isCount = false;
+        _isPaused = true;
     }
     private void ContinueCount()
     {
-        _isCount = true;
-        StartCoroutine(PointsCountCoroutine());
+       // _isCount = true;
+        _isPaused = false;
+       // StartCoroutine(PointsCountCoroutine());
     }
 
     private void HideCounter()
@@ -87,11 +92,15 @@ public class PointsCounter : MonoBehaviour
     {
         while (_isCount)
         {
-            _pointsCount++;
-        print(_pointsCount);
-        _pointsCounterText.text = _pointsCount.ToString();
-        
-        yield return new WaitForSecondsRealtime(_countDelay);
+            if (!_isPaused && PlayerMovement.instance.GetRigidBodyVectorX() > 0.5f)
+            {
+                _pointsCount++;
+                //print(_pointsCount);
+                _pointsCounterText.text = _pointsCount.ToString();
+            }
+            //float delay = PlayerMovement.instance.GetRigidBodyVectorX() + 0.1f;
+            //print("delay = " + delay);
+            yield return new WaitForSecondsRealtime(_countDelay);
         }
     }
 
