@@ -5,7 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsHandler : MonoBehaviour
 {
-  private void Update()
+    private bool _isEscPressed;
+
+    private void Awake()
+    {
+        _isEscPressed = false;
+    }
+    private void Update()
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
@@ -18,6 +24,20 @@ public class ButtonsHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             EventService.CallOnFlightBonusActivate();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_isEscPressed != true)
+            {
+                EventService.CallOnPauseGame();
+                _isEscPressed = true;
+            }
+            else
+            {
+                EventService.CallOnClosePausePanel();
+                _isEscPressed = false;
+                return;
+            }
         }
     }
 }

@@ -15,17 +15,21 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 _defaultPos;
 
-    [SerializeField] private float speed = 3.8f;
+    [SerializeField] private float _speed = 4f;
+
+    private float _addingValue = 6f;
 
     private bool isFollowPlayer = false;
 
     private void OnEnable()
     {
         EventService.OnPlayerChangeLevel += ChangeCameraPosSmoothly;
+        EventService.OnFlightBonusActivate += IncreaseCameraSpeed;
     }
     private void OnDisable()
     {
         EventService.OnPlayerChangeLevel -= ChangeCameraPosSmoothly;
+        EventService.OnFlightBonusActivate -= IncreaseCameraSpeed;
     }
     private void Start()
     {
@@ -39,7 +43,7 @@ public class CameraMovement : MonoBehaviour
     {
         if(_targetObject.position.y < _maxY )
         {
-            float interpolation = speed * Time.deltaTime;
+            float interpolation = _speed * Time.deltaTime;
           
             Vector3 position = this.transform.position;
             position.y = Mathf.Lerp(this.transform.position.y, _defaultPos.y, interpolation); 
@@ -48,7 +52,7 @@ public class CameraMovement : MonoBehaviour
         }
         else if(_targetObject.position.y > _maxY )
         {
-            float interpolation = speed * Time.deltaTime;
+            float interpolation = _speed * Time.deltaTime;
 
             Vector3 position = this.transform.position;
             position.y = Mathf.Lerp(this.transform.position.y, _targetObject.transform.position.y-8, interpolation);
@@ -64,7 +68,6 @@ public class CameraMovement : MonoBehaviour
     private void ChangeCameraPosSmoothly()
     {
         StartCoroutine(FollowPlayerCoroutine());
-        
     }
     IEnumerator FollowPlayerCoroutine()
     {
@@ -79,5 +82,10 @@ public class CameraMovement : MonoBehaviour
         _maxY += addingValueY;
         _defaultPos.y += addingValueY;
         isFollowPlayer = false;
+    }
+
+    private void IncreaseCameraSpeed()
+    {
+        _speed += _addingValue;
     }
 }

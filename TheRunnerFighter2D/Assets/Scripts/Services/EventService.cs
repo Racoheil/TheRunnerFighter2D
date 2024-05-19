@@ -32,5 +32,17 @@ public static class EventService
     public static event Action OnFlightBonusActivate;
     public static void CallOnFlightBonusActivate()
         => OnFlightBonusActivate?.Invoke();
-       
+
+    public static event Action OnPauseGame;
+    public static void CallOnPauseGame()
+        => OnPauseGame?.Invoke();
+
+    public static event Action OnClosePausePanel;
+    public static void CallOnClosePausePanel()
+        => OnClosePausePanel?.Invoke();
+    
+
+    public static event Action OnResumeGame;
+    public static void CallOnResumeGame()
+        => OnResumeGame?.Invoke();
 }

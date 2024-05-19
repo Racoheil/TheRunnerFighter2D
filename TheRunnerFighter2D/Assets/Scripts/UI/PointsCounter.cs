@@ -23,11 +23,15 @@ public class PointsCounter : MonoBehaviour
     {
         EventService.OnPlayerChangeLevel += OnChangeLevel;
         EventService.OnPlayerLose += OnPlayerLose;
+        EventService.OnPauseGame += StopCount;
+        EventService.OnResumeGame += ContinueCount;
     }
     private void OnDisable()
     {
         EventService.OnPlayerChangeLevel -= OnChangeLevel;
         EventService.OnPlayerLose -= OnPlayerLose;
+        EventService.OnPauseGame -= StopCount;
+        EventService.OnResumeGame -= ContinueCount;
 
     }
     private void Awake()
@@ -51,6 +55,7 @@ public class PointsCounter : MonoBehaviour
     }
     private void StartCount()
     {
+        _isCount = true;
         StartCoroutine(PointsCountCoroutine());
     }
     private void OnPlayerLose()
@@ -60,7 +65,13 @@ public class PointsCounter : MonoBehaviour
     }
     private void StopCount()
     {
+        //StopCoroutine(PointsCountCoroutine());
         _isCount = false;
+    }
+    private void ContinueCount()
+    {
+        _isCount = true;
+        StartCoroutine(PointsCountCoroutine());
     }
 
     private void HideCounter()
@@ -79,7 +90,7 @@ public class PointsCounter : MonoBehaviour
             _pointsCount++;
         print(_pointsCount);
         _pointsCounterText.text = _pointsCount.ToString();
-
+        
         yield return new WaitForSecondsRealtime(_countDelay);
         }
     }

@@ -12,6 +12,8 @@ public class FlyingEnemy : MonoBehaviour, IEnemy
 
     [SerializeField] private float _startTimeBtwAttack = 1;
 
+    private BoxCollider2D _boxCollider2D;
+
     private float _timeBtwAttack;
 
     private Rigidbody2D _rigidBody;
@@ -26,6 +28,7 @@ public class FlyingEnemy : MonoBehaviour, IEnemy
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        _boxCollider2D = GetComponent <BoxCollider2D>();
         _moveVector = new Vector2(-1, 0);
     }
     private void FixedUpdate()
@@ -65,6 +68,7 @@ public class FlyingEnemy : MonoBehaviour, IEnemy
     }
     public void Die()
     {
+        _boxCollider2D.enabled = false;
         print("Flying enemy died");
         _animator.SetBool("IsDead", true);
     }

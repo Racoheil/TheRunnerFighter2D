@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class GlobalDataHolder
 {
-    private static int _currentLevel;
+    
 }

@@ -20,9 +20,12 @@ public class FlightBonus : MonoBehaviour, IBonus
     }
     private void OnDisable()
     {
-        EventService.OnArmorBonusActivate -= ActivateBonus;
+        EventService.OnFlightBonusActivate -= ActivateBonus;
     }
-
+    private void Awake()
+    {
+        _isActive = false;
+    }
     public void ActivateBonus()
     {
         StartCoroutine(ActivateBonusRoutine(_activeTime));
