@@ -45,4 +45,8 @@ public static class EventService
     public static event Action OnResumeGame;
     public static void CallOnResumeGame()
         => OnResumeGame?.Invoke();
+
+    public static event Action OnFlightBonusDeactivate;
+    public static void CallOnFlightBonusDeactivate()
+        => OnFlightBonusDeactivate?.Invoke();
 }

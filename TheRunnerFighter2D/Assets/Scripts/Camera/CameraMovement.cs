@@ -17,6 +17,8 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float _speed = 4f;
 
+    private float _defaultSpeed;
+
     private float _addingValue = 6f;
 
     private bool isFollowPlayer = false;
@@ -25,16 +27,20 @@ public class CameraMovement : MonoBehaviour
     {
         EventService.OnPlayerChangeLevel += ChangeCameraPosSmoothly;
         EventService.OnFlightBonusActivate += IncreaseCameraSpeed;
+        EventService.OnFlightBonusDeactivate += SetDefaultSpeed;
     }
     private void OnDisable()
     {
         EventService.OnPlayerChangeLevel -= ChangeCameraPosSmoothly;
         EventService.OnFlightBonusActivate -= IncreaseCameraSpeed;
+        EventService.OnFlightBonusDeactivate -= SetDefaultSpeed;
     }
     private void Start()
     {
         _defaultPos = transform.position;
 
+        _defaultSpeed = _speed;
+        
         _maxY = _targetObject.transform.position.y + 6;
 
         _minY = _targetObject.transform.position.y - 6;
@@ -87,5 +93,10 @@ public class CameraMovement : MonoBehaviour
     private void IncreaseCameraSpeed()
     {
         _speed += _addingValue;
+    }
+
+    private void SetDefaultSpeed()
+    {
+        _speed = _defaultSpeed;
     }
 }

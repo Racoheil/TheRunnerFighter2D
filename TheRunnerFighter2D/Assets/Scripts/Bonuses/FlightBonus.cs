@@ -35,6 +35,7 @@ public class FlightBonus : MonoBehaviour, IBonus
         _isActive = false;
         PlayerJump.instance.SetDefaultJumpsCount();
         PlayerMovement.instance.SetDefaultRigidBodyPropeties();
+        EventService.CallOnFlightBonusDeactivate();
     }
     private IEnumerator ActivateBonusRoutine(float time)
     {
