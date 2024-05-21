@@ -31,7 +31,7 @@ public class PlatformsGroup : MonoBehaviour
         {
             isCurrentPlatform = true;
             isActive = true;
-           //Debug.Log("Player on platform!!");
+
             EventService.CallOnPlayerFinishingPlatform();
         }
     }

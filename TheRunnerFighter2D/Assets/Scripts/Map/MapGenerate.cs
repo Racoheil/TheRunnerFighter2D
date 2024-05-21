@@ -162,7 +162,7 @@ public class MapGenerate : MonoBehaviour
 
 
                         _1LevelTilesObjects[randomNumber].gameObject.SetActive(true);
-                        _1LevelTilesObjects[randomNumber].transform.position = new Vector3(_activePlatformsTiles[1].transform.position.x + 330, _defaultPositionY);
+                        _1LevelTilesObjects[randomNumber].transform.position = new Vector3(_activePlatformsTiles[1].transform.position.x + _addingValueX, _defaultPositionY);
 
                         _isFirstActivePlatform = true;
                         break;
@@ -179,7 +179,7 @@ public class MapGenerate : MonoBehaviour
 
 
                         _2LevelTilesObjects[randomNumber].gameObject.SetActive(true);
-                        _2LevelTilesObjects[randomNumber].transform.position = new Vector3(_activePlatformsTiles[1].transform.position.x + 330, _defaultPositionY);
+                        _2LevelTilesObjects[randomNumber].transform.position = new Vector3(_activePlatformsTiles[1].transform.position.x + _addingValueX, _defaultPositionY);
 
                         _isFirstActivePlatform = true;
                         break;
@@ -196,7 +196,7 @@ public class MapGenerate : MonoBehaviour
 
 
                         _3LevelTilesObjects[randomNumber].gameObject.SetActive(true);
-                        _3LevelTilesObjects[randomNumber].transform.position = new Vector3(_activePlatformsTiles[1].transform.position.x + 330, _defaultPositionY);
+                        _3LevelTilesObjects[randomNumber].transform.position = new Vector3(_activePlatformsTiles[1].transform.position.x + _addingValueX, _defaultPositionY);
 
                         _isFirstActivePlatform = true;
                         break;
@@ -213,14 +213,13 @@ public class MapGenerate : MonoBehaviour
             case 1:
                 {
                     int randomNumber = Random.Range(0, _1LevelTilesObjects.Length - 1);
-                    //Debug.Log("Random = " + randomNumber);
+                    
                     if (_1LevelTilesObjects[randomNumber].isActive)
                     {
                         return GetRandomNumber();
                     }
                     else
                     {
-                        //Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _1LevelTilesObjects[randomNumber].isActive);
                         return randomNumber;
                     }
                     
@@ -228,14 +227,13 @@ public class MapGenerate : MonoBehaviour
             case 2:
                 {
                     int randomNumber = Random.Range(0, _2LevelTilesObjects.Length - 1);
-                    //Debug.Log("Random = " + randomNumber);
+                    
                     if (_2LevelTilesObjects[randomNumber].isActive)
                     {
                         return GetRandomNumber();
                     }
                     else
                     {
-                        //Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _2LevelTilesObjects[randomNumber].isActive);
                         return randomNumber;
                     }
                   
@@ -243,14 +241,13 @@ public class MapGenerate : MonoBehaviour
             case 3:
                 {
                     int randomNumber = Random.Range(0, _3LevelTilesObjects.Length - 1);
-                    //Debug.Log("Random = " + randomNumber);
+                    
                     if (_3LevelTilesObjects[randomNumber].isActive)
                     {
                         return GetRandomNumber();
                     }
                     else
                     {
-                        //Debug.Log($"_platformsTiles[{randomNumber}].isActive = " + _3LevelTilesObjects[randomNumber].isActive);
                         return randomNumber;
                     }
 

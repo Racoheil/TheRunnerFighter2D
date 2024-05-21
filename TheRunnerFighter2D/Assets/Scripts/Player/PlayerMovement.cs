@@ -112,8 +112,8 @@ public class PlayerMovement : MonoBehaviour
     }
     public float GetRigidBodyVectorX()
     {
-        print("defSpeed = " + _defaultSpeed);
-        print("value = "+_rigidBody.velocity.x / _defaultSpeed);
+       // print("defSpeed = " + _defaultSpeed);
+        //print("value = "+_rigidBody.velocity.x / _defaultSpeed);
         return _rigidBody.velocity.x/_defaultSpeed;
     }
 }

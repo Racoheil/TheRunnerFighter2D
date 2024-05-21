@@ -49,4 +49,8 @@ public static class EventService
     public static event Action OnFlightBonusDeactivate;
     public static void CallOnFlightBonusDeactivate()
         => OnFlightBonusDeactivate?.Invoke();
+
+    public static event Action OnPlayerReachedBackgroundMiddle;
+    public static void CallOnPlayerReachedBackgroundMiddle()
+        => OnPlayerReachedBackgroundMiddle?.Invoke();
 }
