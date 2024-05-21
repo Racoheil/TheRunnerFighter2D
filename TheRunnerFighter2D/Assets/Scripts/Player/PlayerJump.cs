@@ -34,11 +34,10 @@ public class PlayerJump : MonoBehaviour
         if (GroundCheck.instance.GetIsGrounded())
         {
             _jumps = _maxJumps - 1;
-           // PlayerAnimation.instance.ChangeAnimation("Run");
         }
         else if (GroundCheck.instance.GetIsGrounded()==false)
         {
-         //   PlayerAnimation.instance.ChangeAnimation("jump");
+
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {

@@ -40,8 +40,8 @@ public class CameraMovement : MonoBehaviour
         _defaultPos = transform.position;
 
         _defaultSpeed = _speed;
-        
-        _maxY = _targetObject.transform.position.y + 6;
+
+        _maxY = _targetObject.transform.position.y + 4;
 
         _minY = _targetObject.transform.position.y - 6;
     }
