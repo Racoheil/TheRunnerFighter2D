@@ -27,7 +27,7 @@ public class PauseManager : MonoBehaviour
     }
     public void Pause()
     {
-        if (!_isResumed)
+        if (!_isResumed && !LevelData.instance.GetIsGameOver())
         {
             _isPaused = true;
             _pausePanel.SetActive(true);

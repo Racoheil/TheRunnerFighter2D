@@ -61,7 +61,7 @@ public class PlayerHealthSystemService : MonoBehaviour
     }
     public void ReduceHealth()
     {
-        if(!_isImmortal)
+        if(!_isImmortal && _health > 0)
         {
             _health--;
             _heartsList[_health].gameObject.SetActive(false);

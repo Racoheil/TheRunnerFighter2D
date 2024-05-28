@@ -47,11 +47,13 @@ public class PlayerJump : MonoBehaviour
     private void OnEnable()
     {
         EventService.OnTakeDamage += FreezePlayer;
+        EventService.OnPlayerLose += DisableJump;
     }
 
     private void OnDisable()
     {
         EventService.OnTakeDamage -= FreezePlayer;
+        EventService.OnPlayerLose -= DisableJump;
     }
     private void Jump(float jumpForce)
     {
@@ -79,7 +81,8 @@ public class PlayerJump : MonoBehaviour
 
     private void FreezePlayer()
     {
-        // _moveVector.x = 0f;
+        if (!_isJump == false) return;
+
         _isJump = false;
         StartCoroutine(FreezePlayerCoroutine());
     }
@@ -98,5 +101,10 @@ public class PlayerJump : MonoBehaviour
     public void SetDefaultJumpsCount()
     {
         _maxJumps = _defaultJumpsCount;
+    }
+
+    public void DisableJump()
+    {
+        _isJump = false;
     }
 }
