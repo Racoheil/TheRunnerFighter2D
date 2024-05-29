@@ -1,8 +1,10 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class FlyingShootingEnemy : MonoBehaviour
+public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 {
     [SerializeField] Animator _animator;
 
@@ -18,7 +20,7 @@ public class FlyingShootingEnemy : MonoBehaviour
 
     private Rigidbody2D _rigidBody;
 
-    private float _speed = 3f;
+    private float _duration = 1.5f;
 
     private Vector2 _moveVector;
 
@@ -29,6 +31,10 @@ public class FlyingShootingEnemy : MonoBehaviour
     private bool _isShooting = false;
 
     private bool _isDead = false;
+
+    private bool _isMoving = false;
+
+    private float _movingYvalue = 0.8f;
 
     private void Awake()
     {
@@ -56,9 +62,23 @@ public class FlyingShootingEnemy : MonoBehaviour
             {
                 yield break;
             }
-            //Shoot();
+            Shoot();
             yield return new WaitForSeconds(_shootingInterval);
         }
+    }
+
+    private IEnumerator MovingCoroutine()
+    {
+        float topPositionY = transform.position.y + _movingYvalue;
+        float lowPositionY = transform.position.y - _movingYvalue;
+
+        while (_isMoving)
+        {
+
+            yield return transform.DOMoveY(topPositionY, _duration).SetEase(Ease.Linear).WaitForCompletion();
+            //yield return new WaitForSecondsRealtime(0.5f);
+            yield return transform.DOMoveY(lowPositionY, _duration).SetEase(Ease.Linear).WaitForCompletion();
+        }  
     }
 
     public void Die()
@@ -88,8 +108,18 @@ public class FlyingShootingEnemy : MonoBehaviour
     }
     private void ActivateEnemy()
     {
-        Instantiate(_bulletPrefab, _shotPoint.position,new Quaternion(0,0,0,0));
-        print("Shoot!");
+        StartCoroutine(ShootingCoroutine());
+        _isMoving = true;
+        StartCoroutine(MovingCoroutine());
+    }
+    private void Shoot()
+    {
+        _animator.SetTrigger("Shoot");
+    }
+
+    public void OnShootEvent()
+    {
+        Instantiate(_bulletPrefab, _shotPoint);
     }
 
     private void OnTriggerEnter2D(Collider2D collider2D)
