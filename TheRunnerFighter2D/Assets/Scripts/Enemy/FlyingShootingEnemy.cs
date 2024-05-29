@@ -119,7 +119,7 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     public void OnShootEvent()
     {
-        Instantiate(_bulletPrefab, _shotPoint);
+        Instantiate(_bulletPrefab, _shotPoint.position, _shotPoint.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D collider2D)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 612910776504102518}
   - component: {fileID: 1384772956982222304}
   - component: {fileID: 4897677780796447614}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FlyingShootingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,8 +196,8 @@ Transform:
   m_GameObject: {fileID: 5328441011890128884}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.324, y: -0.222, z: 0}
-  m_LocalScale: {x: 0.4240254, y: 0.4240254, z: 0.4240254}
+  m_LocalPosition: {x: 0.144, y: 0.021, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5423986618965970521}
