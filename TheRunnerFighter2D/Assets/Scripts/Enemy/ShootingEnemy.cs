@@ -45,8 +45,7 @@ public class ShootingEnemy : MonoBehaviour, IEnemy
         }
     }
     public void Shoot()
-    {
-        
+    {   
         _animator.SetTrigger("Shoot");
         GameObject bullet = Instantiate(_bulletPrefab, _shotPoint);
     }
