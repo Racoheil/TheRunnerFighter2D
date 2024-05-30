@@ -10405,15 +10405,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4856906263101102814, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
       propertyPath: _activeTime
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5346549039698701449, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6369060852376675745, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
+      propertyPath: _maxJumps
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6787607659005789582, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
       propertyPath: _activeTime
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7649736994785581497, guid: a85f28dab65ec3743b7b0b0d692ff4d3, type: 3}
