@@ -19,7 +19,7 @@ public class MapGenerate : MonoBehaviour
 
     private int _activeTilesCount = 3;
 
-    private bool _isFirstActivePlatform = false;
+    private bool _isFirstActivePlatform = true;
 
     private float _defaultPositionY;    // Defautl position of camera
 
@@ -152,6 +152,8 @@ public class MapGenerate : MonoBehaviour
             {
                 case 1:
                     {
+                        //_isFirstActivePlatform = true;
+
                         _activePlatformsTiles[0].isActive = false;              ///
                         _activePlatformsTiles[0].gameObject.SetActive(false);   ///
                         _activePlatformsTiles.RemoveAt(0);                      ///
@@ -163,8 +165,7 @@ public class MapGenerate : MonoBehaviour
 
                         _1LevelTilesObjects[randomNumber].gameObject.SetActive(true);
                         _1LevelTilesObjects[randomNumber].transform.position = new Vector3(_activePlatformsTiles[1].transform.position.x + _addingValueX, _defaultPositionY);
-
-                        _isFirstActivePlatform = true;
+                        
                         break;
                     }
                 case 2:

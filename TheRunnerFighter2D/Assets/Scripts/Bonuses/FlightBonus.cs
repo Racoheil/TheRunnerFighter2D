@@ -6,7 +6,7 @@ public class FlightBonus : MonoBehaviour, IBonus
 {
     private bool _isActive;
 
-    private float _activeTime = 25f;
+    [SerializeField] private float _activeTime = 25f;
 
     private int _newJumpsCount = 10;
 

@@ -15,15 +15,15 @@ public class PlatformsGroup : MonoBehaviour
 
     private void Awake()
     {
-        PlatformsGroup platformsGroup = new PlatformsGroup(prefab, false);
+        //PlatformsGroup platformsGroup = new PlatformsGroup(prefab, false);
         prefab = GetComponent<GameObject>();
         isActive = false;
     }
-    public PlatformsGroup(GameObject _prefab, bool _isActive)
-    {
-        prefab = _prefab;
-        isActive = _isActive;
-    }
+    //public PlatformsGroup(GameObject _prefab, bool _isActive)
+    //{
+    //    prefab = _prefab;
+    //    isActive = _isActive;
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,7 +31,7 @@ public class PlatformsGroup : MonoBehaviour
         {
             isCurrentPlatform = true;
             isActive = true;
-
+            print("Player finish " + this.name + " tile");
             EventService.CallOnPlayerFinishingPlatform();
         }
     }

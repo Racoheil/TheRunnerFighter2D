@@ -26,7 +26,7 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     private float _shootingInterval = 5f;
 
-    private int _bulletsCount = 5;
+    [SerializeField] private int _bulletsCount = 5;
 
     private bool _isShooting = false;
 
@@ -34,7 +34,7 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     private bool _isMoving = false;
 
-    private float _movingYvalue = 0.8f;
+    private float _movingDistance = 0.8f;
 
     private void Awake()
     {
@@ -69,8 +69,8 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     private IEnumerator MovingCoroutine()
     {
-        float topPositionY = transform.position.y + _movingYvalue;
-        float lowPositionY = transform.position.y - _movingYvalue;
+        float topPositionY = transform.position.y + _movingDistance;
+        float lowPositionY = transform.position.y - _movingDistance;
 
         while (_isMoving)
         {

@@ -9,7 +9,7 @@ public class ArmorBonus : MonoBehaviour, IBonus
 
     private bool _isActive;
 
-    private float _activeTime = 25f;
+    [SerializeField] private float _activeTime = 25f;
 
     private void OnEnable()
     {
