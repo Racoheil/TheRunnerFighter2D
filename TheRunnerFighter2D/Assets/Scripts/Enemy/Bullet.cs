@@ -6,11 +6,17 @@ public class Bullet : MonoBehaviour
 {
     private float _speed = 0.005f;
 
+    private float _lifeTime = 10f;
+
     private Vector2 _moveVector;
 
     private void Awake()
     {
         _moveVector = new Vector2(-1, 0);
+    }
+    private void Start()
+    {
+        ActivateBulet();
     }
     private void FixedUpdate()
     {
@@ -25,5 +31,16 @@ public class Bullet : MonoBehaviour
                 EventService.CallOnTakeDamage();
             }
         }
+    }
+
+    private void ActivateBulet()
+    {
+        StartCoroutine(LifeRoutine());
+    }
+
+    private IEnumerator LifeRoutine()
+    {
+        yield return new WaitForSecondsRealtime(_lifeTime);
+        this.gameObject.SetActive(false);
     }
 }
