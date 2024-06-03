@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class PointsCounter : MonoBehaviour
 {
     [SerializeField] private TMP_Text _pointsCounterText;
+    [SerializeField] private TMP_Text _addingPointsText;
 
     private int _pointsCount;
 
@@ -21,12 +23,14 @@ public class PointsCounter : MonoBehaviour
     private Color[] _colors;
 
     private bool _isPaused;
+
     private void OnEnable()
     {
         EventService.OnPlayerChangeLevel += OnChangeLevel;
         EventService.OnPlayerLose += OnPlayerLose;
         EventService.OnPauseGame += StopCount;
         EventService.OnResumeGame += ContinueCount;
+        EventService.OnKillEnemy += AddCounts;
     }
     private void OnDisable()
     {
@@ -34,6 +38,7 @@ public class PointsCounter : MonoBehaviour
         EventService.OnPlayerLose -= OnPlayerLose;
         EventService.OnPauseGame -= StopCount;
         EventService.OnResumeGame -= ContinueCount;
+        EventService.OnKillEnemy -= AddCounts;
 
     }
     private void Awake()
@@ -48,7 +53,7 @@ public class PointsCounter : MonoBehaviour
     private void Start()
     {
         StartCount();
-
+        _addingPointsText.gameObject.SetActive(false);
         _pointsCounterText.color = _colors[LevelData.instance.GetCurrentLevel()-1];
     }
 
@@ -88,6 +93,11 @@ public class PointsCounter : MonoBehaviour
         ChangeCountDelay(_countDelay/2.5f);
         _pointsCounterText.color = _colors[LevelData.instance.GetCurrentLevel() - 1];
     }
+
+    private void AddCounts(int value)
+    {
+        StartCoroutine(AddPointsRoutine(value));
+    }
     private IEnumerator PointsCountCoroutine()
     {
         while (_isCount)
@@ -103,5 +113,26 @@ public class PointsCounter : MonoBehaviour
             yield return new WaitForSecondsRealtime(_countDelay);
         }
     }
+    private IEnumerator AddPointsRoutine(int addingValue)
+    {
+        _addingPointsText.gameObject.SetActive(true);
+        _addingPointsText.text = "+" + addingValue.ToString();
 
+        Color originalColor = _addingPointsText.color;
+        Color tempColor = _addingPointsText.color;
+        float fadeSpeed = 1f;
+
+        while (tempColor.a > 0)
+        {
+            tempColor.a -= fadeSpeed * Time.deltaTime;
+            _addingPointsText.color = tempColor;
+            yield return null;
+        }
+
+        _addingPointsText.color = originalColor;
+        _addingPointsText.gameObject.SetActive(false);
+        _pointsCount += addingValue;
+        _pointsCounterText.text = _pointsCount.ToString();
+   
+    }
 }

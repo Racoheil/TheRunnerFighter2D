@@ -22,6 +22,10 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 
     private float _freezeTime;
 
+    [SerializeField] Vector2 bounceForce = new Vector2(9, 3);
+
+    private int _pointsCount = 10;
+
     private void Awake()
     {
         _collider = GetComponent<Collider2D>();
@@ -52,6 +56,9 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     {
         _isDead = true;
         _animator.SetBool("IsDead", _isDead);
+
+        print("Player kill " + this.name);
+        EventService.CallOnKillEnemy(_pointsCount);
     }
     public void Attack()
     {
@@ -70,7 +77,7 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     }
     public void Bounce()
     {
-        Vector2 bounceForce = new Vector2(9, 3);
+        
         _rigidBody.velocity = Vector2.zero;
         _rigidBody.AddForce(bounceForce * 10000, ForceMode2D.Impulse);
         //Debug.Log("Enemy is died");
@@ -87,6 +94,14 @@ public class StandingEnemy : MonoBehaviour, IEnemy
             {
                 _timeBtwAttack -= Time.deltaTime;
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Obstacle")
+        {
+            print("Obstacle!!");
+            TakeDamage(_currentHealth);
         }
     }
 }

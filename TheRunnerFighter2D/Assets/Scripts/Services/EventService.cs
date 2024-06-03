@@ -53,4 +53,9 @@ public static class EventService
     public static event Action OnPlayerReachedBackgroundMiddle;
     public static void CallOnPlayerReachedBackgroundMiddle()
         => OnPlayerReachedBackgroundMiddle?.Invoke();
+
+    public static event Action<int> OnKillEnemy;
+    public static void CallOnKillEnemy(int pointsCount)
+        => OnKillEnemy?.Invoke(pointsCount);
+    
 }

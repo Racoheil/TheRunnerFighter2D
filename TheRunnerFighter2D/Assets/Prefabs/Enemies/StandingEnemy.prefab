@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Mass: 10000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 893cda9cd7801f7488e66371cb86e512, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -211,6 +211,7 @@ MonoBehaviour:
   _animator: {fileID: 8641118942075346609}
   _maxHealth: 3
   _startTimeBtwAttack: 1
+  bounceForce: {x: 15, y: 5}
 --- !u!95 &8641118942075346609
 Animator:
   serializedVersion: 5

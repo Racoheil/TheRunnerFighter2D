@@ -36,6 +36,8 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     private float _movingDistance = 0.8f;
 
+    private int _pointsCount = 15;
+
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -87,6 +89,9 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
         _isDead = true;
         _isShooting = false;
         _animator.SetBool("IsDead", true);
+
+        print("Player kill " + this.name);
+        EventService.CallOnKillEnemy(_pointsCount);
     }
     public void OnDieEvent()
     {
