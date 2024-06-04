@@ -52,8 +52,10 @@ public class PointsCounter : MonoBehaviour
     }
     private void Start()
     {
-        StartCount();
         _addingPointsText.gameObject.SetActive(false);
+
+        StartCount();
+
         _pointsCounterText.color = _colors[LevelData.instance.GetCurrentLevel()-1];
     }
 
@@ -119,18 +121,24 @@ public class PointsCounter : MonoBehaviour
         _addingPointsText.text = "+" + addingValue.ToString();
 
         Color originalColor = _addingPointsText.color;
-        Color tempColor = _addingPointsText.color;
-        float fadeSpeed = 1f;
+        Color newColor = _addingPointsText.color;
 
-        while (tempColor.a > 0)
+      
+        float fadeDuration = 1f;
+        int i = 0;
+        while (newColor.a > 0)
         {
-            tempColor.a -= fadeSpeed * Time.deltaTime;
-            _addingPointsText.color = tempColor;
+            i++;
+            print("i = " + i);
+            newColor.a -= Time.deltaTime / fadeDuration;
+            print("Delta time = " + Time.deltaTime);
+            _addingPointsText.color = newColor;
             yield return null;
         }
 
         _addingPointsText.color = originalColor;
         _addingPointsText.gameObject.SetActive(false);
+
         _pointsCount += addingValue;
         _pointsCounterText.text = _pointsCount.ToString();
    

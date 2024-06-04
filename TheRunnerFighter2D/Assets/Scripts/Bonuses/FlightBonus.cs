@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FlightBonus : MonoBehaviour, IBonus
 {
+    [SerializeField] SpriteRenderer FlightBonusSprite;
+
     private bool _isActive;
 
     [SerializeField] private float _activeTime = 25f;
@@ -24,10 +26,12 @@ public class FlightBonus : MonoBehaviour, IBonus
     }
     private void Awake()
     {
+        FlightBonusSprite.enabled = false;
         _isActive = false;
     }
     public void ActivateBonus()
     {
+        FlightBonusSprite.enabled = true;
         StartCoroutine(ActivateBonusRoutine(_activeTime));
     }
     public void DeactivateBonus()
