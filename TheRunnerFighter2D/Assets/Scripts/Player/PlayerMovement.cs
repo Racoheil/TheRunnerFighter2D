@@ -57,8 +57,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-        _isMoving = true;
-        _moveVector = new Vector2(1f, 0f);
+        DeactivatePlayer();
     }
 
 
@@ -68,6 +67,22 @@ public class PlayerMovement : MonoBehaviour
         {
             MovePlayer();
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ActivatePlayer();
+        }
+    }
+    private void DeactivatePlayer()
+    {
+        _isMoving = false;
+        PlayerAnimation.instance.animator.SetBool("isMoving", false);
+        _moveVector = new Vector2(0f, 0f);
+    }
+    private void ActivatePlayer()
+    {
+        _isMoving = true;
+        PlayerAnimation.instance.animator.SetBool("isMoving", true);
+        _moveVector = new Vector2(1f, 0f);
     }
     private void MovePlayer()
     {

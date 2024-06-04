@@ -26,8 +26,12 @@ public class FlightBonus : MonoBehaviour, IBonus
     }
     private void Awake()
     {
-        FlightBonusSprite.enabled = false;
         _isActive = false;
+    }
+
+    private void Start()
+    {
+        FlightBonusSprite.enabled = false;
     }
     public void ActivateBonus()
     {
@@ -36,6 +40,7 @@ public class FlightBonus : MonoBehaviour, IBonus
     }
     public void DeactivateBonus()
     {
+        FlightBonusSprite.enabled = false;
         _isActive = false;
         PlayerJump.instance.SetDefaultJumpsCount();
         PlayerMovement.instance.SetDefaultRigidBodyPropeties();
