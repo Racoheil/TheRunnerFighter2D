@@ -57,5 +57,9 @@ public static class EventService
     public static event Action<int> OnKillEnemy;
     public static void CallOnKillEnemy(int pointsCount)
         => OnKillEnemy?.Invoke(pointsCount);
+
+    public static event Action OnStartGame;
+    public static void CallOnStartGame()
+        => OnStartGame?.Invoke();
     
 }

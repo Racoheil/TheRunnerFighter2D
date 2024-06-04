@@ -23,17 +23,27 @@ public class CameraMovement : MonoBehaviour
 
     private bool isFollowPlayer = false;
 
+    private bool _isCameraMoving;
+
     private void OnEnable()
     {
         EventService.OnPlayerChangeLevel += ChangeCameraPosSmoothly;
         EventService.OnFlightBonusActivate += IncreaseCameraSpeed;
         EventService.OnFlightBonusDeactivate += SetDefaultSpeed;
+
+        EventService.OnStartGame += ActivateCamera;
     }
     private void OnDisable()
     {
         EventService.OnPlayerChangeLevel -= ChangeCameraPosSmoothly;
         EventService.OnFlightBonusActivate -= IncreaseCameraSpeed;
         EventService.OnFlightBonusDeactivate -= SetDefaultSpeed;
+
+        EventService.OnStartGame -= ActivateCamera;
+    }
+    private void Awake()
+    {
+        _isCameraMoving = false;
     }
     private void Start()
     {
@@ -47,6 +57,8 @@ public class CameraMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (_isCameraMoving == false) return;
+
         if(_targetObject.position.y < _maxY )
         {
             float interpolation = _speed * Time.deltaTime;
@@ -70,6 +82,15 @@ public class CameraMovement : MonoBehaviour
            // print("Follow to player!");
             transform.position = new Vector3(_targetObject.position.x, _targetObject.transform.position.y, transform.position.z);
         }
+    }
+
+    private void ActivateCamera()
+    {
+        _isCameraMoving = true;
+    }
+    private void DeactivateCamera()
+    {
+        _isCameraMoving = false;
     }
     private void ChangeCameraPosSmoothly()
     {

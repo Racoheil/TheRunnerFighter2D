@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
         EventService.OnTakeDamage += FreezePlayer;
         EventService.OnPlayerChangeLevel += IncreaseSpeed;
         EventService.OnPlayerLose += StopPlayer;
+
+        EventService.OnStartGame += ActivatePlayer;
+
     }
 
     private void OnDisable()
@@ -36,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         EventService.OnTakeDamage -= FreezePlayer;
         EventService.OnPlayerChangeLevel -= IncreaseSpeed;
         EventService.OnPlayerLose -= StopPlayer;
+
+        EventService.OnStartGame -= ActivatePlayer;
     }
     private void Awake()
     {
