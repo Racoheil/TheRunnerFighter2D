@@ -1,8 +1,7 @@
 using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+
 
 public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 {
@@ -13,6 +12,8 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
     [SerializeField] private GameObject _bulletPrefab;
 
     [SerializeField] private Transform _shotPoint;
+
+    [SerializeField] private int _bulletsCount = 5;
 
     private int _currentHealth;
 
@@ -26,8 +27,6 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     private float _shootingInterval = 5f;
 
-    [SerializeField] private int _bulletsCount = 5;
-
     private bool _isShooting = false;
 
     private bool _isDead = false;
@@ -37,6 +36,10 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
     private float _movingDistance = 0.8f;
 
     private int _pointsCount = 15;
+
+    private float _freezingTime = 0.4f;
+
+    private Tweener _animationsTweener;
 
     private void Awake()
     {
@@ -50,13 +53,9 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
     }
     private void FixedUpdate()
     {
-        //if (_isAttack)
-        //{
-        //    // Debug.Log("MOVE!!");
-        //    _rigidBody.velocity = new Vector2(_moveVector.x * _speed, _rigidBody.velocity.y);
-        //}
+     
     }
-    private IEnumerator ShootingCoroutine()
+    private IEnumerator ActivatingCoroutine()
     {
         for (int i = 0; i < _bulletsCount; i++)
         {
@@ -77,8 +76,8 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
         while (_isMoving)
         {
 
-            yield return transform.DOMoveY(topPositionY, _duration).SetEase(Ease.Linear).WaitForCompletion();
-            //yield return new WaitForSecondsRealtime(0.5f);
+            yield return  transform.DOMoveY(topPositionY, _duration).SetEase(Ease.Linear).WaitForCompletion();
+          
             yield return transform.DOMoveY(lowPositionY, _duration).SetEase(Ease.Linear).WaitForCompletion();
         }  
     }
@@ -113,7 +112,7 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
     }
     private void ActivateEnemy()
     {
-        StartCoroutine(ShootingCoroutine());
+        StartCoroutine(ActivatingCoroutine());
         _isMoving = true;
         StartCoroutine(MovingCoroutine());
     }
@@ -124,7 +123,7 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     public void OnShootEvent()
     {
-        Instantiate(_bulletPrefab, _shotPoint.position, _shotPoint.rotation);
+        StartCoroutine(ShootingCoroutine());
     }
 
     private void OnTriggerEnter2D(Collider2D collider2D)
@@ -133,6 +132,15 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
         {
             ActivateEnemy();
         }
+    }
+
+    private IEnumerator ShootingCoroutine()
+    {
+        transform.DOPause();
+        Instantiate(_bulletPrefab, _shotPoint.position, _shotPoint.rotation);
+
+        yield return new WaitForSecondsRealtime(_freezingTime);
+        transform.DOPlay();
     }
 
 }

@@ -129,9 +129,9 @@ public class PointsCounter : MonoBehaviour
         while (newColor.a > 0)
         {
             i++;
-            print("i = " + i);
+           // print("i = " + i);
             newColor.a -= Time.deltaTime / fadeDuration;
-            print("Delta time = " + Time.deltaTime);
+           // print("Delta time = " + Time.deltaTime);
             _addingPointsText.color = newColor;
             yield return null;
         }

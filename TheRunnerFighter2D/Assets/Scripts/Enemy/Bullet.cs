@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
-        _moveVector = new Vector2(-1, 0);
+        _moveVector = new Vector2(1, 0);
     }
     private void Start()
     {

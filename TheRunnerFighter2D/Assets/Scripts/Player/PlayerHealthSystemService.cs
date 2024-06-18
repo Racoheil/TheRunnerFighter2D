@@ -29,7 +29,7 @@ public class PlayerHealthSystemService : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        _isImmortal = false;
+        _isImmortal = true;
         _heartsList = new List<GameObject>();
         _health = _defaultHealth;
         ResetHealth();
@@ -56,7 +56,7 @@ public class PlayerHealthSystemService : MonoBehaviour
     public void TakeDamage()
     {
         ReduceHealth();
-        //Debug.Log("Health : " + _health);
+       
         ImmortalizeThePlayer(_immortalityTime);
     }
     public void ReduceHealth()
