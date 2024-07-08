@@ -39,6 +39,7 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     public void TakeDamage(int damageValue)
     {
         if (_isDead) return;
+        
 
         _animator.SetTrigger("TakeDamage");
 
@@ -48,6 +49,9 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 
         if (_currentHealth <= 0)
         {
+            _rigidBody.freezeRotation = false;
+            
+            Bounce();
             Die();
         }
     }
@@ -56,7 +60,7 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     {
         _isDead = true;
         _animator.SetBool("IsDead", _isDead);
-
+        
         print("Player kill " + this.name);
         EventService.CallOnKillEnemy(_pointsCount);
     }
@@ -74,6 +78,7 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     public void OnDieEvent()
     {
         this.gameObject.SetActive(false);
+        
     }
     public void Bounce()
     {

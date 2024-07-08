@@ -15,6 +15,8 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     [SerializeField] private int _bulletsCount = 5;
 
+    [SerializeField] private float _shootingInterval = 5f;
+
     private int _currentHealth;
 
     private BoxCollider2D _boxCollider2D;
@@ -25,7 +27,6 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     private Vector2 _moveVector;
 
-    private float _shootingInterval = 5f;
 
     private bool _isShooting = false;
 
@@ -38,8 +39,6 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
     private int _pointsCount = 15;
 
     private float _freezingTime = 0.4f;
-
-    private Tweener _animationsTweener;
 
     private void Awake()
     {
@@ -136,7 +135,7 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     private IEnumerator ShootingCoroutine()
     {
-        transform.DOPause();
+        transform.DOPause(); // Stop enemy's animations
         Instantiate(_bulletPrefab, _shotPoint.position, _shotPoint.rotation);
 
         yield return new WaitForSecondsRealtime(_freezingTime);
