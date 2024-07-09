@@ -7,6 +7,7 @@ public class LoseWinService : MonoBehaviour
     [SerializeField] private GameObject _losePanel;
 
     private float _loseDelay = 2f;
+
     private void OnEnable()
     {
         EventService.OnPlayerLose += DoOnLose;
@@ -23,6 +24,8 @@ public class LoseWinService : MonoBehaviour
     private void DoOnLose()
     {
         StartCoroutine(LoseRoutine());
+
+
     }
     
     private IEnumerator LoseRoutine()

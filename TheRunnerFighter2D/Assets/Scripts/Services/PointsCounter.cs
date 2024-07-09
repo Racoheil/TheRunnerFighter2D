@@ -24,6 +24,8 @@ public class PointsCounter : MonoBehaviour
 
     private bool _isPaused;
 
+    private ISaveService _saveService;
+
     private void OnEnable()
     {
         EventService.OnPlayerChangeLevel += OnChangeLevel;
@@ -57,6 +59,9 @@ public class PointsCounter : MonoBehaviour
         StartCount();
 
         _pointsCounterText.color = _colors[LevelData.instance.GetCurrentLevel()-1];
+
+        _saveService = new PrefsSaveService();
+        
     }
 
     private void ChangeCountDelay(float value)
@@ -71,19 +76,18 @@ public class PointsCounter : MonoBehaviour
     private void OnPlayerLose()
     {
         StopCount();
-        //HideCounter();
+
+        int currentBalance = _saveService.GetPlayerBalance() + _pointsCount;
+
+        _saveService.SavePlayerBalance(currentBalance);
     }
     private void StopCount()
     {
-        //StopCoroutine(PointsCountCoroutine());
-       // _isCount = false;
         _isPaused = true;
     }
     private void ContinueCount()
     {
-       // _isCount = true;
         _isPaused = false;
-       // StartCoroutine(PointsCountCoroutine());
     }
 
     private void HideCounter()
@@ -107,11 +111,9 @@ public class PointsCounter : MonoBehaviour
             if (!_isPaused && PlayerMovement.instance.GetRigidBodyVectorX() > 0.5f)
             {
                 _pointsCount++;
-                //print(_pointsCount);
                 _pointsCounterText.text = _pointsCount.ToString();
             }
-            //float delay = PlayerMovement.instance.GetRigidBodyVectorX() + 0.1f;
-            //print("delay = " + delay);
+
             yield return new WaitForSecondsRealtime(_countDelay);
         }
     }
