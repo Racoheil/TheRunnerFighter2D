@@ -14,6 +14,7 @@ public class MainMenuManager : MonoBehaviour
     {
         _mainMenuPanel.SetActive(true);
         _gamePanel.SetActive(false);
+        _shopPanel.SetActive(false);
     }
     public void StartGame()
     {
