@@ -6,6 +6,8 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _mainMenuPanel;
 
+    [SerializeField] private GameObject _playerBalance;
+
     [SerializeField] private GameObject _gamePanel;
 
     [SerializeField] private GameObject _shopPanel;
@@ -13,6 +15,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         _mainMenuPanel.SetActive(true);
+        _playerBalance.SetActive(true);
         _gamePanel.SetActive(false);
         _shopPanel.SetActive(false);
     }
@@ -20,6 +23,7 @@ public class MainMenuManager : MonoBehaviour
     {
         _mainMenuPanel.SetActive(false);
         _gamePanel.SetActive(true);
+        _playerBalance.SetActive(false);
 
         EventService.CallOnStartGame();
     }
