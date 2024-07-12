@@ -82,4 +82,21 @@ public class PrefsSaveService : ISaveService
                 break;
         }
     }
+    public void RemoveBooster(int numberOfBooster)
+    {
+        switch (numberOfBooster)
+        {
+            case 1:
+
+                int newCountBooster1 = PlayerPrefs.GetInt(Booster1Key, _defaultValue) - 1;
+                SaveBoosterCount(numberOfBooster, newCountBooster1);
+                break;
+
+            case 2:
+
+                int newCountBooster2 = PlayerPrefs.GetInt(Booster2Key, _defaultValue) - 1;
+                SaveBoosterCount(numberOfBooster, newCountBooster2);
+                break;
+        }
+    }
 }

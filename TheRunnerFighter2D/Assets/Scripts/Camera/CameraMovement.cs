@@ -28,16 +28,16 @@ public class CameraMovement : MonoBehaviour
     private void OnEnable()
     {
         EventService.OnPlayerChangeLevel += ChangeCameraPosSmoothly;
-        EventService.OnFlightBonusActivate += IncreaseCameraSpeed;
-        EventService.OnFlightBonusDeactivate += SetDefaultSpeed;
+        EventService.OnFlightBoosterActivate += IncreaseCameraSpeed;
+        EventService.OnFlightBoosterDeactivate += SetDefaultSpeed;
 
         EventService.OnStartGame += ActivateCamera;
     }
     private void OnDisable()
     {
         EventService.OnPlayerChangeLevel -= ChangeCameraPosSmoothly;
-        EventService.OnFlightBonusActivate -= IncreaseCameraSpeed;
-        EventService.OnFlightBonusDeactivate -= SetDefaultSpeed;
+        EventService.OnFlightBoosterActivate -= IncreaseCameraSpeed;
+        EventService.OnFlightBoosterDeactivate -= SetDefaultSpeed;
 
         EventService.OnStartGame -= ActivateCamera;
     }

@@ -22,13 +22,13 @@ public static class EventService
         => OnPlayerLose?.Invoke();
 
 
-    public static event Action OnArmorBonusActivate;
-    public static void CallOnArmorBonusActivate()
-        => OnArmorBonusActivate?.Invoke();
+    public static event Action OnArmorBoosterActivate;
+    public static void CallOnArmorBoosterActivate()
+        => OnArmorBoosterActivate?.Invoke();
 
-    public static event Action OnFlightBonusActivate;
-    public static void CallOnFlightBonusActivate()
-        => OnFlightBonusActivate?.Invoke();
+    public static event Action OnFlightBoosterActivate;
+    public static void CallOnFlightBoosterActivate()
+        => OnFlightBoosterActivate?.Invoke();
 
     public static event Action OnPauseGame;
     public static void CallOnPauseGame()
@@ -43,9 +43,9 @@ public static class EventService
     public static void CallOnResumeGame()
         => OnResumeGame?.Invoke();
 
-    public static event Action OnFlightBonusDeactivate;
-    public static void CallOnFlightBonusDeactivate()
-        => OnFlightBonusDeactivate?.Invoke();
+    public static event Action OnFlightBoosterDeactivate;
+    public static void CallOnFlightBoosterDeactivate()
+        => OnFlightBoosterDeactivate?.Invoke();
 
     public static event Action OnPlayerReachedBackgroundMiddle;
     public static void CallOnPlayerReachedBackgroundMiddle()

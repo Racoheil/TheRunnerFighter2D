@@ -20,8 +20,12 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] private TMP_Text _booster2CountText;
 
+    [SerializeField] private TMP_Text _warningText;
+
     private void Start()
     {
+        _warningText.gameObject.SetActive(false);
+
         _saveService = new PrefsSaveService();
         SetBoostersPrices();
         SetAllBoostersCount();
@@ -52,7 +56,7 @@ public class ShopManager : MonoBehaviour
 
                     SetAllBoostersCount();
                 }
-                else print("No money");
+                else StartCoroutine(ShowWarningCoroutine());
 
                 break;
 
@@ -65,9 +69,16 @@ public class ShopManager : MonoBehaviour
 
                     SetAllBoostersCount();
                 }
-                else print("No money");
+                else StartCoroutine(ShowWarningCoroutine());
 
                 break;
         }
+    }
+
+    IEnumerator ShowWarningCoroutine()
+    {
+        _warningText.gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(5f);
+        _warningText.gameObject.SetActive(false);
     }
 }

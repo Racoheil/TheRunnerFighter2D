@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlightBonus : MonoBehaviour, IBonus
+public class FlightBooster : MonoBehaviour, IBooster
 {
-    [SerializeField] SpriteRenderer FlightBonusSprite;
+    [SerializeField] SpriteRenderer FlightBoosterSprite;
 
     private bool _isActive;
 
@@ -16,13 +16,15 @@ public class FlightBonus : MonoBehaviour, IBonus
 
     private float _newMass = 2.5f;
 
+    private int _boosterNumber = 2;
+
     private void OnEnable()
     {
-        EventService.OnFlightBonusActivate += ActivateBonus;
+        EventService.OnFlightBoosterActivate += ActivateBooster;
     }
     private void OnDisable()
     {
-        EventService.OnFlightBonusActivate -= ActivateBonus;
+        EventService.OnFlightBoosterActivate -= ActivateBooster;
     }
     private void Awake()
     {
@@ -31,22 +33,24 @@ public class FlightBonus : MonoBehaviour, IBonus
 
     private void Start()
     {
-        FlightBonusSprite.enabled = false;
+        FlightBoosterSprite.enabled = false;
     }
-    public void ActivateBonus()
+    public void ActivateBooster()
     {
-        FlightBonusSprite.enabled = true;
-        StartCoroutine(ActivateBonusRoutine(_activeTime));
+        BoostersPanel._instance.UseBooster(_boosterNumber);
+
+        FlightBoosterSprite.enabled = true;
+        StartCoroutine(ActivateBoosterRoutine(_activeTime));
     }
-    public void DeactivateBonus()
+    public void DeactivateBooster()
     {
-        FlightBonusSprite.enabled = false;
+        FlightBoosterSprite.enabled = false;
         _isActive = false;
         PlayerJump.instance.SetDefaultJumpsCount();
         PlayerMovement.instance.SetDefaultRigidBodyPropeties();
-        EventService.CallOnFlightBonusDeactivate();
+        EventService.CallOnFlightBoosterDeactivate();
     }
-    private IEnumerator ActivateBonusRoutine(float time)
+    private IEnumerator ActivateBoosterRoutine(float time)
     {
         _isActive = true;
         PlayerJump.instance.SetJumpsCount(_newJumpsCount);
@@ -54,6 +58,6 @@ public class FlightBonus : MonoBehaviour, IBonus
         PlayerMovement.instance.SetGravityScale(_newGravityScale);
         PlayerMovement.instance.SetMass(_newMass);
         yield return new WaitForSecondsRealtime(_activeTime);
-        DeactivateBonus();
+        DeactivateBooster();
     }
 }

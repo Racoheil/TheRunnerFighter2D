@@ -16,6 +16,7 @@ public interface ISaveService
     public int GetBoosterCount(int numberOfBooster);
 
     public void AddBooster(int numberOfBooster);
+    public void RemoveBooster(int numberOfBooster);
 
 
 
