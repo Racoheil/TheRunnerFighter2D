@@ -21,6 +21,9 @@ public static class EventService
     public static void CallOnPlayerLose()
         => OnPlayerLose?.Invoke();
 
+    public static event Action<int> OnBoosterButtonPressed;
+    public static void CallOnBoosterButtonPressed(int boosterNumber)
+        => OnBoosterButtonPressed?.Invoke(boosterNumber);
 
     public static event Action OnArmorBoosterActivate;
     public static void CallOnArmorBoosterActivate()

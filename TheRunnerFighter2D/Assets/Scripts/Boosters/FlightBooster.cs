@@ -18,6 +18,7 @@ public class FlightBooster : MonoBehaviour, IBooster
 
     private int _boosterNumber = 2;
 
+    public static FlightBooster instance;
     private void OnEnable()
     {
         EventService.OnFlightBoosterActivate += ActivateBooster;
@@ -28,6 +29,7 @@ public class FlightBooster : MonoBehaviour, IBooster
     }
     private void Awake()
     {
+        instance = this;
         _isActive = false;
     }
 
@@ -37,10 +39,10 @@ public class FlightBooster : MonoBehaviour, IBooster
     }
     public void ActivateBooster()
     {
-        BoostersPanel._instance.UseBooster(_boosterNumber);
+            //BoostersPanel._instance.UseBooster(_boosterNumber);
 
-        FlightBoosterSprite.enabled = true;
-        StartCoroutine(ActivateBoosterRoutine(_activeTime));
+            FlightBoosterSprite.enabled = true;
+            StartCoroutine(ActivateBoosterRoutine(_activeTime));   
     }
     public void DeactivateBooster()
     {
@@ -59,5 +61,10 @@ public class FlightBooster : MonoBehaviour, IBooster
         PlayerMovement.instance.SetMass(_newMass);
         yield return new WaitForSecondsRealtime(_activeTime);
         DeactivateBooster();
+    }
+
+    public bool GetActivity()
+    {
+        return _isActive;
     }
 }

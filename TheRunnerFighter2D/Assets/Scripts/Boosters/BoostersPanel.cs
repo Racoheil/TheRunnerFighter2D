@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,36 +13,30 @@ public class BoostersPanel : MonoBehaviour
 
     private int _booster2Count;
 
-    public static BoostersPanel _instance;
+    //public static BoostersPanel _instance;
 
     private void OnEnable()
     {
-        //EventService.OnStartGame += ActivatePanel;
+        SetAllBoostersCount();
 
-        SetAllBoostersCount();  
+        EventService.OnBoosterButtonPressed += UseBooster;
     }
     private void OnDisable()
     {
-       // EventService.OnStartGame -= ActivatePanel;
+        EventService.OnBoosterButtonPressed -= UseBooster;
     }
     private void Awake()
     {
-       // this.enabled = false;
         _saveService = new PrefsSaveService();
     }
     private void Start()
     {
         SetAllBoostersCount();
-        _instance = this;
     }
-    private void ActivatePanel()
-    {
-        this.enabled = true;
-        //this.gameObject.SetActive()
-    }
+   
     private void SetAllBoostersCount()
     {
-        print("setting Count");
+       // print("setting Count");
         _booster1Count = _saveService.GetBoosterCount(1);
         _booster2Count = _saveService.GetBoosterCount(2);
         _booster1CountText.text = _booster1Count.ToString();
@@ -57,27 +49,41 @@ public class BoostersPanel : MonoBehaviour
         {
             case 1:
 
-                if (_booster1Count > 0)
+                if (_booster1Count > 0 && ArmorBooster.instance.GetActivity() == false)
                 {
+                    EventService.CallOnArmorBoosterActivate();
+
                     _saveService.RemoveBooster(numberOfbooster);
 
                     SetAllBoostersCount();
+
+                    break;
+                    
                 }
-                else print("No boosters!");
+                else
+                {
+                    print("No 1 boosters!");
 
-                break;
-
+                    break;
+                }
+           
             case 2:
 
-                if (_booster2Count > 0)
+                if (_booster2Count > 0 && FlightBooster.instance.GetActivity() == false)
                 {
+                    EventService.CallOnFlightBoosterActivate();
+
                     _saveService.RemoveBooster(numberOfbooster);
 
                     SetAllBoostersCount();
+                    break; 
                 }
-                else print("No boosters!");
+                else
+                {
+                    print("No 2 boosters!");
 
-                break;
+                    break;
+                }
         }
     }
 

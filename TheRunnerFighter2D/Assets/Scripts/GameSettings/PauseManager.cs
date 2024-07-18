@@ -21,6 +21,7 @@ public class PauseManager : MonoBehaviour
     }
     private void Awake()
     {
+        Time.timeScale = 1;
         _isPaused = false;
         _isResumed = false;
         _pausePanel.SetActive(false);

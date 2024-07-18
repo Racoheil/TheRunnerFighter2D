@@ -19,11 +19,11 @@ public class ButtonsHandler : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            EventService.CallOnArmorBoosterActivate();
+            EventService.CallOnBoosterButtonPressed(1);
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            EventService.CallOnFlightBoosterActivate();
+            EventService.CallOnBoosterButtonPressed(2);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

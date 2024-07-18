@@ -13,6 +13,8 @@ public class ArmorBooster : MonoBehaviour, IBooster
 
     private int _boosterNumber = 1;
 
+    public static ArmorBooster instance;
+
     private void OnEnable()
     {
         EventService.OnArmorBoosterActivate += ActivateBooster;
@@ -23,7 +25,7 @@ public class ArmorBooster : MonoBehaviour, IBooster
     }
     private void Awake()
     {
-
+        instance = this;
     }
     private void Start()
     {
@@ -31,8 +33,6 @@ public class ArmorBooster : MonoBehaviour, IBooster
     }
     public void ActivateBooster()
     {
-        BoostersPanel._instance.UseBooster(_boosterNumber);
-
         StartCoroutine(ActivateBoosterRoutine(_activeTime));
         PlayerHealthSystemService.instance.ImmortalizeThePlayer(_activeTime);
     }
@@ -48,5 +48,10 @@ public class ArmorBooster : MonoBehaviour, IBooster
         ArmorBoosterSprite.enabled = true;
         yield return new WaitForSecondsRealtime(_activeTime);
         DeactivateBooster();
+    }
+
+    public bool GetActivity()
+    {
+        return _isActive;
     }
 }

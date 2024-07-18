@@ -21,7 +21,7 @@ public class PrefsSaveService : ISaveService
     }
     public int GetPlayerBalance()                     // Получить баланс
     {
-        return PlayerPrefs.GetInt(PlayerBalanceKey);
+        return PlayerPrefs.GetInt(PlayerBalanceKey, 1000);
     }
 
     public void SaveBestScore(int value)             // Сохранить рекорд
