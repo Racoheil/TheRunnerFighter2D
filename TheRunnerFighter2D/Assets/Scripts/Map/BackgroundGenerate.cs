@@ -12,7 +12,7 @@ public class GenerateBackground : MonoBehaviour
 
     private bool _isFirstTile;
 
-    private float _addingValueX = 380f;
+    [SerializeField] private float _addingValueX = 192f;
 
     private void OnEnable()
     {

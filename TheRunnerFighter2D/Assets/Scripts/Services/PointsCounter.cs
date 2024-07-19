@@ -80,7 +80,10 @@ public class PointsCounter : MonoBehaviour
         int currentBalance = _saveService.GetPlayerBalance() + _pointsCount;
 
         _saveService.SavePlayerBalance(currentBalance);
+
+        this.gameObject.SetActive(false);
     }
+
     private void StopCount()
     {
         _isPaused = true;
@@ -143,6 +146,10 @@ public class PointsCounter : MonoBehaviour
 
         _pointsCount += addingValue;
         _pointsCounterText.text = _pointsCount.ToString();
-   
+    }
+
+    public int GetPointsCount()
+    {
+        return _pointsCount;
     }
 }
