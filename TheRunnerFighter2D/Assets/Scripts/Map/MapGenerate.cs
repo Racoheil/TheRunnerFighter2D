@@ -25,7 +25,7 @@ public class MapGenerate : MonoBehaviour
 
     private float _addingValueX;        // Additing value for next tile position 
 
-    private float _addingValueY = -30;   // Additing value for next level tile position
+    private float _addingValueY = -22;   // Additing value for next level tile position
 
     public static MapGenerate instance; // SingleTon pattern
 
