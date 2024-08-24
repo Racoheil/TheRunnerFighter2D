@@ -62,4 +62,18 @@ public static class EventService
     public static void CallOnStartGame()
         => OnStartGame?.Invoke();
     
+    public static event Action OnAttackSound;
+    public static void CallOnAttackSound()
+        => OnAttackSound?.Invoke();
+
+    public static event Action OnEnemyTakeDamageSound;
+    public static void CallOnEnemyTakeDamageSound()
+        => OnEnemyTakeDamageSound?.Invoke();
+
+    public static event Action OnEnemyDie;
+    public static void CallOnEnemyDie()
+        => OnEnemyDie?.Invoke();
+
+
+
 }

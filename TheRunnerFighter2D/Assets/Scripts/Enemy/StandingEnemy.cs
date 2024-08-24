@@ -47,6 +47,8 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 
         Bounce();
 
+        EventService.CallOnEnemyTakeDamageSound();
+
         if (_currentHealth <= 0)
         {
             _rigidBody.freezeRotation = false;

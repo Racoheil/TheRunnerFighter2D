@@ -2678,6 +2678,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonTap: {fileID: 8300000, guid: 3993fae7362d6e64bb7f349fd894b52b, type: 3}
+  AttackSound: {fileID: 8300000, guid: c9da9783b320eeb48b5bf83563b77af9, type: 3}
+  EnemyDamage: {fileID: 8300000, guid: 60aefe1eba7019447a6deac0752e8c1d, type: 3}
+  EnemyDie: {fileID: 8300000, guid: 05c76f0899dc0de46a0ec4d687969548, type: 3}
   PlayerDeath: {fileID: 0}
   _audioSource: {fileID: 321976359}
 --- !u!1 &323220794

@@ -98,11 +98,14 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
  
     public void TakeDamage(int damageValue)
     {
+        EventService.CallOnEnemyTakeDamageSound();
+
         if (_isDead) return;
 
         _animator.SetTrigger("TakeDamage");
 
         _currentHealth -= damageValue;
+
 
         if (_currentHealth <= 0)
         {
