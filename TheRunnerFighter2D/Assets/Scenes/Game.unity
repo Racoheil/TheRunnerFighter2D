@@ -2694,7 +2694,7 @@ MonoBehaviour:
   EnemyDamage: {fileID: 8300000, guid: 60aefe1eba7019447a6deac0752e8c1d, type: 3}
   EnemyDie: {fileID: 8300000, guid: 05c76f0899dc0de46a0ec4d687969548, type: 3}
   GameStart: {fileID: 8300000, guid: f6f97aff33141ef43923aae8bc4f03b0, type: 3}
-  PlayerJump: {fileID: 8300000, guid: f90f9a82e29c9ec4b84852e97eac1cd2, type: 3}
+  PlayerJump: {fileID: 8300000, guid: 5748a345e88481041afaed99e42238a4, type: 3}
   EnemyShot: {fileID: 8300000, guid: 8973e435177728148980efca27819dfa, type: 3}
   BoosterBuy: {fileID: 8300000, guid: 56a8365c646134e4c83027b03e94e2d7, type: 3}
   NotEnoughMoney: {fileID: 8300000, guid: 5dff4e8a2a3c5d7479645fd2654b1f8f, type: 3}
