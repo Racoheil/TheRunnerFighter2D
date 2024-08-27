@@ -57,9 +57,11 @@ public class PlayerJump : MonoBehaviour
     }
     private void Jump(float jumpForce)
     {
-       // PlayerAnimation.instance.ChangeAnimation("jump");
         if (_jumps > 0 && !_hasDoubleJumped && _isJump)
         {
+
+            EventService.CallOnPlayerJumpSound();
+
             _rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             _jumps -= 1;
             _hasDoubleJumped = true;

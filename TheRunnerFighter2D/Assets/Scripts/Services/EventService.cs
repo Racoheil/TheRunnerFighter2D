@@ -70,10 +70,25 @@ public static class EventService
     public static void CallOnEnemyTakeDamageSound()
         => OnEnemyTakeDamageSound?.Invoke();
 
-    public static event Action OnEnemyDie;
-    public static void CallOnEnemyDie()
-        => OnEnemyDie?.Invoke();
+    public static event Action OnEnemyDieSound;
+    public static void CallOnEnemyDieSound()
+        => OnEnemyDieSound?.Invoke();
 
+    public static event Action OnPlayerJumpSound;
+    public static void CallOnPlayerJumpSound()
+        => OnPlayerJumpSound?.Invoke();
+
+    public static event Action OnEnemyShotSound;
+    public static void CallOnEnemyShotSound()
+        => OnEnemyShotSound?.Invoke();
+
+    public static event Action OnBoosterBuy;
+    public static void CallOnBoosterBuy()
+        => OnBoosterBuy?.Invoke();
+
+    public static event Action OnNotEnoughMoney;
+    public static void CallOnNotEnoughMoney()
+        => OnNotEnoughMoney?.Invoke();
 
 
 }

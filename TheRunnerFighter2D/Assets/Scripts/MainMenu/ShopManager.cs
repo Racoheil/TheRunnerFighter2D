@@ -51,26 +51,38 @@ public class ShopManager : MonoBehaviour
 
                 if (PlayerBalance.instance.GetPlayerBalance() >= _booster1Price)
                 {
+                    EventService.CallOnBoosterBuy();
+
                     _saveService.AddBooster(numberOfbooster);
                     PlayerBalance.instance.ReduceBalance(_booster1Price);
 
                     SetAllBoostersCount();
                 }
-                else StartCoroutine(ShowWarningCoroutine());
+                else
+                {
+                    EventService.CallOnNotEnoughMoney();
 
+                    StartCoroutine(ShowWarningCoroutine());
+                }
                 break;
 
             case 2:
 
                 if (PlayerBalance.instance.GetPlayerBalance() >= _booster2Price)
                 {
+                    EventService.CallOnBoosterBuy();
+
                     _saveService.AddBooster(numberOfbooster);
                     PlayerBalance.instance.ReduceBalance(_booster2Price);
 
                     SetAllBoostersCount();
                 }
-                else StartCoroutine(ShowWarningCoroutine());
+                else
+                {
+                    EventService.CallOnNotEnoughMoney();
 
+                    StartCoroutine(ShowWarningCoroutine());
+                }
                 break;
         }
     }

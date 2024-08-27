@@ -1894,6 +1894,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &262934237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,6 +2693,11 @@ MonoBehaviour:
   AttackSound: {fileID: 8300000, guid: c9da9783b320eeb48b5bf83563b77af9, type: 3}
   EnemyDamage: {fileID: 8300000, guid: 60aefe1eba7019447a6deac0752e8c1d, type: 3}
   EnemyDie: {fileID: 8300000, guid: 05c76f0899dc0de46a0ec4d687969548, type: 3}
+  GameStart: {fileID: 8300000, guid: f6f97aff33141ef43923aae8bc4f03b0, type: 3}
+  PlayerJump: {fileID: 8300000, guid: f90f9a82e29c9ec4b84852e97eac1cd2, type: 3}
+  EnemyShot: {fileID: 8300000, guid: 8973e435177728148980efca27819dfa, type: 3}
+  BoosterBuy: {fileID: 8300000, guid: 56a8365c646134e4c83027b03e94e2d7, type: 3}
+  NotEnoughMoney: {fileID: 8300000, guid: 5dff4e8a2a3c5d7479645fd2654b1f8f, type: 3}
   PlayerDeath: {fileID: 0}
   _audioSource: {fileID: 321976359}
 --- !u!1 &323220794
@@ -7037,6 +7054,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &900970764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8718,6 +8747,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1154828089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8992,6 +9033,18 @@ MonoBehaviour:
       - m_Target: {fileID: 824409203}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: GoToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12753,7 +12806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1792164132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13611,7 +13664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1963699976
 RectTransform:
   m_ObjectHideFlags: 0
