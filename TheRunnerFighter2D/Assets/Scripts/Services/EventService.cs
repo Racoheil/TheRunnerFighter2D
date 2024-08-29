@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 
 public static class EventService
 {
@@ -89,6 +90,10 @@ public static class EventService
     public static event Action OnNotEnoughMoney;
     public static void CallOnNotEnoughMoney()
         => OnNotEnoughMoney?.Invoke();
+
+    public static event Action OnPlayerLanding;
+    public static void CallOnPlayerLanding()
+        => OnPlayerLanding?.Invoke();
 
 
 }

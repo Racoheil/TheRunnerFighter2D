@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
@@ -7,11 +6,14 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float _jumpForce = 1f;
 
     [SerializeField] private int _maxJumps = 2;
+
+    [SerializeField] private int _groundLayer = 3;
+
     private int _defaultJumpsCount;
 
     private bool _isButtonPressed;
 
-    private int _jumps = 0;
+    private int _jumps;
 
     private Rigidbody2D _rigidBody;
 
@@ -21,29 +23,28 @@ public class PlayerJump : MonoBehaviour
 
     private bool _isJump = true;
 
+    private bool _isJumping = false;
+
     public static PlayerJump instance;
     private void Awake()
     {
         instance = this;
         _rigidBody = GetComponent<Rigidbody2D>();
         _defaultJumpsCount = _maxJumps;
+        //_jumps = _maxJumps;
     }
     private void FixedUpdate()
     {
-
         if (GroundCheck.instance.GetIsGrounded())
         {
             _jumps = _maxJumps - 1;
-        }
-        else if (GroundCheck.instance.GetIsGrounded()==false)
-        {
-
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump(_jumpForce);
         }
     }
+
     private void OnEnable()
     {
         EventService.OnTakeDamage += FreezePlayer;
@@ -59,17 +60,16 @@ public class PlayerJump : MonoBehaviour
     {
         if (_jumps > 0 && !_hasDoubleJumped && _isJump)
         {
-
+            
             EventService.CallOnPlayerJumpSound();
 
             _rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            _jumps -= 1;
+            //StartCoroutine(LandingRoutine());
+            _jumps--;
             _hasDoubleJumped = true;
             StartCoroutine(ResetDoubleJump());
-           // Debug.Log("Jump!");
-            
         }
-        if(_jumps == 0)
+        if (_jumps == 0)
         {
             return;
         }
@@ -92,9 +92,20 @@ public class PlayerJump : MonoBehaviour
     IEnumerator FreezePlayerCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        // _moveVector.x = 1f;
         _isJump = true;
     }
+
+    //IEnumerator LandingRoutine()
+    //{
+    //    print("JUMPING SUKA");
+    //    while(GroundCheck.instance.GetIsGrounded() == false)
+    //    {
+    //        print("Is jumping");
+    //        yield return new WaitForSeconds(0.01f);
+    //    }
+    //        EventService.CallOnPlayerLanding();
+
+    //}
 
     public void SetJumpsCount(int value)
     {
@@ -109,4 +120,13 @@ public class PlayerJump : MonoBehaviour
     {
         _isJump = false;
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == _groundLayer)
+        {
+            EventService.CallOnPlayerLanding();
+            print("Landing!");
+        }
+    }
+
 }

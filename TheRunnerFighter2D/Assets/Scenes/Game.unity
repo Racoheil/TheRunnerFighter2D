@@ -2695,6 +2695,7 @@ MonoBehaviour:
   EnemyDie: {fileID: 8300000, guid: 05c76f0899dc0de46a0ec4d687969548, type: 3}
   GameStart: {fileID: 8300000, guid: f6f97aff33141ef43923aae8bc4f03b0, type: 3}
   PlayerJump: {fileID: 8300000, guid: 5748a345e88481041afaed99e42238a4, type: 3}
+  PlayerLanding: {fileID: 8300000, guid: 24b00009c868b4e4dad64dcb6b8fb86f, type: 3}
   EnemyShot: {fileID: 8300000, guid: 8973e435177728148980efca27819dfa, type: 3}
   BoosterBuy: {fileID: 8300000, guid: 56a8365c646134e4c83027b03e94e2d7, type: 3}
   NotEnoughMoney: {fileID: 8300000, guid: 5dff4e8a2a3c5d7479645fd2654b1f8f, type: 3}
@@ -14836,6 +14837,14 @@ PrefabInstance:
     - target: {fileID: 641857384575751231, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322959829696456132, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322959829696456132, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
+      propertyPath: _groundLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1403334038236096990, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
       propertyPath: m_Enabled

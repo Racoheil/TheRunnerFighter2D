@@ -11,6 +11,7 @@ public class SoundService : MonoBehaviour
         EnemyDie,
         GameStart,
         PlayerJump,
+        PlayerLanding,
         EnemyShot,
         BoosterBuy,
         NotEnoughMoney,
@@ -28,6 +29,7 @@ public class SoundService : MonoBehaviour
         EventService.OnEnemyShotSound += PlayEnemyShot;
         EventService.OnNotEnoughMoney += PlayNotEnoughMoney;
         EventService.OnBoosterBuy += PlayBoosterBuy;
+        EventService.OnPlayerLanding += PlayPlayerLanding;
     }
     private void OnDisable()
     {
@@ -39,6 +41,7 @@ public class SoundService : MonoBehaviour
         EventService.OnEnemyShotSound -= PlayEnemyShot;
         EventService.OnNotEnoughMoney -= PlayNotEnoughMoney;
         EventService.OnBoosterBuy -= PlayBoosterBuy;
+        EventService.OnPlayerLanding -= PlayPlayerLanding;
     }
     public void PlaySound(AudioClip audio)
     {
@@ -89,5 +92,10 @@ public class SoundService : MonoBehaviour
     public void PlayNotEnoughMoney()
     {
         PlaySound(NotEnoughMoney);
+    }
+
+    public void PlayPlayerLanding()
+    {
+        PlaySound(PlayerLanding);
     }
 }

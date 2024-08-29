@@ -54,6 +54,7 @@ public class FlightBooster : MonoBehaviour, IBooster
     }
     private IEnumerator ActivateBoosterRoutine(float time)
     {
+        print("Flight booster activated");
         _isActive = true;
         PlayerJump.instance.SetJumpsCount(_newJumpsCount);
 
