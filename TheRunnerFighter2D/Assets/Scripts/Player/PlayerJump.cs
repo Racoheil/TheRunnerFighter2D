@@ -7,8 +7,6 @@ public class PlayerJump : MonoBehaviour
 
     [SerializeField] private int _maxJumps = 2;
 
-    [SerializeField] private int _groundLayer = 3;
-
     private int _defaultJumpsCount;
 
     private bool _isButtonPressed;
@@ -122,7 +120,7 @@ public class PlayerJump : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == _groundLayer)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             EventService.CallOnPlayerLanding();
             print("Landing!");
