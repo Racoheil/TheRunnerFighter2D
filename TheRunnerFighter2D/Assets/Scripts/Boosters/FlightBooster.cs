@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlightBooster : MonoBehaviour, IBooster
@@ -39,10 +38,10 @@ public class FlightBooster : MonoBehaviour, IBooster
     }
     public void ActivateBooster()
     {
-            //BoostersPanel._instance.UseBooster(_boosterNumber);
+        EventService.CallOnBoosterActivateSound();
 
-            FlightBoosterSprite.enabled = true;
-            StartCoroutine(ActivateBoosterRoutine(_activeTime));   
+        FlightBoosterSprite.enabled = true;
+        StartCoroutine(ActivateBoosterRoutine(_activeTime));   
     }
     public void DeactivateBooster()
     {

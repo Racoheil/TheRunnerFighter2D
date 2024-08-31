@@ -95,5 +95,9 @@ public static class EventService
     public static void CallOnPlayerLanding()
         => OnPlayerLanding?.Invoke();
 
+    public static event Action OnBoosterActivateSound;
+    public static void CallOnBoosterActivateSound()
+        => OnBoosterActivateSound?.Invoke();
+
 
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SoundService : MonoBehaviour
 {
-    [SerializeField] private AudioClip
+    [SerializeField]
+    private AudioClip
         ButtonTap,
         AttackSound,
         EnemyDamage,
@@ -12,10 +13,12 @@ public class SoundService : MonoBehaviour
         GameStart,
         PlayerJump,
         PlayerLanding,
+        PlayerDamage,
+        BoosterActivate,
         EnemyShot,
         BoosterBuy,
         NotEnoughMoney,
-        PlayerDeath;
+        PlayerLose;
 
     [SerializeField] private AudioSource _audioSource;
 
@@ -30,6 +33,9 @@ public class SoundService : MonoBehaviour
         EventService.OnNotEnoughMoney += PlayNotEnoughMoney;
         EventService.OnBoosterBuy += PlayBoosterBuy;
         EventService.OnPlayerLanding += PlayPlayerLanding;
+        EventService.OnTakeDamage += PlayPlayerDamage;
+        EventService.OnPlayerLose += PlayPlayerLose;
+        EventService.OnBoosterActivateSound += PlayBoosterActivate;
     }
     private void OnDisable()
     {
@@ -42,6 +48,9 @@ public class SoundService : MonoBehaviour
         EventService.OnNotEnoughMoney -= PlayNotEnoughMoney;
         EventService.OnBoosterBuy -= PlayBoosterBuy;
         EventService.OnPlayerLanding -= PlayPlayerLanding;
+        EventService.OnTakeDamage -= PlayPlayerDamage;
+        EventService.OnPlayerLose -= PlayPlayerLose;
+        EventService.OnBoosterActivateSound -= PlayBoosterActivate;
     }
     public void PlaySound(AudioClip audio)
     {
@@ -97,5 +106,20 @@ public class SoundService : MonoBehaviour
     public void PlayPlayerLanding()
     {
         PlaySound(PlayerLanding);
+    }
+
+    public void PlayPlayerDamage()
+    {
+        PlaySound(PlayerDamage);
+    }
+
+    public void PlayPlayerLose()
+    {
+        PlaySound(PlayerLose);
+    }
+
+    public void PlayBoosterActivate()
+    {
+        PlaySound(BoosterActivate);
     }
 }

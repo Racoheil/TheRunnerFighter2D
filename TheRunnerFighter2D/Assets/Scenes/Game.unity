@@ -2696,10 +2696,12 @@ MonoBehaviour:
   GameStart: {fileID: 8300000, guid: f6f97aff33141ef43923aae8bc4f03b0, type: 3}
   PlayerJump: {fileID: 8300000, guid: 5748a345e88481041afaed99e42238a4, type: 3}
   PlayerLanding: {fileID: 8300000, guid: 24b00009c868b4e4dad64dcb6b8fb86f, type: 3}
+  PlayerDamage: {fileID: 8300000, guid: 71ba4182ebba643498ba31b39dadb183, type: 3}
+  BoosterActivate: {fileID: 8300000, guid: 1f225feac8b971542bb41eea39074a2f, type: 3}
   EnemyShot: {fileID: 8300000, guid: 8973e435177728148980efca27819dfa, type: 3}
   BoosterBuy: {fileID: 8300000, guid: 56a8365c646134e4c83027b03e94e2d7, type: 3}
   NotEnoughMoney: {fileID: 8300000, guid: 5dff4e8a2a3c5d7479645fd2654b1f8f, type: 3}
-  PlayerDeath: {fileID: 0}
+  PlayerLose: {fileID: 8300000, guid: 94ed639a32113d04c94b26e33e9c8d34, type: 3}
   _audioSource: {fileID: 321976359}
 --- !u!1 &323220794
 GameObject:
