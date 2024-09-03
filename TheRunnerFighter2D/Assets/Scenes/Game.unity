@@ -3208,6 +3208,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &344335522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4056,17 +4068,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471252453}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1458928862}
-  m_Father: {fileID: 1910226562}
+  m_Father: {fileID: 1460812601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -265}
+  m_AnchoredPosition: {x: 0.004629071, y: -429.2}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &471252455
@@ -4116,6 +4128,18 @@ MonoBehaviour:
       - m_Target: {fileID: 471252458}
         m_TargetAssemblyTypeName: RestartButton, Assembly-CSharp
         m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6781,7 +6805,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 879355039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &879355039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7153,6 +7189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heartsPanel: {fileID: 1031994607}
   _heartPrefab: {fileID: 2113593726930836477, guid: 8bdb8235461c8de489f5c318c4203a09, type: 3}
+  _isImmortal: 0
 --- !u!1 &925739612
 GameObject:
   m_ObjectHideFlags: 0
@@ -10784,7 +10821,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 471252454}
   m_Father: {fileID: 1910226562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -12809,7 +12847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1792164132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13571,7 +13609,6 @@ RectTransform:
   m_Children:
   - {fileID: 204810319}
   - {fileID: 1460812601}
-  - {fileID: 471252454}
   - {fileID: 1288787032}
   m_Father: {fileID: 1963699976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13667,7 +13704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1963699976
 RectTransform:
   m_ObjectHideFlags: 0

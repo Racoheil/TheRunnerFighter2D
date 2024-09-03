@@ -18,7 +18,7 @@ public class PlayerHealthSystemService : MonoBehaviour
 
     [SerializeField] private GameObject _heartPrefab;
 
-    private bool _isImmortal;
+    [SerializeField] private bool _isImmortal;
 
     private float _immortalityTime = 3f;
 
