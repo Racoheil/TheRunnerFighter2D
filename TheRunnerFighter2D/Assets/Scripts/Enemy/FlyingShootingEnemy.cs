@@ -94,15 +94,20 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
     public void OnDieEvent()
     {
         this.gameObject.SetActive(false);
+
+        EventService.CallOnEnemyDieSound();
     }
  
     public void TakeDamage(int damageValue)
     {
+        EventService.CallOnEnemyTakeDamageSound();
+
         if (_isDead) return;
 
         _animator.SetTrigger("TakeDamage");
 
         _currentHealth -= damageValue;
+
 
         if (_currentHealth <= 0)
         {
@@ -135,6 +140,8 @@ public class FlyingShootingEnemy : MonoBehaviour, IEnemy
 
     private IEnumerator ShootingCoroutine()
     {
+        EventService.CallOnEnemyShotSound();
+
         transform.DOPause(); // Stop enemy's animations
         Instantiate(_bulletPrefab, _shotPoint.position, _shotPoint.rotation);
 

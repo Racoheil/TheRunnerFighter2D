@@ -20,7 +20,13 @@ public class GroundCheck : MonoBehaviour
     {
         return _isGrounded;
     }
-
+    public int GetLayerMask()
+    {
+       
+        return _groundLayer.value;
+        
+        
+    }
     public void SetIsGrounded(bool value)
     {
         _isGrounded = value;

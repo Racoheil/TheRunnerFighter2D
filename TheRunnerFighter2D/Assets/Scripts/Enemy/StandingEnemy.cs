@@ -47,6 +47,8 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 
         Bounce();
 
+        EventService.CallOnEnemyTakeDamageSound();
+
         if (_currentHealth <= 0)
         {
             _rigidBody.freezeRotation = false;
@@ -63,6 +65,8 @@ public class StandingEnemy : MonoBehaviour, IEnemy
         
         print("Player kill " + this.name);
         EventService.CallOnKillEnemy(_pointsCount);
+
+        EventService.CallOnEnemyDieSound();
     }
     public void Attack()
     {

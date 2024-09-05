@@ -1287,6 +1287,7 @@ Transform:
   m_Children:
   - {fileID: 455368683}
   - {fileID: 769523128}
+  - {fileID: 321976358}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &168082983
@@ -1884,6 +1885,18 @@ MonoBehaviour:
       - m_Target: {fileID: 824409203}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2535,6 +2548,161 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319316448}
   m_CullTransparentMesh: 1
+--- !u!1 &321976357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 321976358}
+  - component: {fileID: 321976360}
+  - component: {fileID: 321976359}
+  m_Layer: 0
+  m_Name: SoundService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &321976358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321976357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 160913836}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &321976359
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321976357}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &321976360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321976357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b905a3c8db6e194595c0e4f622261d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonTap: {fileID: 8300000, guid: 3993fae7362d6e64bb7f349fd894b52b, type: 3}
+  AttackSound: {fileID: 8300000, guid: c9da9783b320eeb48b5bf83563b77af9, type: 3}
+  EnemyDamage: {fileID: 8300000, guid: 60aefe1eba7019447a6deac0752e8c1d, type: 3}
+  EnemyDie: {fileID: 8300000, guid: 05c76f0899dc0de46a0ec4d687969548, type: 3}
+  GameStart: {fileID: 8300000, guid: f6f97aff33141ef43923aae8bc4f03b0, type: 3}
+  PlayerJump: {fileID: 8300000, guid: 5748a345e88481041afaed99e42238a4, type: 3}
+  PlayerLanding: {fileID: 8300000, guid: 24b00009c868b4e4dad64dcb6b8fb86f, type: 3}
+  PlayerDamage: {fileID: 8300000, guid: 71ba4182ebba643498ba31b39dadb183, type: 3}
+  BoosterActivate: {fileID: 8300000, guid: 1f225feac8b971542bb41eea39074a2f, type: 3}
+  EnemyShot: {fileID: 8300000, guid: 8973e435177728148980efca27819dfa, type: 3}
+  BoosterBuy: {fileID: 8300000, guid: 56a8365c646134e4c83027b03e94e2d7, type: 3}
+  NotEnoughMoney: {fileID: 8300000, guid: 5dff4e8a2a3c5d7479645fd2654b1f8f, type: 3}
+  PlayerLose: {fileID: 8300000, guid: 94ed639a32113d04c94b26e33e9c8d34, type: 3}
+  _audioSource: {fileID: 321976359}
 --- !u!1 &323220794
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,6 +3199,18 @@ MonoBehaviour:
       - m_Target: {fileID: 344335520}
         m_TargetAssemblyTypeName: RestartButton, Assembly-CSharp
         m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3888,17 +4068,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471252453}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1458928862}
-  m_Father: {fileID: 1910226562}
+  m_Father: {fileID: 1460812601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -265}
+  m_AnchoredPosition: {x: 0.004629071, y: -429.2}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &471252455
@@ -3948,6 +4128,18 @@ MonoBehaviour:
       - m_Target: {fileID: 471252458}
         m_TargetAssemblyTypeName: RestartButton, Assembly-CSharp
         m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6613,7 +6805,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 879355039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &879355039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6889,6 +7093,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &900970764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6973,6 +7189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heartsPanel: {fileID: 1031994607}
   _heartPrefab: {fileID: 2113593726930836477, guid: 8bdb8235461c8de489f5c318c4203a09, type: 3}
+  _isImmortal: 0
 --- !u!1 &925739612
 GameObject:
   m_ObjectHideFlags: 0
@@ -8570,6 +8787,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1154828089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8844,6 +9073,18 @@ MonoBehaviour:
       - m_Target: {fileID: 824409203}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: GoToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 321976360}
+        m_TargetAssemblyTypeName: SoundService, Assembly-CSharp
+        m_MethodName: PlayButtonTapSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10580,7 +10821,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 471252454}
   m_Father: {fileID: 1910226562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13367,7 +13609,6 @@ RectTransform:
   m_Children:
   - {fileID: 204810319}
   - {fileID: 1460812601}
-  - {fileID: 471252454}
   - {fileID: 1288787032}
   m_Father: {fileID: 1963699976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14635,6 +14876,14 @@ PrefabInstance:
     - target: {fileID: 641857384575751231, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322959829696456132, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322959829696456132, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
+      propertyPath: _groundLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1403334038236096990, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
       propertyPath: m_Enabled

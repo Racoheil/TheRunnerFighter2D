@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 
 public static class EventService
 {
@@ -62,4 +63,41 @@ public static class EventService
     public static void CallOnStartGame()
         => OnStartGame?.Invoke();
     
+    public static event Action OnAttackSound;
+    public static void CallOnAttackSound()
+        => OnAttackSound?.Invoke();
+
+    public static event Action OnEnemyTakeDamageSound;
+    public static void CallOnEnemyTakeDamageSound()
+        => OnEnemyTakeDamageSound?.Invoke();
+
+    public static event Action OnEnemyDieSound;
+    public static void CallOnEnemyDieSound()
+        => OnEnemyDieSound?.Invoke();
+
+    public static event Action OnPlayerJumpSound;
+    public static void CallOnPlayerJumpSound()
+        => OnPlayerJumpSound?.Invoke();
+
+    public static event Action OnEnemyShotSound;
+    public static void CallOnEnemyShotSound()
+        => OnEnemyShotSound?.Invoke();
+
+    public static event Action OnBoosterBuy;
+    public static void CallOnBoosterBuy()
+        => OnBoosterBuy?.Invoke();
+
+    public static event Action OnNotEnoughMoney;
+    public static void CallOnNotEnoughMoney()
+        => OnNotEnoughMoney?.Invoke();
+
+    public static event Action OnPlayerLanding;
+    public static void CallOnPlayerLanding()
+        => OnPlayerLanding?.Invoke();
+
+    public static event Action OnBoosterActivateSound;
+    public static void CallOnBoosterActivateSound()
+        => OnBoosterActivateSound?.Invoke();
+
+
 }

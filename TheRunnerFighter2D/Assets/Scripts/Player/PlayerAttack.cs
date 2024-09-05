@@ -37,6 +37,8 @@ public class PlayerAttack : MonoBehaviour
     {
         PlayerAnimation.instance.animator.SetTrigger("AttackTrigger");
         _timeBtwAttack = _startTimeBtwAttack;
+
+        EventService.CallOnAttackSound();
     }
     public void OnAttackEvent()
     {
