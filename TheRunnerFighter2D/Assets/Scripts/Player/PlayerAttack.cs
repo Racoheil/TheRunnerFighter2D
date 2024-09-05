@@ -46,12 +46,7 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider2D enemy in enemyColliders2D)
         {
-            // Debug.Log("We hit " + collider.name);
-            if(enemy.tag != "EnemySwingZone")
-            {
                 enemy.GetComponent<IEnemy>().TakeDamage(_damageValue);
-            }
-            
         }
     }
     private void OnDrawGizmosSelected()

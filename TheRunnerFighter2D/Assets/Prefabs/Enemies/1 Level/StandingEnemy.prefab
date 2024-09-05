@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2873276623478044459}
   - component: {fileID: 2230209857322623814}
   - component: {fileID: 1266940719717658464}
-  - component: {fileID: 7935992630094753305}
   - component: {fileID: 3547295728034135807}
   - component: {fileID: 900057911400966053}
   - component: {fileID: 8641118942075346609}
@@ -118,41 +117,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &7935992630094753305
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009721565344965086}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.51662534, y: 0.5530585}
-  serializedVersion: 2
-  m_Radius: 0.50444245
 --- !u!61 &3547295728034135807
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -211,9 +175,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8641118942075346609}
-  _maxHealth: 3
+  _maxHealth: 2
   _swingZone: {fileID: 5006285881593723532}
   _damageZone: {fileID: 3176189762769138600}
+  _currentHealth: 0
   _startTimeBtwAttack: 1
   bounceForce: {x: 15, y: 5}
 --- !u!95 &8641118942075346609
@@ -351,7 +316,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -368,7 +333,7 @@ GameObject:
   - component: {fileID: 8277162382418373717}
   - component: {fileID: 8432191258538884863}
   - component: {fileID: 5006285881593723532}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SwingZone
   m_TagString: EnemySwingZone
   m_Icon: {fileID: 0}
@@ -384,8 +349,8 @@ Transform:
   m_GameObject: {fileID: 7851793194318722974}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8197, y: -0.0059, z: 0}
-  m_LocalScale: {x: 3.5718317, y: 1.3406148, z: 1}
+  m_LocalPosition: {x: -3.44, y: -0.0059, z: 0}
+  m_LocalScale: {x: 2.834272, y: 1.3406148, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2873276623478044459}

@@ -6,7 +6,7 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 {
     [SerializeField] Animator _animator;
 
-    [SerializeField] private int _maxHealth = 3;
+    [SerializeField] private int _maxHealth = 2;
 
     [SerializeField] private Collider2D _swingZone;
 
@@ -14,7 +14,7 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 
     private bool _isSwinging;
 
-    private int _currentHealth;
+    [SerializeField] private int _currentHealth;
 
     private Collider2D _collider;
 
@@ -77,11 +77,16 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     public void Attack()
     {
         _animator.SetTrigger("Attack");
+
+      
         _timeBtwAttack = _startTimeBtwAttack;
+        
 
     }
     public void OnAttackEvent()
     {
+        if (_isSwinging) return;
+
         EventService.CallOnTakeDamage();
 
     }
@@ -99,13 +104,17 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.IsTouching(_swingZone))
+        if (collision.IsTouching(_swingZone) && collision.gameObject.tag == "Player")
         {
             print("SWING ZONE!!");
-            //return;
+            _isSwinging = true;
+
+            Attack();
         }
         if (collision.IsTouching(_damageZone) && collision.gameObject.tag == "Player" && !PlayerHealthSystemService.instance.GetImmortality())
         {
+            _isSwinging = false;
+
             if (_timeBtwAttack <= 0)
             {
                 Attack();

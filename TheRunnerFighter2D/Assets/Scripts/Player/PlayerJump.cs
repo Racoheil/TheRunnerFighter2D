@@ -93,18 +93,6 @@ public class PlayerJump : MonoBehaviour
         _isJump = true;
     }
 
-    //IEnumerator LandingRoutine()
-    //{
-    //    print("JUMPING SUKA");
-    //    while(GroundCheck.instance.GetIsGrounded() == false)
-    //    {
-    //        print("Is jumping");
-    //        yield return new WaitForSeconds(0.01f);
-    //    }
-    //        EventService.CallOnPlayerLanding();
-
-    //}
-
     public void SetJumpsCount(int value)
     {
         _maxJumps = value;
