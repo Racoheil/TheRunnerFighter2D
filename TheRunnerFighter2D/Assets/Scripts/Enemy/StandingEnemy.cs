@@ -8,6 +8,12 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 
     [SerializeField] private int _maxHealth = 3;
 
+    [SerializeField] private Collider2D _swingZone;
+
+    [SerializeField] private Collider2D _damageZone;
+
+    private bool _isSwinging;
+
     private int _currentHealth;
 
     private Collider2D _collider;
@@ -93,7 +99,12 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && !PlayerHealthSystemService.instance.GetImmortality())
+        if (collision.IsTouching(_swingZone))
+        {
+            print("SWING ZONE!!");
+            //return;
+        }
+        if (collision.IsTouching(_damageZone) && collision.gameObject.tag == "Player" && !PlayerHealthSystemService.instance.GetImmortality())
         {
             if (_timeBtwAttack <= 0)
             {

@@ -47,7 +47,10 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider2D enemy in enemyColliders2D)
         {
             // Debug.Log("We hit " + collider.name);
-            enemy.GetComponent<IEnemy>().TakeDamage(_damageValue);
+            if(enemy.tag != "EnemySwingZone")
+            {
+                enemy.GetComponent<IEnemy>().TakeDamage(_damageValue);
+            }
             
         }
     }
