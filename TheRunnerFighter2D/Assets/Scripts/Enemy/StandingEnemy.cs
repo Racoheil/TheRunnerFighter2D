@@ -24,7 +24,7 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 
     private float _timeBtwAttack;
 
-    [SerializeField] private float _startTimeBtwAttack = 1;
+    private float _startTimeBtwAttack = 1f;
 
     private float _freezeTime;
 
@@ -76,12 +76,19 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     }
     public void Attack()
     {
+        print("Enemy Attacking!");
+        EventService.CallOnEnemySwingSound();
+
         _animator.SetTrigger("Attack");
 
-      
-        _timeBtwAttack = _startTimeBtwAttack;
-        
-
+        if (_isSwinging)
+        {
+            _timeBtwAttack = _startTimeBtwAttack / 2;
+        }
+        else if (!_isSwinging)
+        {
+            _timeBtwAttack = _startTimeBtwAttack;
+        }
     }
     public void OnAttackEvent()
     {
@@ -109,9 +116,16 @@ public class StandingEnemy : MonoBehaviour, IEnemy
             print("SWING ZONE!!");
             _isSwinging = true;
 
-            Attack();
+            if (_timeBtwAttack <= 0)
+            {
+                Attack();
+            }
+            else
+            {
+                _timeBtwAttack -= Time.deltaTime;
+            }
         }
-        if (collision.IsTouching(_damageZone) && collision.gameObject.tag == "Player" && !PlayerHealthSystemService.instance.GetImmortality())
+        else if (collision.IsTouching(_damageZone) && collision.gameObject.tag == "Player" && !PlayerHealthSystemService.instance.GetImmortality())
         {
             _isSwinging = false;
 

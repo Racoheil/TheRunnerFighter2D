@@ -2699,6 +2699,7 @@ MonoBehaviour:
   PlayerDamage: {fileID: 8300000, guid: 71ba4182ebba643498ba31b39dadb183, type: 3}
   BoosterActivate: {fileID: 8300000, guid: 1f225feac8b971542bb41eea39074a2f, type: 3}
   EnemyShot: {fileID: 8300000, guid: 8973e435177728148980efca27819dfa, type: 3}
+  EnemySwing: {fileID: 8300000, guid: 0dc34da531e3e4f4398caa44dbdf9378, type: 3}
   BoosterBuy: {fileID: 8300000, guid: 56a8365c646134e4c83027b03e94e2d7, type: 3}
   NotEnoughMoney: {fileID: 8300000, guid: 5dff4e8a2a3c5d7479645fd2654b1f8f, type: 3}
   PlayerLose: {fileID: 8300000, guid: 94ed639a32113d04c94b26e33e9c8d34, type: 3}

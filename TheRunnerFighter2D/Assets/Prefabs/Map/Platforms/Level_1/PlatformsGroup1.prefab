@@ -1149,6 +1149,8 @@ Transform:
   - {fileID: 6441807963182473636}
   - {fileID: 2794854739465668717}
   - {fileID: 5022243895934816000}
+  - {fileID: 62406878174522195}
+  - {fileID: 8319928215109224947}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-8414876474669809076
@@ -2172,6 +2174,68 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &2283708521263889125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2649076266688721401}
+    m_Modifications:
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131779233320932220, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_Name
+      value: Trampoline
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+--- !u!4 &62406878174522195 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+  m_PrefabInstance: {fileID: 2283708521263889125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2292549598277123254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2667,6 +2731,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2873276623478044459, guid: 396b6f2f031fb354ab970bf0c6ba3677, type: 3}
   m_PrefabInstance: {fileID: 7446609753097287467}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7789741726347860037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2649076266688721401}
+    m_Modifications:
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 47.80861
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131779233320932220, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+      propertyPath: m_Name
+      value: Trampoline (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+--- !u!4 &8319928215109224947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2264442502794006966, guid: bd0efd89558e8bd4ba316afb97b02bfb, type: 3}
+  m_PrefabInstance: {fileID: 7789741726347860037}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7893840945556964916
 PrefabInstance:

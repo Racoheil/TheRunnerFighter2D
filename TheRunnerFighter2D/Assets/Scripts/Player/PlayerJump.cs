@@ -9,8 +9,6 @@ public class PlayerJump : MonoBehaviour
 
     private int _defaultJumpsCount;
 
-    private bool _isButtonPressed;
-
     private int _jumps;
 
     private Rigidbody2D _rigidBody;
@@ -19,13 +17,12 @@ public class PlayerJump : MonoBehaviour
 
     private bool _hasDoubleJumped;
 
-    private bool _isJump = true;
-
-    private bool _isJumping = false;
+    [SerializeField] private bool _isJump;
 
     public static PlayerJump instance;
     private void Awake()
     {
+        _isJump = true;
         instance = this;
         _rigidBody = GetComponent<Rigidbody2D>();
         _defaultJumpsCount = _maxJumps;
@@ -36,6 +33,7 @@ public class PlayerJump : MonoBehaviour
         if (GroundCheck.instance.GetIsGrounded())
         {
             _jumps = _maxJumps - 1;
+           // _isJump = true;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -47,12 +45,14 @@ public class PlayerJump : MonoBehaviour
     {
         EventService.OnTakeDamage += FreezePlayer;
         EventService.OnPlayerLose += DisableJump;
+        EventService.OnTrampolineJump += TrampolineJump;
     }
 
     private void OnDisable()
     {
         EventService.OnTakeDamage -= FreezePlayer;
         EventService.OnPlayerLose -= DisableJump;
+        EventService.OnTrampolineJump -= TrampolineJump;
     }
     private void Jump(float jumpForce)
     {
@@ -73,6 +73,15 @@ public class PlayerJump : MonoBehaviour
         }
       
     }
+    public void TrampolineJump()
+    {
+        _isJump = false;
+        _rigidBody.velocity = Vector2.zero;
+        _rigidBody.AddForce(Vector2.up * _jumpForce * 1.5f, ForceMode2D.Impulse);
+        //_hasDoubleJumped = true;
+        //StartCoroutine(ResetDoubleJump());
+    }
+
     IEnumerator ResetDoubleJump()
     {
         yield return new WaitForSeconds(_doubleJumpDelay);
@@ -110,6 +119,7 @@ public class PlayerJump : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            _isJump = true;
             EventService.CallOnPlayerLanding();
             print("Landing!");
         }
