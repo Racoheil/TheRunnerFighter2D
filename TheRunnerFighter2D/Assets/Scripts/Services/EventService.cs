@@ -99,5 +99,12 @@ public static class EventService
     public static void CallOnBoosterActivateSound()
         => OnBoosterActivateSound?.Invoke();
 
+    public static event Action OnEnemySwingSound;
+    public static void CallOnEnemySwingSound()
+        => OnEnemySwingSound?.Invoke();
+
+    public static event Action OnTrampolineJump;
+    public static void CallOnTrampolineJump()
+        => OnTrampolineJump?.Invoke();
 
 }

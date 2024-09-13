@@ -16,6 +16,7 @@ public class SoundService : MonoBehaviour
         PlayerDamage,
         BoosterActivate,
         EnemyShot,
+        EnemySwing,
         BoosterBuy,
         NotEnoughMoney,
         PlayerLose;
@@ -36,6 +37,7 @@ public class SoundService : MonoBehaviour
         EventService.OnTakeDamage += PlayPlayerDamage;
         EventService.OnPlayerLose += PlayPlayerLose;
         EventService.OnBoosterActivateSound += PlayBoosterActivate;
+        EventService.OnEnemySwingSound += PlayEnemySwing;
     }
     private void OnDisable()
     {
@@ -51,6 +53,7 @@ public class SoundService : MonoBehaviour
         EventService.OnTakeDamage -= PlayPlayerDamage;
         EventService.OnPlayerLose -= PlayPlayerLose;
         EventService.OnBoosterActivateSound -= PlayBoosterActivate;
+        EventService.OnEnemySwingSound -= PlayEnemySwing;
     }
     public void PlaySound(AudioClip audio)
     {
@@ -121,5 +124,9 @@ public class SoundService : MonoBehaviour
     public void PlayBoosterActivate()
     {
         PlaySound(BoosterActivate);
+    }
+    public void PlayEnemySwing()
+    {
+        PlaySound(EnemySwing);
     }
 }

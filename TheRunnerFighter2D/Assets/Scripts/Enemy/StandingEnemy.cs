@@ -6,9 +6,15 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 {
     [SerializeField] Animator _animator;
 
-    [SerializeField] private int _maxHealth = 3;
+    [SerializeField] private int _maxHealth = 2;
 
-    private int _currentHealth;
+    [SerializeField] private Collider2D _swingZone;
+
+    [SerializeField] private Collider2D _damageZone;
+
+    private bool _isSwinging;
+
+    [SerializeField] private int _currentHealth;
 
     private Collider2D _collider;
 
@@ -18,7 +24,7 @@ public class StandingEnemy : MonoBehaviour, IEnemy
 
     private float _timeBtwAttack;
 
-    [SerializeField] private float _startTimeBtwAttack = 1;
+    private float _startTimeBtwAttack = 1f;
 
     private float _freezeTime;
 
@@ -70,12 +76,24 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     }
     public void Attack()
     {
-        _animator.SetTrigger("Attack");
-        _timeBtwAttack = _startTimeBtwAttack;
+        print("Enemy Attacking!");
+        EventService.CallOnEnemySwingSound();
 
+        _animator.SetTrigger("Attack");
+
+        if (_isSwinging)
+        {
+            _timeBtwAttack = _startTimeBtwAttack / 2;
+        }
+        else if (!_isSwinging)
+        {
+            _timeBtwAttack = _startTimeBtwAttack;
+        }
     }
     public void OnAttackEvent()
     {
+        if (_isSwinging) return;
+
         EventService.CallOnTakeDamage();
 
     }
@@ -93,8 +111,24 @@ public class StandingEnemy : MonoBehaviour, IEnemy
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && !PlayerHealthSystemService.instance.GetImmortality())
+        if (collision.IsTouching(_swingZone) && collision.gameObject.tag == "Player")
         {
+            print("SWING ZONE!!");
+            _isSwinging = true;
+
+            if (_timeBtwAttack <= 0)
+            {
+                Attack();
+            }
+            else
+            {
+                _timeBtwAttack -= Time.deltaTime;
+            }
+        }
+        else if (collision.IsTouching(_damageZone) && collision.gameObject.tag == "Player" && !PlayerHealthSystemService.instance.GetImmortality())
+        {
+            _isSwinging = false;
+
             if (_timeBtwAttack <= 0)
             {
                 Attack();
