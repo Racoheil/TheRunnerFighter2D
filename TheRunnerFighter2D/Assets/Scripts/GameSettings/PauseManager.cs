@@ -9,6 +9,7 @@ public class PauseManager : MonoBehaviour
     private bool _isPaused;
     private bool _isResumed;
     private float _resumeDelay = 0.4f;
+
     private void OnEnable()
     {
         EventService.OnPauseGame += Pause;

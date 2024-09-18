@@ -13,7 +13,7 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D _rigidBody;
 
-    private float _doubleJumpDelay = 0.2f;
+    private float _doubleJumpDelay = 0.1f;
 
     private bool _hasDoubleJumped;
 
@@ -28,7 +28,7 @@ public class PlayerJump : MonoBehaviour
         _defaultJumpsCount = _maxJumps;
         //_jumps = _maxJumps;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (GroundCheck.instance.GetIsGrounded())
         {
@@ -121,7 +121,6 @@ public class PlayerJump : MonoBehaviour
         {
             _isJump = true;
             EventService.CallOnPlayerLanding();
-            print("Landing!");
         }
     }
 
