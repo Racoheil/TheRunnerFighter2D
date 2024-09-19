@@ -1058,7 +1058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &113309004
 Transform:
   m_ObjectHideFlags: 0
@@ -2256,11 +2256,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!212 &271274388 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6148428882863509, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-  m_PrefabInstance: {fileID: 4075483748118247416}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &276095310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,11 +3529,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!212 &384866469 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1403334038236096990, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-  m_PrefabInstance: {fileID: 4075483748118247416}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &431086203
 GameObject:
   m_ObjectHideFlags: 0
@@ -14022,7 +14012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1970729460
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -14110,7 +14100,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -14177,8 +14167,8 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 0.8
+      minMaxState: 0
+      scalar: 5
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -14726,14 +14716,14 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 10
+    type: 4
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: -90, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -15428,7 +15418,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 0.870206}
         key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -15446,7 +15436,7 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 65342
-        atime2: 0
+        atime2: 65342
         atime3: 0
         atime4: 0
         atime5: 0
@@ -19954,50 +19944,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6148428882863509, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148428882863509, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148428882863509, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148428882863509, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 641857384575751231, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_Name
-      value: ArmorBooster
-      objectReference: {fileID: 0}
-    - target: {fileID: 641857384575751231, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1064431458147321974, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: c409384cec6a3bd4f94475ea2c8b8174, type: 2}
-    - target: {fileID: 1064431458147321974, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1322959829696456132, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1322959829696456132, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: _groundLayer.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403334038236096990, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1652485459788119574, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -71.73042
@@ -20038,53 +19984,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3538138059166624195, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 1951631556532473163, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
+      propertyPath: _flyDuration
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 3887691125656142416, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4667135459625396006, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: FlightBoosterSprite
-      value: 
-      objectReference: {fileID: 271274388}
-    - target: {fileID: 4728443740312979681, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: ArmorBoosterSprite
-      value: 
-      objectReference: {fileID: 384866469}
-    - target: {fileID: 4960225443519088470, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_Name
-      value: FlightBooster
-      objectReference: {fileID: 0}
-    - target: {fileID: 4960225443519088470, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 4951140368575551269, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5165970072808134065, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5165970072808134065, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123841949229722261, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12.631
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123841949229722261, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.756
-      objectReference: {fileID: 0}
-    - target: {fileID: 7504961273881758135, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: _speed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532885880921532109, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

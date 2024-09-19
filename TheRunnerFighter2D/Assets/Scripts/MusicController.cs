@@ -47,6 +47,7 @@ public class MusicController : MonoBehaviour
     public void PlayMelody(AudioClip audio)
     {
         _musicSource.PlayOneShot(audio);
+        print("Music volume = "+ _musicSource.volume);
     }
 
     public void PauseMusic()
