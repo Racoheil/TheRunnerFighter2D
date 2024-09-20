@@ -10,9 +10,13 @@ public class Bullet : MonoBehaviour
 
     private Vector2 _moveVector;
 
+    private SpriteRenderer _spriteRenderer;
+
     private void Awake()
     {
         _moveVector = new Vector2(1, 0);
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
@@ -29,6 +33,7 @@ public class Bullet : MonoBehaviour
             if (!PlayerHealthSystemService.instance.GetImmortality())
             {
                 EventService.CallOnTakeDamage();
+                _spriteRenderer.enabled = false;
             }
         }
     }
