@@ -19,7 +19,8 @@ public class SoundService : MonoBehaviour
         EnemySwing,
         BoosterBuy,
         NotEnoughMoney,
-        PlayerLose;
+        PlayerLose,
+        TrampolineJump;
 
     [SerializeField] private AudioSource _audioSource;
 
@@ -38,6 +39,7 @@ public class SoundService : MonoBehaviour
         EventService.OnPlayerLose += PlayPlayerLose;
         EventService.OnBoosterActivateSound += PlayBoosterActivate;
         EventService.OnEnemySwingSound += PlayEnemySwing;
+        EventService.OnTrampolineJump += PlayTrampolineJump;
     }
     private void OnDisable()
     {
@@ -54,6 +56,7 @@ public class SoundService : MonoBehaviour
         EventService.OnPlayerLose -= PlayPlayerLose;
         EventService.OnBoosterActivateSound -= PlayBoosterActivate;
         EventService.OnEnemySwingSound -= PlayEnemySwing;
+        EventService.OnTrampolineJump -= PlayTrampolineJump;
     }
     public void PlaySound(AudioClip audio)
     {
@@ -128,5 +131,9 @@ public class SoundService : MonoBehaviour
     public void PlayEnemySwing()
     {
         PlaySound(EnemySwing);
+    }
+    public void PlayTrampolineJump()
+    {
+        PlaySound(TrampolineJump);
     }
 }

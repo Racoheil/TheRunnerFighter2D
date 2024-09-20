@@ -10,14 +10,15 @@ public class LossZone : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            OnPlayerLose();
+            OnPlayerFall();
         }
     }
 
-    private void OnPlayerLose()
+    private void OnPlayerFall()
     {
         //yield return new WaitForSeconds(_lossDelay);
         PlayerAnimation.instance.animator.SetBool("isDead", true);
+        EventService.CallOnPlayerFell();
         EventService.CallOnPlayerLose();
     }
 

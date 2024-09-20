@@ -2843,6 +2843,7 @@ MonoBehaviour:
   BoosterBuy: {fileID: 8300000, guid: 56a8365c646134e4c83027b03e94e2d7, type: 3}
   NotEnoughMoney: {fileID: 8300000, guid: 5dff4e8a2a3c5d7479645fd2654b1f8f, type: 3}
   PlayerLose: {fileID: 8300000, guid: 94ed639a32113d04c94b26e33e9c8d34, type: 3}
+  TrampolineJump: {fileID: 8300000, guid: 4dedf4e5e4d6bd94bb7388481e7c78f2, type: 3}
   _audioSource: {fileID: 321976359}
 --- !u!1 &323220794
 GameObject:
@@ -19944,6 +19945,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 641857384575751231, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1652485459788119574, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -71.73042
@@ -19991,6 +19996,10 @@ PrefabInstance:
     - target: {fileID: 4951140368575551269, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960225443519088470, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5165970072808134065, guid: 547d2b1d96c1c744297b7fabc65381a8, type: 3}
       propertyPath: m_Name

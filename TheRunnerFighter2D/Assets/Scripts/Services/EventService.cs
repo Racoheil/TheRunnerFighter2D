@@ -107,4 +107,7 @@ public static class EventService
     public static void CallOnTrampolineJump()
         => OnTrampolineJump?.Invoke();
 
+    public static event Action OnPlayerFell;
+    public static void CallOnPlayerFell()
+        => OnPlayerFell?.Invoke();
 }

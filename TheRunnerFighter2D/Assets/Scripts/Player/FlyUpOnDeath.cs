@@ -8,6 +8,8 @@ public class FlyUpOnDeath : MonoBehaviour
     [SerializeField] private float _flyHeight;
     [SerializeField] private float _flyDuration;
 
+    private bool _isPlayerFell;
+
     Rigidbody2D _rigidBody;
 
     private Transform _gameObject;
@@ -15,10 +17,12 @@ public class FlyUpOnDeath : MonoBehaviour
     private void OnEnable()
     {
         EventService.OnPlayerLose += FlyUp;
+        EventService.OnPlayerFell += DoOnPlayerFell;
     }
     private void OnDisable()
     {
         EventService.OnPlayerLose -= FlyUp;
+        EventService.OnPlayerFell -= DoOnPlayerFell;
     }
     private void Awake()
     {
@@ -35,7 +39,12 @@ public class FlyUpOnDeath : MonoBehaviour
     }
     private void FlyUp()
     {
+        if (_isPlayerFell) return;
         _gameObject.DOMoveY(transform.position.y + _flyHeight, _flyDuration);
         _rigidBody.simulated = false;
+    }
+    private void DoOnPlayerFell()
+    {
+        _isPlayerFell = true;
     }
 }
