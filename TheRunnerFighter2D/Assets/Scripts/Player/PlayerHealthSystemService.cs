@@ -20,9 +20,8 @@ public class PlayerHealthSystemService : MonoBehaviour
 
     [SerializeField] private bool _isImmortal;
 
-    private float _immortalityTime = 3f;
+    private float _damageImmortalityTime = 3f;
 
-    private float _deathDelay = 2f;
 
     public static PlayerHealthSystemService instance;
 
@@ -57,7 +56,7 @@ public class PlayerHealthSystemService : MonoBehaviour
     {
         ReduceHealth();
        
-        ImmortalizeThePlayer(_immortalityTime);
+        ImmortalizeThePlayer(_damageImmortalityTime);
     }
     public void ReduceHealth()
     {
@@ -119,12 +118,21 @@ public class PlayerHealthSystemService : MonoBehaviour
         _isImmortal = true;
         //Debug.Log("Immortal is activated!!" + _isImmortal);
         StartCoroutine(ImmortalizeCoroutine(time));
+        print("AfterCoroutine!!!");
     }
 
     IEnumerator ImmortalizeCoroutine(float time)
     {
+        if(time >= _damageImmortalityTime)
+        {
+            PlayerAnimation.instance.animator.SetTrigger("ImmortalityAfterDamage");
+        }
         yield return new WaitForSeconds(time);
-        _isImmortal = false;
-        //Debug.Log("Immortalize is deactivated!!");
+        if (!ArmorBooster.instance.GetActivity() || time > _damageImmortalityTime)
+        {
+            _isImmortal = false;
+        }
+
     }
+
 }
