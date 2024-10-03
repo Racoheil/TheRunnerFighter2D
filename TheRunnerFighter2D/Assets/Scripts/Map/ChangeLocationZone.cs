@@ -12,6 +12,12 @@ public class ChangeLevelZone : MonoBehaviour
             EventService.CallOnPlayerChangeLevel();
             DeactivateChangeZone();
         }
+        if(collision.gameObject.tag == "Enemy")
+        {
+            
+            collision.gameObject.GetComponent<IEnemy>().Die();
+
+        }
     }
     private void DeactivateChangeZone()
     {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4897677780796447614}
   m_Layer: 6
   m_Name: FlyingShootingEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +105,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 3140782579620118315, guid: e50b45b3f9d3e484aac895d9c7f57360, type: 3}
   _shotPoint: {fileID: 3138377873627926015}
   _bulletsCount: 5
+  _shootingInterval: 5
 --- !u!61 &1384772956982222304
 BoxCollider2D:
   m_ObjectHideFlags: 0
