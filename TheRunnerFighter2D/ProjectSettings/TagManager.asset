@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - EnemySwingZone
   - EnemyDamageZone
+  - Enemy
   layers:
   - Default
   - TransparentFX
