@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class FlightBooster : MonoBehaviour, IBooster
 {
-    [SerializeField] SpriteRenderer FlightBoosterSprite;
-
     private bool _isActive;
 
     [SerializeField] private float _activeTime = 25f;
@@ -32,20 +30,14 @@ public class FlightBooster : MonoBehaviour, IBooster
         _isActive = false;
     }
 
-    private void Start()
-    {
-        FlightBoosterSprite.enabled = false;
-    }
     public void ActivateBooster()
     {
         EventService.CallOnBoosterActivateSound();
 
-        FlightBoosterSprite.enabled = true;
         StartCoroutine(ActivateBoosterRoutine(_activeTime));   
     }
     public void DeactivateBooster()
     {
-        FlightBoosterSprite.enabled = false;
         _isActive = false;
         PlayerJump.instance.SetDefaultJumpsCount();
         PlayerMovement.instance.SetDefaultRigidBodyPropeties();

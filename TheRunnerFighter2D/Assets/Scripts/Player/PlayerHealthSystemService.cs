@@ -20,7 +20,7 @@ public class PlayerHealthSystemService : MonoBehaviour
 
     [SerializeField] private bool _isImmortal;
 
-    private float _damageImmortalityTime = 3f;
+    private float _blinkImmortalityTime = 3f;
 
 
     public static PlayerHealthSystemService instance;
@@ -55,8 +55,6 @@ public class PlayerHealthSystemService : MonoBehaviour
     public void TakeDamage()
     {
         ReduceHealth();
-       
-        ImmortalizeThePlayer(_damageImmortalityTime);
     }
     public void ReduceHealth()
     {
@@ -70,6 +68,7 @@ public class PlayerHealthSystemService : MonoBehaviour
                 OnPlayerDeath();
                 return;
             }
+            BlinkImmortalizePlayer();
         }
     }
     
@@ -112,27 +111,31 @@ public class PlayerHealthSystemService : MonoBehaviour
 
         EventService.CallOnPlayerLose();
     }
-
-    public void ImmortalizeThePlayer(float time)
+    
+    public void BlinkImmortalizePlayer()
+    {
+        StartCoroutine(BlinkImmortalizeCoroutine());
+    }
+    IEnumerator BlinkImmortalizeCoroutine()
     {
         _isImmortal = true;
-        //Debug.Log("Immortal is activated!!" + _isImmortal);
-        StartCoroutine(ImmortalizeCoroutine(time));
-        print("AfterCoroutine!!!");
+        PlayerAnimation.instance.animator.SetBool("isBlink", true);
+
+        yield return new WaitForSeconds(_blinkImmortalityTime);
+
+        PlayerAnimation.instance.animator.SetBool("isBlink", false);
+        _isImmortal = false;
     }
 
-    IEnumerator ImmortalizeCoroutine(float time)
+    public void ArmorImmortalizePlayer(float time)
     {
-        if(time >= _damageImmortalityTime)
-        {
-            PlayerAnimation.instance.animator.SetTrigger("ImmortalityAfterDamage");
-        }
+        StartCoroutine(ArmorImmortalizeCoroutine(time));
+    }
+    IEnumerator ArmorImmortalizeCoroutine(float time)
+    {
+        _isImmortal = true;
         yield return new WaitForSeconds(time);
-        if (!ArmorBooster.instance.GetActivity() || time > _damageImmortalityTime)
-        {
-            _isImmortal = false;
-        }
-
+        _isImmortal = false;
     }
 
 }

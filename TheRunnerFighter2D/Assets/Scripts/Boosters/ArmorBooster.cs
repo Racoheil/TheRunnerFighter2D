@@ -36,7 +36,7 @@ public class ArmorBooster : MonoBehaviour, IBooster
         EventService.CallOnBoosterActivateSound();
 
         StartCoroutine(ActivateBoosterRoutine(_activeTime));
-        PlayerHealthSystemService.instance.ImmortalizeThePlayer(_activeTime);
+        PlayerHealthSystemService.instance.ArmorImmortalizePlayer(_activeTime);
     }
 
     public void DeactivateBooster()

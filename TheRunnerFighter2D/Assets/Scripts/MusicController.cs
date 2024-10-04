@@ -37,16 +37,16 @@ public class MusicController : MonoBehaviour
     private void PlayMainMenuMusic()
     {
         _musicSource.Stop();
-        PlayMelody(_mainMenuMusic);
+        PlayMelody(_mainMenuMusic, 0.8f);
     }
     private void PlayGameMusic()
     {
         _musicSource.Stop();
-        PlayMelody(_gameMusic);
+        PlayMelody(_gameMusic, 1f);
     }
-    public void PlayMelody(AudioClip audio)
+    public void PlayMelody(AudioClip audio, float volume)
     {
-        _musicSource.PlayOneShot(audio);
+        _musicSource.PlayOneShot(audio, volume);
         print("Music volume = "+ _musicSource.volume);
     }
 
