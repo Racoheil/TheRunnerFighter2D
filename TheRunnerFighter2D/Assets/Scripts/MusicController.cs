@@ -64,8 +64,12 @@ public class MusicController : MonoBehaviour
         _musicSource.pitch += 0.06f;
         print("music speed = " + _musicSource.pitch);
     }
-    //public void ChangeMusicSpeed(float value)
-    //{
-    //    _musicSource.pitch = value;
-    //}
+    public void EnableMusic()
+    {
+        _musicSource.enabled = true;
+    }
+    public void DisableMusic()
+    {
+        _musicSource.enabled = false;
+    }
 }
