@@ -38,16 +38,17 @@ public class MusicController : MonoBehaviour
     {
         _musicSource.Stop();
         PlayMelody(_mainMenuMusic, 0.8f);
+        print("Menu Music volume = " + _musicSource.volume);
     }
     private void PlayGameMusic()
     {
         _musicSource.Stop();
         PlayMelody(_gameMusic, 1f);
+        print("Game Music volume = " + _musicSource.volume);
     }
     public void PlayMelody(AudioClip audio, float volume)
     {
         _musicSource.PlayOneShot(audio, volume);
-        print("Music volume = "+ _musicSource.volume);
     }
 
     public void PauseMusic()
