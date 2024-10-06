@@ -8,6 +8,8 @@ public class MusicController : MonoBehaviour
 
     [SerializeField] AudioClip _mainMenuMusic, _gameMusic;
 
+    private bool _isGameRunning;
+
     private void OnEnable()
     {
         EventService.OnStartGame += PlayGameMusic;
@@ -15,6 +17,8 @@ public class MusicController : MonoBehaviour
         EventService.OnClosePausePanel += UnpauseMusic;
         EventService.OnPlayerLose += StopMusic;
         EventService.OnPlayerChangeLevel += SpeedUpMusic;
+        EventService.OnMusicEnable += EnableMusicSource;
+        EventService.OnMusicDisable += DisableMusicSource;
     }
     private void OnDisable()
     {
@@ -23,10 +27,13 @@ public class MusicController : MonoBehaviour
         EventService.OnClosePausePanel -= UnpauseMusic;
         EventService.OnPlayerLose -= StopMusic;
         EventService.OnPlayerChangeLevel -= SpeedUpMusic;
+        EventService.OnMusicEnable -= EnableMusicSource;
+        EventService.OnMusicDisable -= DisableMusicSource;
     }
 
     private void Start()
     {
+        _isGameRunning = false;
         PlayMainMenuMusic();
     }
     private void StopMusic()
@@ -36,12 +43,16 @@ public class MusicController : MonoBehaviour
 
     private void PlayMainMenuMusic()
     {
+        _isGameRunning = false;
         _musicSource.Stop();
         PlayMelody(_mainMenuMusic, 0.8f);
         print("Menu Music volume = " + _musicSource.volume);
     }
     private void PlayGameMusic()
     {
+        if (!_isGameRunning) return;
+
+        _isGameRunning = true;
         _musicSource.Stop();
         PlayMelody(_gameMusic, 1f);
         print("Game Music volume = " + _musicSource.volume);
@@ -64,12 +75,19 @@ public class MusicController : MonoBehaviour
         _musicSource.pitch += 0.06f;
         print("music speed = " + _musicSource.pitch);
     }
-    public void EnableMusic()
+    public void EnableMusicSource()
     {
-        _musicSource.enabled = true;
+        if (_isGameRunning == true)
+        {
+            PlayGameMusic();
+        }
+        else if(_isGameRunning == false)
+        {
+            PlayMainMenuMusic();
+        }
     }
-    public void DisableMusic()
+    public void DisableMusicSource()
     {
-        _musicSource.enabled = false;
+        _musicSource.Pause();
     }
 }

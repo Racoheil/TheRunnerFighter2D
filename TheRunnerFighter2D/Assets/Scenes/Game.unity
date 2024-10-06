@@ -9025,8 +9025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21696d2235d355843931325328277535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicOnSprite: {fileID: 0}
-  musicOffSprite: {fileID: 0}
+  _musicOnSprite: {fileID: 21300000, guid: 6e0e2bf10d962d54f89d148c837ef676, type: 3}
+  _musicOffSprite: {fileID: 21300000, guid: 3db462ab6bdcd18499e4bdea78dbe060, type: 3}
 --- !u!114 &1173933338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9070,7 +9070,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1173933339}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1173933339
 MonoBehaviour:
   m_ObjectHideFlags: 0

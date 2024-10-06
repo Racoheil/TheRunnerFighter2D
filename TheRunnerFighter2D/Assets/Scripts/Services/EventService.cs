@@ -110,4 +110,12 @@ public static class EventService
     public static event Action OnPlayerFell;
     public static void CallOnPlayerFell()
         => OnPlayerFell?.Invoke();
+
+    public static event Action OnMusicEnable;
+    public static void CallOnMusicEnable()
+        => OnMusicEnable?.Invoke();
+
+    public static event Action OnMusicDisable;
+    public static void CallOnMusicDisable()
+        => OnMusicDisable?.Invoke();
 }
