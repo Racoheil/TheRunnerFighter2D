@@ -31,8 +31,8 @@ public class PauseManager : MonoBehaviour
     {
         if (!_isResumed && !LevelData.instance.GetIsGameOver())
         {
-            _isPaused = true;
             _pausePanel.SetActive(true);
+            _isPaused = true;
             Time.timeScale = 0;
         }
     }
@@ -44,8 +44,8 @@ public class PauseManager : MonoBehaviour
         }
         else if (!_isResumed)
         {
-            _isResumed = true;
             StartCoroutine(ResumeRoutine());
+            _isResumed = true;
         }
     }
 

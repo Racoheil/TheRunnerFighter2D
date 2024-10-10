@@ -13,8 +13,8 @@ public class MusicController : MonoBehaviour
     private void OnEnable()
     {
         EventService.OnStartGame += PlayGameMusic;
-        EventService.OnPauseGame += PauseMusic;
-        EventService.OnClosePausePanel += UnpauseMusic;
+        //EventService.OnPauseGame += PauseMusic;
+        //EventService.OnClosePausePanel += UnpauseMusic;
         EventService.OnPlayerLose += StopMusic;
         EventService.OnPlayerChangeLevel += SpeedUpMusic;
         EventService.OnMusicEnable += EnableMusicSource;
@@ -23,18 +23,21 @@ public class MusicController : MonoBehaviour
     private void OnDisable()
     {
         EventService.OnStartGame -= PlayGameMusic;
-        EventService.OnPauseGame -= PauseMusic;
-        EventService.OnClosePausePanel -= UnpauseMusic;
+        //EventService.OnPauseGame -= PauseMusic;
+        //EventService.OnClosePausePanel -= UnpauseMusic;
         EventService.OnPlayerLose -= StopMusic;
         EventService.OnPlayerChangeLevel -= SpeedUpMusic;
         EventService.OnMusicEnable -= EnableMusicSource;
         EventService.OnMusicDisable -= DisableMusicSource;
     }
-
-    private void Start()
+    
+    private void Awake()
     {
         _isGameRunning = false;
-        PlayMainMenuMusic();
+        if (GameDataHolder.GetMusicState())
+        {
+            PlayMainMenuMusic();
+        }
     }
     private void StopMusic()
     {
@@ -50,8 +53,6 @@ public class MusicController : MonoBehaviour
     }
     private void PlayGameMusic()
     {
-        if (!_isGameRunning) return;
-
         _isGameRunning = true;
         _musicSource.Stop();
         PlayMelody(_gameMusic, 1f);
@@ -59,6 +60,7 @@ public class MusicController : MonoBehaviour
     }
     public void PlayMelody(AudioClip audio, float volume)
     {
+        if (GameDataHolder.GetMusicState() == false) return;
         _musicSource.PlayOneShot(audio, volume);
     }
 
@@ -77,6 +79,7 @@ public class MusicController : MonoBehaviour
     }
     public void EnableMusicSource()
     {
+        GameDataHolder.SetMusicState(true);
         if (_isGameRunning == true)
         {
             PlayGameMusic();
@@ -89,5 +92,6 @@ public class MusicController : MonoBehaviour
     public void DisableMusicSource()
     {
         _musicSource.Pause();
+        GameDataHolder.SetMusicState(false);
     }
 }

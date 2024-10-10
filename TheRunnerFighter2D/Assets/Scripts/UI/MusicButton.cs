@@ -9,44 +9,54 @@ public class MusicButton : MonoBehaviour
 
     private Button _musicButton;
 
-    private bool _isMusicEnable;
+    //private bool _isMusicEnable;
 
     private void Awake()
     {
-        _isMusicEnable = true;
         _musicButton = GetComponent<Button>();
         _musicButton.onClick.AddListener(PressMusicButton);
 
     }
     private void Start()
     {
-       
+        SetMusicButtonSprite();
     }
     private void PressMusicButton()
     {
-        if (_isMusicEnable == true)
+        if (GameDataHolder.GetMusicState() == true)
         {
             DisableMusic();
-            _isMusicEnable = false;
         }
-        else if (_isMusicEnable == false)
+        else if (GameDataHolder.GetMusicState() == false)
         {
             EnableMusic();
-            _isMusicEnable = true;
         }
     }
     private void EnableMusic()
     {
         EventService.CallOnMusicEnable();
-        _musicButton.image.sprite = _musicOnSprite;
+        SetMusicButtonSprite();
         print("enable");
     }
 
     private void DisableMusic()
     {
         EventService.CallOnMusicDisable();
-        _musicButton.image.sprite = _musicOffSprite;
+        SetMusicButtonSprite();
         print("disable");
 
+    }
+    private void SetMusicButtonSprite()
+    {
+        switch (GameDataHolder.GetMusicState())
+        {
+            case true:
+                _musicButton.image.sprite = _musicOnSprite;
+                break;
+
+            case false:
+                _musicButton.image.sprite = _musicOffSprite;
+                break;
+        }
     }
 }

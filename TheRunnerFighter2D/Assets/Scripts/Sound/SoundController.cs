@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundService : MonoBehaviour
+public class SoundController : MonoBehaviour
 {
     [SerializeField]
     private AudioClip
@@ -60,6 +60,7 @@ public class SoundService : MonoBehaviour
     }
     public void PlaySound(AudioClip audio)
     {
+        if (GameDataHolder.GetSoundState() == false) return;
         _audioSource.PlayOneShot(audio);
     }
     private void Update()
@@ -135,5 +136,9 @@ public class SoundService : MonoBehaviour
     public void PlayTrampolineJump()
     {
         PlaySound(TrampolineJump);
+    }
+    public void PlaySoundButtonTap()
+    {
+        _audioSource.PlayOneShot(ButtonTap);
     }
 }
