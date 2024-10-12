@@ -6,7 +6,7 @@ public static class GameDataHolder
 {
     private static bool _isMusicEnable = true;
     private static bool _isSoundEnable = true;
-
+    private static int _languageIndex = 0;
     public static void SetMusicState(bool value)
     {
         _isMusicEnable = value;
@@ -22,5 +22,13 @@ public static class GameDataHolder
     public static bool GetSoundState()
     {
         return _isSoundEnable;
+    }
+    public static void SetLanguageIndex(int value)
+    {
+        _languageIndex = value;
+    }
+    public static int GetLanguageIndex()
+    {
+        return _languageIndex;
     }
 }
