@@ -3848,6 +3848,7 @@ GameObject:
   - component: {fileID: 378642720}
   - component: {fileID: 378642722}
   - component: {fileID: 378642721}
+  - component: {fileID: 378642723}
   m_Layer: 5
   m_Name: Booster2Description
   m_TagString: Untagged
@@ -3972,6 +3973,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378642719}
   m_CullTransparentMesh: 1
+--- !u!114 &378642723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378642719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f44f1ff8f16b6040a1cc28dc226947c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _languages:
+  - The Flight booster allows the character to move freely in the air for 10 seconds.
+  - "\u0411\u0443\u0441\u0442\u0435\u0440 \"\u043F\u043E\u043B\u0435\u0442\" \u043F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442
+    \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0443 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u043E
+    \u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0430\u0442\u044C\u0441\u044F \u043F\u043E
+    \u0432\u043E\u0437\u0434\u0443\u0445\u0443 \u0432 \u0442\u0435\u0447\u0435\u043D\u0438\u0435
+    10 \u0441\u0435\u043A\u0443\u043D\u0434."
+  _text: {fileID: 378642721}
 --- !u!1 &431086203
 GameObject:
   m_ObjectHideFlags: 0
@@ -8399,7 +8420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heartsPanel: {fileID: 1031994607}
   _heartPrefab: {fileID: 2113593726930836477, guid: 8bdb8235461c8de489f5c318c4203a09, type: 3}
-  _isImmortal: 0
+  _isImmortal: 1
 --- !u!1 &925739612
 GameObject:
   m_ObjectHideFlags: 0
@@ -9281,7 +9302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1019883132
 Transform:
   m_ObjectHideFlags: 0
@@ -11741,6 +11762,170 @@ MonoBehaviour:
   - 'You collected: '
   - "\u0412\u044B \u0441\u043E\u0431\u0440\u0430\u043B\u0438:"
   _text: {fileID: 1288787033}
+--- !u!1 &1289288975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1289288976}
+  - component: {fileID: 1289288978}
+  - component: {fileID: 1289288977}
+  - component: {fileID: 1289288979}
+  m_Layer: 5
+  m_Name: InstuctionsText (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1289288976
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289288975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1969609308}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.88, y: 14.92}
+  m_SizeDelta: {x: 900.43, y: 437.96}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1289288977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289288975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Jump - Space (double jump x2 Space)
+
+    Attack- Z
+
+    Booster Shield
+    - X
+
+    Booster Flight - C
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: c409384cec6a3bd4f94475ea2c8b8174, type: 2}
+  m_sharedMaterial: {fileID: -1681033370165751615, guid: c409384cec6a3bd4f94475ea2c8b8174, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1289288978
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289288975}
+  m_CullTransparentMesh: 1
+--- !u!114 &1289288979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289288975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f44f1ff8f16b6040a1cc28dc226947c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _languages:
+  - Jump - Space (double jump x2 Space), Attack- Z, Booster Shield - X, Booster Flight
+    - C
+  - "\u041F\u0440\u044B\u0436\u043E\u043A - Space (\u0434\u0432\u043E\u0439\u043D\u043E\u0439
+    \u043F\u0440\u044B\u0436\u043E\u043A x2 Space), \u0423\u0434\u0430\u0440 - Z,
+    \u0411\u0443\u0441\u0442\u0435\u0440 \u0429\u0438\u0442 - X, \u0411\u0443\u0441\u0442\u0435\u0440
+    \u041F\u043E\u043B\u0435\u0442 - C"
+  _text: {fileID: 1289288977}
 --- !u!1 &1308130107
 GameObject:
   m_ObjectHideFlags: 0
@@ -13010,8 +13195,9 @@ GameObject:
   - component: {fileID: 1484940248}
   - component: {fileID: 1484940250}
   - component: {fileID: 1484940249}
+  - component: {fileID: 1484940251}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: InstructionButtonText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13133,6 +13319,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484940247}
   m_CullTransparentMesh: 1
+--- !u!114 &1484940251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484940247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f44f1ff8f16b6040a1cc28dc226947c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _languages:
+  - How to play?
+  - "\u041A\u0430\u043A \u0438\u0433\u0440\u0430\u0442\u044C?"
+  _text: {fileID: 1484940249}
 --- !u!1 &1507112722
 GameObject:
   m_ObjectHideFlags: 0
@@ -13805,6 +14007,7 @@ GameObject:
   - component: {fileID: 1572494608}
   - component: {fileID: 1572494610}
   - component: {fileID: 1572494609}
+  - component: {fileID: 1572494611}
   m_Layer: 5
   m_Name: Booster1Description
   m_TagString: Untagged
@@ -13929,6 +14132,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572494607}
   m_CullTransparentMesh: 1
+--- !u!114 &1572494611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572494607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f44f1ff8f16b6040a1cc28dc226947c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _languages:
+  - The Shield Booster provides the character with an impenetrable shield that completely
+    absorbs any kind of damage for 10 seconds.
+  - "\u0411\u0443\u0441\u0442\u0435\u0440 \"\u0449\u0438\u0442\" \u043E\u0431\u0435\u0441\u043F\u0435\u0447\u0438\u0432\u0430\u0435\u0442
+    \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430 \u043D\u0435\u043F\u0440\u043E\u0431\u0438\u0432\u0430\u0435\u043C\u044B\u043C
+    \u0449\u0438\u0442\u043E\u043C, \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u043F\u043E\u043B\u043D\u043E\u0441\u0442\u044C\u044E
+    \u043F\u043E\u0433\u043B\u043E\u0449\u0430\u0435\u0442 \u043B\u044E\u0431\u043E\u0439
+    \u0432\u0438\u0434 \u0443\u0440\u043E\u043D\u0430 \u0432 \u0442\u0435\u0447\u0435\u043D\u0438\u0435
+    10 \u0441\u0435\u043A\u0443\u043D\u0434."
+  _text: {fileID: 1572494609}
 --- !u!1 &1582043414
 GameObject:
   m_ObjectHideFlags: 0
@@ -14248,6 +14473,10 @@ MonoBehaviour:
   - {fileID: 1460812604}
   - {fileID: 471252459}
   - {fileID: 1288787035}
+  - {fileID: 1572494611}
+  - {fileID: 378642723}
+  - {fileID: 1289288979}
+  - {fileID: 1484940251}
   _languageIndex: 0
 --- !u!1001 &1620079706
 PrefabInstance:
@@ -16218,7 +16447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1969609308
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16232,6 +16461,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 931776298}
+  - {fileID: 1289288976}
   m_Father: {fileID: 1792164132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -17243,6 +17473,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1019883132}
     m_Modifications:
+    - target: {fileID: 1877563232591715338, guid: 6c87127bd9433054a94e0ff5a88c78a9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92c630975f19b754582bd768d2457509, type: 3}
     - target: {fileID: 7914136229461232328, guid: 6c87127bd9433054a94e0ff5a88c78a9, type: 3}
       propertyPath: m_Name
       value: BackGround (2)
