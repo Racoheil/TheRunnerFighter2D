@@ -7,9 +7,9 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private Transform _targetObject;
 
-    private float _minY;
+    [SerializeField] private float _minY;
 
-    private float _maxY;
+    [SerializeField] private float _maxY;
 
     Vector3 _posEnd, _posSmooth;
 
@@ -51,7 +51,7 @@ public class CameraMovement : MonoBehaviour
 
         _defaultSpeed = _speed;
 
-        _maxY = _targetObject.transform.position.y + 4;
+        _maxY = _targetObject.transform.position.y + 5.5f;
 
         _minY = _targetObject.transform.position.y - 6;
     }
