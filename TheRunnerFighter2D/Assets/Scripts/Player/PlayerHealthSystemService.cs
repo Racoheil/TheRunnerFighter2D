@@ -28,7 +28,7 @@ public class PlayerHealthSystemService : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        _isImmortal = true;
+        _isImmortal = false;
         _heartsList = new List<GameObject>();
         _health = _defaultHealth;
         ResetHealth();
