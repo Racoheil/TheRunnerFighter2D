@@ -5373,6 +5373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetObject: {fileID: 3860560283955399984}
+  _minY: 0
+  _maxY: 0
   _speed: 4
 --- !u!1 &530235399
 GameObject:
@@ -9500,7 +9502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1019883132
 Transform:
   m_ObjectHideFlags: 0
