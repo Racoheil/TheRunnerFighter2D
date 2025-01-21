@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
-    [SerializeField] private Camera _camera;
     [SerializeField, Range(0,1)] private float _speedOfParallax;
     private float _startPosition;
     private float _lengthOfSprite;
+    private Camera _camera;
 
     void Start()
     {
+        _camera = FindObjectOfType<Camera>();
         _startPosition = transform.position.x;
         _lengthOfSprite = GetComponent<SpriteRenderer>().bounds.size.x;
     }
