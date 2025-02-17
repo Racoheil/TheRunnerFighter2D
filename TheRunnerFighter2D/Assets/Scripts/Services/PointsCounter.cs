@@ -82,6 +82,7 @@ public class PointsCounter : MonoBehaviour
         _saveService.SavePlayerBalance(currentBalance);
 
         this.gameObject.SetActive(false);
+
     }
 
     private void StopCount()

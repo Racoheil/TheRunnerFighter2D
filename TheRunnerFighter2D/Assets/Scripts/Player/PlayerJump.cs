@@ -5,11 +5,11 @@ public class PlayerJump : MonoBehaviour
 {
     [SerializeField] private float _jumpForce = 1f;
 
-    [SerializeField] private int _maxJumps = 2;
+    private int _maxJumps = 2;
 
     private int _defaultJumpsCount;
 
-    private int _jumps;
+    [SerializeField] private int _jumps;
 
     private Rigidbody2D _rigidBody;
 
@@ -26,19 +26,43 @@ public class PlayerJump : MonoBehaviour
         instance = this;
         _rigidBody = GetComponent<Rigidbody2D>();
         _defaultJumpsCount = _maxJumps;
-        //_jumps = _maxJumps;
+        _jumps = _maxJumps;
     }
     private void Update()
     {
-        if (GroundCheck.instance.GetIsGrounded())
-        {
-            _jumps = _maxJumps - 1;
-           // _isJump = true;
-        }
+        //if (GroundCheck.instance.GetIsGrounded())
+        //{
+        //    //_jumps = _maxJumps - 1;
+        //    //// _isJump = true;
+
+        //    if (Input.GetKeyDown(KeyCode.Space))
+        //    {
+
+        //    }
+        //}
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump(_jumpForce);
+            if (GroundCheck.instance.GetIsGrounded() || (_jumps < _maxJumps && _jumps > 0))
+            {
+                Jump();
+            }
+
         }
+        if (GroundCheck.instance.GetIsGrounded())
+        {
+            if (_jumps == 0)
+            {
+                _jumps = _maxJumps;
+            }
+        }
+        //else
+        //{
+        //    _jumps -= 1;
+        //}
+        //if (GroundCheck.instance.GetIsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Jump(_jumpForce);
+        //}
     }
 
     private void OnEnable()
@@ -54,18 +78,18 @@ public class PlayerJump : MonoBehaviour
         EventService.OnPlayerLose -= DisableJump;
         EventService.OnTrampolineJump -= TrampolineJump;
     }
-    private void Jump(float jumpForce)
+    private void Jump()
     {
-        if (_jumps > 0 && !_hasDoubleJumped && _isJump)
+        print("Jumps before jump = " + _jumps);
+        if (_isJump)
         {
-            
+            _jumps--;
             EventService.CallOnPlayerJumpSound();
 
-            _rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            //StartCoroutine(LandingRoutine());
-            _jumps--;
-            _hasDoubleJumped = true;
-            StartCoroutine(ResetDoubleJump());
+
+            _rigidBody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            
+            
         }
         if (_jumps == 0)
         {
@@ -86,6 +110,7 @@ public class PlayerJump : MonoBehaviour
     {
         yield return new WaitForSeconds(_doubleJumpDelay);
         _hasDoubleJumped = false;
+        // _jumps = _maxJumps;
     }
 
     private void FreezePlayer()
@@ -105,10 +130,12 @@ public class PlayerJump : MonoBehaviour
     public void SetJumpsCount(int value)
     {
         _maxJumps = value;
+        _jumps = _maxJumps;
     }
     public void SetDefaultJumpsCount()
     {
         _maxJumps = _defaultJumpsCount;
+        _jumps = _maxJumps;
     }
 
     public void DisableJump()

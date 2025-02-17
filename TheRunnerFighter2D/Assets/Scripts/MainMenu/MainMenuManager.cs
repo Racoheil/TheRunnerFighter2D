@@ -12,18 +12,22 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] private GameObject _shopPanel;
 
+    [SerializeField] private GameObject _bestScore;
+
     private void Start()
     {
         _mainMenuPanel.SetActive(true);
         _playerBalance.SetActive(true);
         _gamePanel.SetActive(false);
         _shopPanel.SetActive(false);
+        _bestScore.SetActive(true);
     }
     public void StartGame()
     {
         _mainMenuPanel.SetActive(false);
         _gamePanel.SetActive(true);
         _playerBalance.SetActive(false);
+        _bestScore.SetActive(false);
 
         EventService.CallOnStartGame();
     }
